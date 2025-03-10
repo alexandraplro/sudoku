@@ -3,11 +3,15 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   background-color: black; /* Background color */
+  margin: 0; /* Removes default margins */
 }
 
 h1 {
   color: fuchsia; /* Title color */
   font-size: 2em;
+  padding: 15px; /* Adds padding to the header */
+  background-color: lightblue; /* Light blue background for the header */
+  border-radius: 8px; /* Optional: Rounded corners for a polished look */
 }
 
 /* Sudoku Grid Styling */
@@ -65,3 +69,17 @@ button:hover {
   background-color: #ffaabb; /* Slightly brighter pink on hover */
 }
 
+/* Footer Styling */
+footer {
+  background-color: #ffefd5; /* Very light orange background */
+  color: black; /* Footer text color */
+  padding: 15px; /* Adds padding inside the footer */
+  position: fixed; /* Keeps the footer at the bottom */
+  bottom: 0;
+  width: 100%; /* Ensures the footer spans the entire width */
+}
+
+footer p {
+  margin: 0; /* Removes default paragraph margin */
+  font-size: 14px; /* Adjusts text size */
+}
