@@ -7,14 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     input.setAttribute("type", "number");
     input.setAttribute("min", "1");
     input.setAttribute("max", "9");
-    input.style.color = "lightyellow"; // Ensure numbers stay light yellow
+    input.style.color = "lightyellow"; // Ensure input numbers stay light yellow
     grid.appendChild(input);
   }
 
   // Add functionality to the "Check Solution" button
   const checkButton = document.getElementById("check-solution");
   checkButton.addEventListener("click", function () {
-    alert("Checking solution... (Functionality to be implemented!)");
-    // You can add validation logic here
+    alert("Checking solution... (Functionality to be implemented)");
+    // Add solution validation logic here in the future
   });
 });
