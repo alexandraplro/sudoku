@@ -1,28 +1,60 @@
-/* Sudoku Grid Styling */
+/* General Styling */
+body {
+  font-family: Avenir, sans-serif; /* Avenir font */
+  text-align: center;
+  background-color: lightblue; /* Light blue background */
+  margin: 0; /* Removes default margins */
+  padding: 20px;
+}
+
+h1 {
+  color: darkblue; /* Dark blue title */
+  text-transform: uppercase; /* Ensure title is in all caps */
+  margin-bottom: 20px;
+}
+
+/* Game Layout */
+.game-layout {
+  display: flex; /* Align left panel, grid, and right panel in a row */
+  justify-content: center; /* Center items horizontally */
+  align-items: flex-start; /* Align items at the top */
+  gap: 20px;
+}
+
+/* Left and Right Panels */
+.left-panel, .right-panel {
+  width: 150px;
+  padding: 10px;
+  background-color: #f9f9f9; /* Light gray */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Sudoku Grid */
 .sudoku-grid {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 1px;
-  max-width: 360px;
-  margin: 20px auto;
-  border: 2px solid darkblue; /* Outer grid border */
+  width: 360px;
+  background-color: darkblue; /* Background for the grid */
+  padding: 5px;
 }
 
 .cell {
   width: 100%;
   height: 40px;
+  text-align: center;
+  border: 1px solid lightblue;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 18px;
-  border: 1px solid lightblue; /* Regular grid lines */
-  background-color: white; /* Default cell background color */
+  align-items: center;
 }
 
 .cell.fixed {
-  color: darkblue; /* Fixed numbers in dark blue */
-  font-weight: bold; /* Bold for fixed numbers */
-  background-color: #f0f0f0; /* Light gray for fixed cells */
+  font-weight: bold;
+  color: darkblue;
+  background-color: #e6e6e6; /* Light gray for fixed cells */
 }
 
 .cell input {
@@ -31,19 +63,39 @@
   text-align: center;
   border: none;
   font-size: 18px;
-  font-family: Avenir, sans-serif;
   background-color: white;
   color: black;
 
-  /* Remove default input field borders */
-  outline: none;
-
   /* Remove number input arrows */
-  -moz-appearance: textfield; /* Firefox */
-  -webkit-appearance: none; /* Chrome, Safari, Edge */
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
   appearance: none;
 }
 
 .cell input:focus {
-  outline: 2px solid blue; /* Highlight focused cell */
+  outline: 2px solid blue;
+}
+
+/* Button Styling */
+.controls button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #ffccdd;
+  color: darkblue;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background-color: #ffaabb;
+}
+
+/* Footer */
+footer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ffefd5;
+  border-radius: 5px;
+  color: black;
 }
