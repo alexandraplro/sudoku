@@ -1,7 +1,8 @@
+/* General Styling */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background-color: black; /* Background color for the Sudoku */
+  background-color: black; /* Background color */
 }
 
 h1 {
@@ -9,13 +10,14 @@ h1 {
   font-size: 2em;
 }
 
+/* Sudoku Grid Styling */
 .sudoku-grid {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 1px;
   max-width: 360px;
   margin: 20px auto;
-  border: 2px solid lightblue; /* Grid border color */
+  border: 2px solid lightblue; /* Light blue border around the grid */
 }
 
 .sudoku-grid input {
@@ -23,33 +25,26 @@ h1 {
   height: 40px;
   text-align: center;
   font-size: 18px;
-  border: 1px solid lightblue; /* Light blue grid line color */
+  border: 1px solid lightblue; /* Light blue grid lines */
   background-color: black; /* Cell background color */
-  color: lightyellow; /* Number (text) color */
+  color: lightyellow; /* Text color */
 }
 
 .sudoku-grid input:focus {
   border: 2px solid blue;
 }
 
-.sudoku-grid div:nth-child(3n) {
-  border-right: 2px solid lightblue; /* Highlighting every 3rd border */
-}
-
-.sudoku-grid div:nth-child(27),
-.sudoku-grid div:nth-child(54) {
-  border-bottom: 2px solid lightblue;
-}
-
+/* Button Styling */
 button {
-  background-color: lightpink; /* Button background */
+  background-color: lightpink; /* Button background color */
   color: darkblue; /* Button text color */
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 button:hover {
-  background-color: darkpink; /* Slightly darker shade on hover */
+  background-color: hotpink; /* Slightly brighter pink on hover */
 }
