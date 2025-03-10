@@ -27,8 +27,7 @@ h1, h2, p, button, input {
   width: 150px;
   padding: 10px;
   background-color: lightblue; /* Match the background with the rest of the body */
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 5px; /* Keeps rounded corners */
   text-align: center;
 }
 
@@ -44,7 +43,6 @@ h1, h2, p, button, input {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
-  border: 2px solid #ccc;
 }
 
 /* Sudoku Grid */
@@ -181,3 +179,4 @@ footer {
   font-family: Avenir, sans-serif; /* Avenir font for footer */
   text-align: center;
 }
+
