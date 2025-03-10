@@ -1,63 +1,55 @@
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    background-color: lightpink; /* Updated to light pink */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: black; /* Background color for the Sudoku */
 }
 
 h1 {
-    font-size: 2.5rem;
-    color: #5A005A; /* Dark purple color for the title */
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.difficulty {
-    margin: 10px 0;
-    font-size: 1.2rem;
+  color: fuchsia; /* Title color */
+  font-size: 2em;
 }
 
 .sudoku-grid {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    width: 100%;
-    height: 100%;
-    max-width: 450px;
-    margin: 20px 0;
-    border: 3px solid black;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1px;
+  max-width: 360px;
+  margin: 20px auto;
+  border: 2px solid lightblue; /* Grid border color */
 }
 
-.cell {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-size: 1.5rem;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+.sudoku-grid input {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid lightblue; /* Light blue grid line color */
+  background-color: black; /* Cell background color */
+  color: lightyellow; /* Number (text) color */
 }
 
-.cell:disabled {
-    background-color: #e6e6e6; /* Light gray background for pre-filled numbers */
-    color: black;
-    font-weight: bold;
-    border-color: black;
+.sudoku-grid input:focus {
+  border: 2px solid blue;
+}
+
+.sudoku-grid div:nth-child(3n) {
+  border-right: 2px solid lightblue; /* Highlighting every 3rd border */
+}
+
+.sudoku-grid div:nth-child(27),
+.sudoku-grid div:nth-child(54) {
+  border-bottom: 2px solid lightblue;
 }
 
 button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    margin-top: 15px;
-    background-color: #0078d4;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: lightpink; /* Button background */
+  color: darkblue; /* Button text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #005a9e;
+  background-color: darkpink; /* Slightly darker shade on hover */
 }
