@@ -17,7 +17,7 @@ h1 {
   gap: 1px;
   max-width: 360px;
   margin: 20px auto;
-  border: 2px solid lightblue; /* Light blue border around the grid */
+  border: 2px solid lightblue; /* Outer grid border */
 }
 
 .sudoku-grid input {
@@ -25,13 +25,28 @@ h1 {
   height: 40px;
   text-align: center;
   font-size: 18px;
-  border: 1px solid lightblue; /* Light blue grid lines */
+  border: 1px solid lightblue; /* Regular cell border color */
   background-color: black; /* Cell background color */
   color: lightyellow; /* Text color */
+
+  /* Hide number input arrows */
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .sudoku-grid input:focus {
   border: 2px solid blue;
+}
+
+/* Add special borders for 3x3 sub-grids */
+.sudoku-grid input:nth-child(3n) {
+  border-right: 2px solid lightgreen; /* Light green for every 3rd column */
+}
+
+.sudoku-grid input:nth-child(27n + 1),
+.sudoku-grid input:nth-child(54n + 1) {
+  border-bottom: 2px solid lightgreen; /* Light green for every 3rd row */
 }
 
 /* Button Styling */
