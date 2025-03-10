@@ -1,22 +1,85 @@
 /* General Styling */
 body {
-  font-family: Avenir, sans-serif; /* Avenir font */
-  text-align: left;
-  background-color: lightblue; /* Light blue background */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: black; /* Background color */
   margin: 0; /* Removes default margins */
 }
 
-.main-container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+h1 {
+  color: fuchsia; /* Title color */
+  font-size: 2em;
+  padding: 15px; /* Adds padding to the header */
+  background-color: lightblue; /* Light blue background for the header */
+  border-radius: 8px; /* Optional: Rounded corners for a polished look */
 }
 
-.left-panel {
-  width: 30%;
-  padding: 20px;
+/* Sudoku Grid Styling */
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1px;
+  max-width: 360px;
+  margin: 20px auto;
+  border: 2px solid lightblue; /* Outer grid border */
 }
 
-.bubble {
-  background-color: #e6e6fa; /* Lilac background */
-  border: 2px solid darkpurple; }}>
+.sudoku-grid input {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid lightblue; /* Regular cell border color */
+  background-color: black; /* Cell background color */
+  color: lightyellow; /* Text color */
+
+  /* Hide number input arrows */
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.sudoku-grid input:focus {
+  border: 2px solid blue;
+}
+
+/* Add special borders for 3x3 sub-grids */
+.sudoku-grid input:nth-child(3n) {
+  border-right: 2px solid lightgreen; /* Light green for every 3rd column */
+}
+
+.sudoku-grid input:nth-child(27n + 1),
+.sudoku-grid input:nth-child(54n + 1) {
+  border-bottom: 2px solid lightgreen; /* Light green for every 3rd row */
+}
+
+/* Button Styling */
+button {
+  background-color: #ffccdd; /* Lighter pink background */
+  color: darkblue; /* Button text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  text-transform: uppercase; /* Ensures "CHECK SOLUTION" is in all caps */
+}
+
+button:hover {
+  background-color: #ffaabb; /* Slightly brighter pink on hover */
+}
+
+/* Footer Styling */
+footer {
+  background-color: #ffefd5; /* Very light orange background */
+  color: black; /* Footer text color */
+  padding: 15px; /* Adds padding inside the footer */
+  position: fixed; /* Keeps the footer at the bottom */
+  bottom: 0;
+  width: 100%; /* Ensures the footer spans the entire width */
+}
+
+footer p {
+  margin: 0; /* Removes default paragraph margin */
+  font-size: 14px; /* Adjusts text size */
+}
