@@ -1,17 +1,18 @@
 /* General Styling */
 body {
-  font-family: Arial, sans-serif;
+  font-family: Avenir, sans-serif; /* Avenir font */
   text-align: center;
-  background-color: black; /* Background color */
+  background-color: lightblue; /* Light blue background */
   margin: 0; /* Removes default margins */
 }
 
 h1 {
-  color: fuchsia; /* Title color */
+  color: darkblue; /* Dark blue title color */
   font-size: 2em;
   padding: 15px; /* Adds padding to the header */
-  background-color: lightblue; /* Light blue background for the header */
+  background-color: lightblue; /* Matches background color */
   border-radius: 8px; /* Optional: Rounded corners for a polished look */
+  text-transform: uppercase; /* Ensures the title is in all caps */
 }
 
 /* Sudoku Grid Styling */
@@ -32,6 +33,7 @@ h1 {
   border: 1px solid lightblue; /* Regular grid lines */
   background-color: black; /* Default cell background color */
   color: lightyellow; /* Text color */
+  font-family: Avenir, sans-serif; /* Avenir font for grid inputs */
 
   /* Hide number input arrows */
   -moz-appearance: textfield;
@@ -43,13 +45,7 @@ h1 {
   border: 2px solid blue;
 }
 
-/* Style the horizontal (third and sixth) lines */
-.sudoku-grid input:nth-child(n + 19):nth-child(-n + 27),
-.sudoku-grid input:nth-child(n + 46):nth-child(-n + 54) {
-  border-bottom: 2px solid lightgreen; /* Light green horizontal line at 3rd and 6th row */
-}
-
-/* Style the vertical (third and sixth) lines */
+/* Add light green lines for 3rd and 6th divisions */
 .sudoku-grid input:nth-child(3n) {
   border-right: 2px solid lightgreen; /* Light green vertical line at 3rd column */
 }
@@ -58,20 +54,30 @@ h1 {
   border-right: 2px solid lightgreen; /* Light green vertical line at 6th column */
 }
 
+.sudoku-grid input:nth-child(n + 19):nth-child(-n + 27),
+.sudoku-grid input:nth-child(n + 46):nth-child(-n + 54) {
+  border-bottom: 2px solid lightgreen; /* Light green horizontal lines at 3rd and 6th row */
+}
+
 /* Button Styling */
 button {
   background-color: #ffccdd; /* Lighter pink background */
   color: darkblue; /* Button text color */
-  border: none;
+  border: 2px solid darkblue; /* Adds a dark blue border */
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 20px;
   text-transform: uppercase; /* Ensures "CHECK SOLUTION" is in all caps */
+  font-family: Avenir, sans-serif; /* Apply Avenir font to button */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Creates a 3D shadow effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
 }
 
 button:hover {
   background-color: #ffaabb; /* Slightly brighter pink on hover */
+  transform: translateY(-2px); /* Lifts the button on hover */
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Enhances shadow on hover */
 }
 
 /* Footer Styling */
@@ -82,6 +88,7 @@ footer {
   position: fixed; /* Keeps the footer at the bottom */
   bottom: 0;
   width: 100%; /* Ensures the footer spans the entire width */
+  font-family: Avenir, sans-serif; /* Apply Avenir font to footer */
 }
 
 footer p {
