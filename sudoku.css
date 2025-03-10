@@ -5,7 +5,7 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background-color: beige; /* Updated background color */
 }
 
 header, footer {
@@ -18,6 +18,13 @@ header, footer {
     align-items: center;
 }
 
+h1 {
+    font-size: 2.5rem;
+    color: darkpurple; /* Dark purple title */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .sudoku-grid {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
@@ -26,7 +33,8 @@ header, footer {
     height: 100%;
     max-width: 450px; /* Ensures responsiveness */
     margin: 20px 0;
-    grid-gap: 2px;
+    grid-gap: 0; /* No gap between cells */
+    border: 3px solid black; /* Border for the entire grid */
 }
 
 .cell {
@@ -36,6 +44,13 @@ header, footer {
     text-align: center;
     font-size: 1.5rem;
     box-sizing: border-box;
+}
+
+.cell:disabled {
+    background-color: #e6e6e6; /* Light gray background for pre-filled numbers */
+    color: black; /* Dark font for pre-filled numbers */
+    font-weight: bold;
+    border-color: black;
 }
 
 .cell:focus {

@@ -9,14 +9,32 @@ document.addEventListener("DOMContentLoaded", function () {
     canvas.width = containerSize;
     canvas.height = containerSize;
 
-    // Draw the Sudoku grid on the canvas
+    // Draw the Sudoku grid with thicker lines for 3x3 sub-grids
     for (let i = 0; i <= 9; i++) {
+        context.lineWidth = (i % 3 === 0) ? 3 : 1;
+
+        // Draw horizontal lines
         context.moveTo(0, i * cellSize);
-        context.lineTo(containerSize, i * cellSize); // Horizontal lines
+        context.lineTo(containerSize, i * cellSize);
+
+        // Draw vertical lines
         context.moveTo(i * cellSize, 0);
-        context.lineTo(i * cellSize, containerSize); // Vertical lines
+        context.lineTo(i * cellSize, containerSize);
     }
     context.stroke();
+
+    // Example starting grid with some pre-filled numbers
+    const startingGrid = [
+        5, 3, 0, 0, 7, 0, 0, 0, 0,
+        6, 0, 0, 1, 9, 5, 0, 0, 0,
+        0, 9, 8, 0, 0, 0, 0, 6, 0,
+        8, 0, 0, 0, 6, 0, 0, 0, 3,
+        4, 0, 0, 8, 0, 3, 0, 0, 1,
+        7, 0, 0, 0, 2, 0, 0, 0, 6,
+        0, 6, 0, 0, 0, 0, 2, 8, 0,
+        0, 0, 0, 4, 1, 9, 0, 0, 5,
+        0, 0, 0, 0, 8, 0, 0, 7, 9,
+    ];
 
     // Dynamically generate a 9x9 input grid
     for (let i = 0; i < 81; i++) {
@@ -24,6 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
         cell.type = "text";
         cell.classList.add("cell");
         cell.maxLength = 1;
+
+        // Pre-fill starting numbers
+        if (startingGrid[i] !== 0) {
+            cell.value = startingGrid[i];
+            cell.disabled = true; // Disable editing for pre-filled cells
+        }
+
         gridContainer.appendChild(cell);
     }
 
