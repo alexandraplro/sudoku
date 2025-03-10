@@ -79,13 +79,13 @@ h1, h2, p, button, input {
 .cell:nth-child(n+4):nth-child(-n+6),
 .cell:nth-child(n+13):nth-child(-n+15),
 .cell:nth-child(n+22):nth-child(-n+24) {
-  background-color: #dff9fb; /* Light blue */
+  background-color: #f6e58d; /* Light yellow */
 }
 
 .cell:nth-child(n+7):nth-child(-n+9),
 .cell:nth-child(n+16):nth-child(-n+18),
 .cell:nth-child(n+25):nth-child(-n+27) {
-  background-color: #f6e58d; /* Light yellow */
+  background-color: #dff9fb; /* Light blue */
 }
 
 /* Second Row of Blocks */
@@ -179,4 +179,3 @@ footer {
   font-family: Avenir, sans-serif; /* Avenir font for footer */
   text-align: center;
 }
-
