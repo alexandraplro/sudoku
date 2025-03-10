@@ -50,9 +50,10 @@ h1, h2, p, button, input {
 /* Sudoku Grid */
 .sudoku-grid {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(9, 1fr); /* 9 columns */
   gap: 1px;
   max-width: 360px;
+  margin: 20px auto;
   background-color: darkblue; /* Background for grid container */
   padding: 5px;
 }
@@ -61,64 +62,11 @@ h1, h2, p, button, input {
   width: 100%;
   height: 40px;
   text-align: center;
-  border: 1px solid lightblue;
+  border: 1px solid lightblue; /* Regular grid lines */
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: Avenir, sans-serif; /* Avenir font for grid cells */
-}
-
-/* Fixed Cell Styling */
-.cell.fixed {
-  font-weight: bold;
-  color: darkblue;
-  background-color: #e6e6e6; /* Light gray for fixed cells */
-}
-
-/* Editable Cell Styling */
-.cell input {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  border: none;
-  font-size: 18px;
-  background-color: white;
-  color: black;
-
-  /* Remove number input arrows */
-  -moz-appearance: textfield;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.cell input:focus {
-  outline: 2px solid blue;
-}
-
-/* Button Styling */
-.controls button {
-  padding: 10px 20px;
-  margin: 5px;
-  background-color: #ffccdd;
-  color: darkblue;
-  border: 1px solid darkblue;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: Avenir, sans-serif; /* Avenir font for buttons */
-}
-
-.controls button:hover {
-  background-color: #ffaabb;
-}
-
-/* Footer */
-footer {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #FFDAB9; /* Match footer background with the body */
-  border-radius: 5px;
-  color: black;
-  font-family: Avenir, sans-serif; /* Avenir font for footer */
 }
 
 /* Background Colors for 3x3 Sections */
@@ -178,4 +126,58 @@ footer {
 .cell:nth-child(n+70):nth-child(-n+72),
 .cell:nth-child(n+79):nth-child(-n+81) {
   background-color: #f6e58d; /* Light yellow */
+}
+
+/* Fixed Cell Styling */
+.cell.fixed {
+  font-weight: bold;
+  color: darkblue;
+  background-color: #e6e6e6; /* Light gray for fixed cells */
+}
+
+/* Editable Cell Styling */
+.cell input {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: none;
+  font-size: 18px;
+  background-color: transparent; /* Ensure input cells inherit the background */
+  color: black;
+
+  /* Remove number input arrows */
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.cell input:focus {
+  outline: 2px solid blue;
+}
+
+/* Button Styling */
+.controls button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #ffccdd;
+  color: darkblue;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Avenir, sans-serif; /* Avenir font for buttons */
+}
+
+.controls button:hover {
+  background-color: #ffaabb;
+}
+
+/* Footer */
+footer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #FFDAB9; /* Light salmon color */
+  border-radius: 5px;
+  color: black;
+  font-family: Avenir, sans-serif; /* Avenir font for footer */
+  text-align: center;
 }
