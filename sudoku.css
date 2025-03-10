@@ -1,20 +1,3 @@
-/* General Styling */
-body {
-  font-family: Avenir, sans-serif; /* Avenir font */
-  text-align: center;
-  background-color: lightblue; /* Light blue background */
-  margin: 0; /* Removes default margins */
-}
-
-h1 {
-  color: darkblue; /* Dark blue title color */
-  font-size: 2em;
-  padding: 15px; /* Adds padding to the header */
-  background-color: lightblue; /* Matches background color */
-  border-radius: 8px; /* Optional: Rounded corners for a polished look */
-  text-transform: uppercase; /* Ensures the title is in all caps */
-}
-
 /* Sudoku Grid Styling */
 .sudoku-grid {
   display: grid;
@@ -25,23 +8,42 @@ h1 {
   border: 2px solid darkblue; /* Outer grid border */
 }
 
-.sudoku-grid div {
+.cell {
   width: 100%;
   height: 40px;
-  text-align: center;
-  font-size: 18px;
-  border: 1px solid lightblue; /* Regular grid lines */
-  background-color: white; /* Default cell background color */
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 18px;
+  border: 1px solid lightblue; /* Regular grid lines */
+  background-color: white; /* Default cell background color */
 }
 
-/* Add light green vertical lines for the 3rd and 6th columns */
-.sudoku-grid div:nth-child(3n) {
-  border-right: 3px solid lightgreen; /* Light green vertical line at the 3rd column */
+.cell.fixed {
+  color: darkblue; /* Fixed numbers in dark blue */
+  font-weight: bold; /* Bold for fixed numbers */
+  background-color: #f0f0f0; /* Light gray for fixed cells */
 }
 
-.sudoku-grid div:nth-child(6n) {
-  border-right: 3px solid lightgreen; /* Light green vertical line at the 6th column */
+.cell input {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: none;
+  font-size: 18px;
+  font-family: Avenir, sans-serif;
+  background-color: white;
+  color: black;
+
+  /* Remove default input field borders */
+  outline: none;
+
+  /* Remove number input arrows */
+  -moz-appearance: textfield; /* Firefox */
+  -webkit-appearance: none; /* Chrome, Safari, Edge */
+  appearance: none;
+}
+
+.cell input:focus {
+  outline: 2px solid blue; /* Highlight focused cell */
 }
