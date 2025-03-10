@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+header, footer {
+    background-color: #f2f2f2;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+.sudoku-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-gap: 2px;
+    max-width: 300px;
+    margin: 20px 0;
+}
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 16px;
+}
+.cell:focus {
+    outline: none;
+    border-color: #000;
+}
+footer {
+    font-size: 14px;
+}
