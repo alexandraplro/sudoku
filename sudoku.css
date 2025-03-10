@@ -104,7 +104,7 @@ h1, h2, p, button, input {
 .cell:nth-child(n+34):nth-child(-n+36),
 .cell:nth-child(n+43):nth-child(-n+45),
 .cell:nth-child(n+52):nth-child(-n+54) {
-  background-color: #f9f9f9; /* Light gray */
+  background-color: #f6e58d; /* Light yellow */
 }
 
 /* Third Row of Blocks */
@@ -123,7 +123,7 @@ h1, h2, p, button, input {
 .cell:nth-child(n+61):nth-child(-n+63),
 .cell:nth-child(n+70):nth-child(-n+72),
 .cell:nth-child(n+79):nth-child(-n+81) {
-  background-color: #f6e58d; /* Light yellow */
+  background-color: #dff9fb; /* Light blue */
 }
 
 /* Fixed Cell Styling */
