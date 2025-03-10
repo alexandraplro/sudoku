@@ -7,9 +7,38 @@
   <link rel="stylesheet" href="sudoku.css">
 </head>
 <body>
-  <h1>Sudoku Play Time</h1>
-  <div class="sudoku-grid" id="grid"></div>
-  <button id="check-solution">CHECK SOLUTION</button>
+  <div class="main-container">
+    <div class="left-panel">
+      <div class="bubble">
+        <p>
+          The rules for Sudoku are simple. A 9×9 square must be filled in with numbers from 1-9 with no repeated numbers in each line, horizontally or vertically. To challenge you more, there are 3×3 squares marked out in the grid, and each of these squares can’t have any repeat numbers either.
+        </p>
+        <p>
+          The puzzles will help you get started by providing some correct numbers – the fewer numbers provided, the more difficult the puzzle.
+        </p>
+        <p>
+          Many puzzles will leave one or two blanks either in a line or in a box. A line might be missing a 5 and a 6, but a box along that line will already have a 6 in it, so you know this blank must be a 5, and the other blank must be the 6. The same may be the case for one or two missing numbers in the smaller boxes. Filling these blanks will get you on your way to a solution.
+        </p>
+        <p>
+          As you fill in the easy solutions, you may start to find other missing numbers that are easy to place. In the above example, the box now has a 5, and that may help you solve that 3×3 area, or might help you solve the lines that cross that area.
+        </p>
+        <p>
+          If you get stuck, don’t concentrate too hard on one part of the grid. Let your eye scan the puzzle to find another place on the grid with new possibilities. You may find another quick solution.
+        </p>
+        <p>
+          Whenever you place a new number, see if that opens up a new row or box. It might narrow down the possibilities or make another number obvious. If you keep asking yourself which numbers you’re missing in a line or grid, you might find it more quickly.
+        </p>
+        <p>
+          Remember that although you want to finish a puzzle, the point is to enjoy the challenge and work your brain as you relax. If you find yourself getting frustrated, walk away. Let your mind clear and try again later. The most important thing is to have fun.
+        </p>
+      </div>
+    </div>
+    <div class="content">
+      <h1>Sudoku Play Time</h1>
+      <div class="sudoku-grid" id="grid"></div>
+      <button id="check-solution">CHECK SOLUTION</button>
+    </div>
+  </div>
   <footer>
     <p>Enjoy the game! Created by Claus</p>
   </footer>
