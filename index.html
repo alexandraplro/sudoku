@@ -7,66 +7,62 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh; /* Ensure the content is vertically centered */
-            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            background-color: beige;
         }
 
         h1 {
+            font-size: 2.5rem;
+            color: darkpurple;
             text-align: center;
-            font-size: 2rem;
             margin-bottom: 20px;
         }
 
-        .sudoku-container {
-            position: relative;
-            width: 90vw; /* Adjust grid size dynamically */
-            max-width: 450px;
-            aspect-ratio: 1; /* Keeps container square */
-        }
-
-        canvas {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+        .difficulty {
+            margin: 10px 0;
+            font-size: 1.2rem;
         }
 
         .sudoku-grid {
-            position: absolute;
             display: grid;
             grid-template-columns: repeat(9, 1fr);
             grid-template-rows: repeat(9, 1fr);
             width: 100%;
             height: 100%;
-            z-index: 2;
+            max-width: 450px;
+            margin: 20px 0;
+            border: 3px solid black;
         }
 
         .cell {
-            width: 100%; /* Fully fill the grid space */
+            width: 100%;
             height: 100%;
             text-align: center;
-            font-size: 1.5em;
-            border: 1px solid #ddd;
-            outline: none;
+            font-size: 1.5rem;
+            border: 1px solid #ccc;
             box-sizing: border-box;
         }
 
+        .cell:disabled {
+            background-color: #e6e6e6;
+            color: black;
+            font-weight: bold;
+            border-color: black;
+        }
+
         button {
-            margin-top: 20px;
             padding: 10px 15px;
-            font-size: 1em;
-            cursor: pointer;
-            border: none;
+            font-size: 1rem;
+            margin-top: 15px;
             background-color: #0078d4;
             color: white;
+            border: none;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            cursor: pointer;
         }
 
         button:hover {
@@ -75,88 +71,20 @@
     </style>
 </head>
 <body>
-    <h1>Sudoku Puzzle</h1>
+    <h1>Sudoku</h1>
+    <div class="difficulty">
+        <label for="difficulty">Select Difficulty: </label>
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
     <div class="sudoku-container">
         <canvas id="sudokuCanvas"></canvas>
         <div class="sudoku-grid"></div>
     </div>
     <button id="checkButton">Check Solution</button>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const gridContainer = document.querySelector(".sudoku-grid");
-            const canvas = document.getElementById("sudokuCanvas");
-            const context = canvas.getContext("2d");
-
-            // Set canvas dimensions based on container
-            const containerSize = gridContainer.offsetWidth;
-            canvas.width = containerSize;
-            canvas.height = containerSize;
-
-            // Draw the Sudoku grid on the canvas
-            const cellSize = containerSize / 9;
-            for (let i = 0; i <= 9; i++) {
-                context.moveTo(0, i * cellSize);
-                context.lineTo(containerSize, i * cellSize); // Horizontal lines
-                context.moveTo(i * cellSize, 0);
-                context.lineTo(i * cellSize, containerSize); // Vertical lines
-            }
-            context.stroke();
-
-            // Dynamically generate a 9x9 input grid
-            for (let i = 0; i < 81; i++) {
-                const cell = document.createElement("input");
-                cell.type = "text";
-                cell.classList.add("cell");
-                cell.maxLength = 1;
-
-                // Restrict input to numbers 1-9
-                cell.addEventListener("input", function (event) {
-                    const value = event.target.value;
-                    if (!/^[1-9]$/.test(value)) {
-                        event.target.value = ""; // Clear invalid input
-                        cell.style.borderColor = "red"; // Visual indicator
-                        setTimeout(() => cell.style.borderColor = "", 500); // Reset after 0.5s
-                    }
-                });
-
-                gridContainer.appendChild(cell);
-            }
-
-            // Add functionality to the "Check Solution" button
-            const checkButton = document.getElementById("checkButton");
-            checkButton.addEventListener("click", function () {
-                // Example solution grid (replace with your actual logic)
-                const solution = [
-                    5, 3, 4, 6, 7, 8, 9, 1, 2,
-                    6, 7, 2, 1, 9, 5, 3, 4, 8,
-                    1, 9, 8, 3, 4, 2, 5, 6, 7,
-                    8, 5, 9, 7, 6, 1, 4, 2, 3,
-                    4, 2, 6, 8, 5, 3, 7, 9, 1,
-                    7, 1, 3, 9, 2, 4, 8, 5, 6,
-                    9, 6, 1, 5, 3, 7, 2, 8, 4,
-                    2, 8, 7, 4, 1, 9, 6, 3, 5,
-                    3, 4, 5, 2, 8, 6, 1, 7, 9,
-                ];
-
-                const inputs = document.querySelectorAll(".cell");
-                let valid = true;
-
-                inputs.forEach((cell, index) => {
-                    if (cell.value != solution[index]) {
-                        valid = false;
-                        cell.style.backgroundColor = "#ffdddd"; // Highlight incorrect cells
-                        setTimeout(() => (cell.style.backgroundColor = ""), 500); // Reset after 0.5s
-                    }
-                });
-
-                if (valid) {
-                    alert("Congratulations, the solution is correct!");
-                } else {
-                    alert("There are errors in the solution. Try again!");
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
