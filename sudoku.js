@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Placeholder for "New Game", "Check Solution", and "Reset" button functionality
   document.getElementById("new-game").addEventListener("click", () => {
-    alert("New Game functionality to be implemented!");
+    alert("New Game Starting!");
   });
 
   document.getElementById("check-solution").addEventListener("click", () => {
