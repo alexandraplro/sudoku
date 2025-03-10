@@ -5,24 +5,19 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
-    background-color: beige; /* Updated background color */
-}
-
-header, footer {
-    background-color: #f2f2f2;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: lightpink; /* Updated to light pink */
 }
 
 h1 {
     font-size: 2.5rem;
-    color: darkpurple; /* Dark purple title */
+    color: #5A005A; /* Dark purple color for the title */
     text-align: center;
     margin-bottom: 20px;
+}
+
+.difficulty {
+    margin: 10px 0;
+    font-size: 1.2rem;
 }
 
 .sudoku-grid {
@@ -31,44 +26,38 @@ h1 {
     grid-template-rows: repeat(9, 1fr);
     width: 100%;
     height: 100%;
-    max-width: 450px; /* Ensures responsiveness */
+    max-width: 450px;
     margin: 20px 0;
-    grid-gap: 0; /* No gap between cells */
-    border: 3px solid black; /* Border for the entire grid */
+    border: 3px solid black;
 }
 
 .cell {
     width: 100%;
     height: 100%;
-    border: 1px solid #ccc;
     text-align: center;
     font-size: 1.5rem;
+    border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
 .cell:disabled {
     background-color: #e6e6e6; /* Light gray background for pre-filled numbers */
-    color: black; /* Dark font for pre-filled numbers */
+    color: black;
     font-weight: bold;
     border-color: black;
 }
 
-.cell:focus {
-    outline: none;
-    border-color: #0078d4;
-    background-color: #e6f4ff;
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    margin-top: 15px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-footer {
-    font-size: 14px;
-}
-
-/* Responsive Styles */
-@media (max-width: 600px) {
-    .cell {
-        font-size: 1rem;
-    }
-    .sudoku-grid {
-        grid-gap: 1px;
-    }
+button:hover {
+    background-color: #005a9e;
 }
