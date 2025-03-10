@@ -22,76 +22,26 @@ h1 {
   gap: 1px;
   max-width: 360px;
   margin: 20px auto;
-  border: 2px solid lightblue; /* Outer grid border */
+  border: 2px solid darkblue; /* Outer grid border */
 }
 
-.sudoku-grid input {
+.sudoku-grid div {
   width: 100%;
   height: 40px;
   text-align: center;
   font-size: 18px;
   border: 1px solid lightblue; /* Regular grid lines */
-  background-color: black; /* Default cell background color */
-  color: lightyellow; /* Text color */
-  font-family: Avenir, sans-serif; /* Avenir font for grid inputs */
-
-  /* Hide number input arrows */
-  -moz-appearance: textfield;
-  -webkit-appearance: none;
-  appearance: none;
+  background-color: white; /* Default cell background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.sudoku-grid input:focus {
-  border: 2px solid blue;
+/* Add light green vertical lines for the 3rd and 6th columns */
+.sudoku-grid div:nth-child(3n) {
+  border-right: 3px solid lightgreen; /* Light green vertical line at the 3rd column */
 }
 
-/* Add light green lines for 3rd and 6th divisions */
-.sudoku-grid input:nth-child(3n) {
-  border-right: 2px solid lightgreen; /* Light green vertical line at 3rd column */
-}
-
-.sudoku-grid input:nth-child(6n) {
-  border-right: 2px solid lightgreen; /* Light green vertical line at 6th column */
-}
-
-.sudoku-grid input:nth-child(n + 19):nth-child(-n + 27),
-.sudoku-grid input:nth-child(n + 46):nth-child(-n + 54) {
-  border-bottom: 2px solid lightgreen; /* Light green horizontal lines at 3rd and 6th row */
-}
-
-/* Button Styling */
-button {
-  background-color: #ffccdd; /* Lighter pink background */
-  color: darkblue; /* Button text color */
-  border: 2px solid darkblue; /* Adds a dark blue border */
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
-  text-transform: uppercase; /* Ensures "CHECK SOLUTION" is in all caps */
-  font-family: Avenir, sans-serif; /* Apply Avenir font to button */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Creates a 3D shadow effect */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
-}
-
-button:hover {
-  background-color: #ffaabb; /* Slightly brighter pink on hover */
-  transform: translateY(-2px); /* Lifts the button on hover */
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Enhances shadow on hover */
-}
-
-/* Footer Styling */
-footer {
-  background-color: #ffefd5; /* Very light orange background */
-  color: black; /* Footer text color */
-  padding: 15px; /* Adds padding inside the footer */
-  position: fixed; /* Keeps the footer at the bottom */
-  bottom: 0;
-  width: 100%; /* Ensures the footer spans the entire width */
-  font-family: Avenir, sans-serif; /* Apply Avenir font to footer */
-}
-
-footer p {
-  margin: 0; /* Removes default paragraph margin */
-  font-size: 14px; /* Adjusts text size */
+.sudoku-grid div:nth-child(6n) {
+  border-right: 3px solid lightgreen; /* Light green vertical line at the 6th column */
 }
