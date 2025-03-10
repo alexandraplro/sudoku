@@ -36,15 +36,17 @@ h1 {
 
 /* Button Styling */
 button {
-  background-color: lightpink; /* Button background color */
+  background-color: #ffccdd; /* Lighter pink background */
   color: darkblue; /* Button text color */
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 20px;
+  text-transform: uppercase; /* Ensures "CHECK SOLUTION" is in all caps */
 }
 
 button:hover {
-  background-color: hotpink; /* Slightly brighter pink on hover */
+  background-color: #ffaabb; /* Slightly brighter pink on hover */
 }
+
