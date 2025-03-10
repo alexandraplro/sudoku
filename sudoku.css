@@ -31,6 +31,21 @@ h1 {
   text-align: center;
 }
 
+/* Left Panel: How to Play */
+.left-panel h2 {
+  color: darkblue;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+/* Right Panel: Image */
+.right-panel img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+}
+
 /* Sudoku Grid */
 .sudoku-grid {
   display: grid;
