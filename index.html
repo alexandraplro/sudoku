@@ -24,11 +24,25 @@
       </p>
     </div>
 
-    <!-- Sudoku Grid -->
-    <div class="sudoku-grid" id="sudoku-grid">
-      <!-- Grid is dynamically populated with JavaScript -->
+    <!-- Sudoku Grid and Buttons -->
+    <div class="sudoku-section">
+      <div class="sudoku-grid" id="sudoku-grid">
+        <!-- Grid is dynamically populated with JavaScript -->
+      </div>
+      <!-- Controls -->
+      <div class="dropdown">
+        <button class="dropdown-button">Levels</button>
+        <div class="dropdown-content">
+          <a href="#">Easy</a>
+          <a href="#">Medium</a>
+          <a href="#">Hard</a>
+        </div>
+      </div>
+      <button id="new-game">NEW GAME</button>
+      <button id="check-solution">CHECK SOLUTION</button>
+      <button id="reset">RESET</button>
     </div>
-
+    
     <!-- Right panel -->
     <div class="right-panel">
       <h2>TIMER</h2>
@@ -37,21 +51,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Controls -->
-  <div class="dropdown">
-    <button class="dropdown-button">Levels</button>
-      <div class="dropdown-content">
-        <a href="#">Easy</a>
-        <a href="#">Medium</a>
-        <a href="#">Hard</a>
-      </div>
-  </div>
-    <button id="new-game">NEW GAME</button>
-    <button id="check-solution">CHECK SOLUTION</button>
-    <button id="reset">RESET</button>
-  </div>
-</div>
 
   <!-- Footer -->
   <footer>
@@ -63,3 +62,4 @@
   <script src="sudoku.js" defer></script>
 </body>
 </html>
+
