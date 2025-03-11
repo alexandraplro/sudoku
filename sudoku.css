@@ -17,7 +17,7 @@ h1 {
 h2, p, button, input {
   font-family: Monaco, monospace; /* Ensure other elements inherit Monaco font */
   color: steelblue;
-  font-size: 12;
+  font-size: 12px;
 }
 
 /* Game Layout */
@@ -26,27 +26,25 @@ h2, p, button, input {
   justify-content: center; /* Center items horizontally */
   align-items: flex-start; /* Align items at the top */
   gap: 20px;
-  background-color: white; /* Apply light blue background */
+  background-color: white;
   padding: 20px;
   border-radius: 10px; /* Optional: For a rounded look */
 }
 
 /* Left and Right Panels */
-.left-panel {
-  width: 300px;
-  padding: 10px;
-  background-color: white; /* Match the background with the rest of the body */
-  border-radius: 5px; /* Rounded corners */
-  text-align: center;
-  color: steelblue; /* Font color */
-}
-
-.right-panel {
+.left-panel, .right-panel {
   width: 300px;
   padding: 10px;
   background-color: white;
   border-radius: 5px;
   text-align: center;
+}
+
+.left-panel {
+  color: steelblue; /* Font color */
+}
+
+.right-panel {
   color: darkred;
 }
 
@@ -59,7 +57,7 @@ h2, p, button, input {
   height: 220px;
   background-color: linen;
   border: 5px solid rosybrown;
-  border-radius: 10%; /* Slightly rounded corners */
+  border-radius: 10%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
 }
@@ -92,6 +90,17 @@ h2, p, button, input {
   border-radius: 5px;
 }
 
+/* Sudoku Section */
+.sudoku-section {
+  display: flex;
+  flex-direction: column; /* Stack the grid and buttons vertically */
+  align-items: center; /* Center align the content */
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners for a polished look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow effect for depth */
+}
+
 /* Sudoku Grid */
 .sudoku-grid {
   display: grid;
@@ -99,8 +108,10 @@ h2, p, button, input {
   gap: 1px;
   max-width: 360px;
   margin: 20px auto;
-  background-color: white;
+  background-color: snow;
   padding: 5px;
+  border: 2px solid black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Cell Styling */
@@ -132,7 +143,6 @@ h2, p, button, input {
 
 .cell input:focus {
   outline: 2px solid blue;
-}
 
 /* Sudoku Grid with Colorful Subgrids */
 .sudoku-grid {
