@@ -22,7 +22,7 @@ h2, p, button, input {
   justify-content: center; /* Center items horizontally */
   align-items: flex-start; /* Align items at the top */
   gap: 20px;
-  background-color: lightblue; /* Apply light blue background */
+  background-color: lavenderblush; /* Apply light blue background */
   padding: 20px;
   border-radius: 10px; /* Optional: For a rounded look */
 }
@@ -31,7 +31,7 @@ h2, p, button, input {
 .left-panel {
   width: 300px;
   padding: 10px;
-  background-color: lightblue; /* Match the background with the rest of the body */
+  background-color: lavenderblush; /* Match the background with the rest of the body */
   border-radius: 5px; /* Keeps rounded corners */
   text-align: center;
   font-family: Copperplate, serif; /* Font changed to Copperplate */
@@ -41,7 +41,7 @@ h2, p, button, input {
 .right-panel {
   width: 300px;
   padding: 10px;
-  background-color: lightblue;
+  background-color: lavenderblush;
   border-radius: 5px;
   text-align: center;
 }
@@ -87,7 +87,7 @@ h2, p, button, input {
 .cell.fixed {
   font-weight: bold;
   color: darkblue;
-  background-color: #e6e6e6; /* Light gray for fixed cells */
+  background-color: ghostwhite; /* Ghost white for fixed cells */
 }
 
 /* Editable Cell Styling */
@@ -114,9 +114,9 @@ h2, p, button, input {
 .controls button {
   padding: 10px 20px;
   margin: 5px;
-  background-color: rosybrown; /* Button background color changed */
-  color: midnightblue; /* Button font color changed */
-  border: 1px solid darkblue;
+  background-color: lightcoral; /* Button background color changed */
+  color: 	papayawhip; /* Button font color changed */
+  border: 1px solid lightcoral;
   border-radius: 5px;
   cursor: pointer;
   font-family: Monaco, monospace; /* Font changed to Monaco */
@@ -134,9 +134,9 @@ h2, p, button, input {
 
 .dropdown-button {
   padding: 10px 20px;
-  background-color: rosybrown; /* Matches other button styling */
-  color: midnightblue;
-  border: 1px solid darkblue;
+  background-color: lightcoral; /* Matches other button styling */
+  color: papayawhip;
+  border: 1px solid lightcoral;
   border-radius: 5px;
   cursor: pointer;
   font-family: Monaco, monospace; /* Matches button font */
@@ -160,7 +160,7 @@ h2, p, button, input {
   background: none;
   border: none;
   text-align: left;
-  color: midnightblue;
+  color: papayawhip;
   font-family: Monaco, monospace; /* Matches button styling */
   cursor: pointer;
 }
