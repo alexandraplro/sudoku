@@ -82,7 +82,7 @@ h2, p, button, input {
 
 .left-panel p {
   font-family: Monaco, monospace;
-  font-size: 16px;
+  font-size: 14px;
   color: #484848;
   line-height: 1.6;
   text-align: justify;
@@ -99,7 +99,7 @@ h2, p, button, input {
   gap: 1px;
   max-width: 360px;
   margin: 20px auto;
-  background-color: lavenderblush;
+  background-color: white;
   padding: 5px;
 }
 
@@ -133,6 +133,40 @@ h2, p, button, input {
 .cell input:focus {
   outline: 2px solid blue;
 }
+
+/* Subgrid Styling */
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1px;
+  max-width: 360px;
+  margin: 20px auto;
+  background-color: mintcream;
+  padding: 5px;
+  border: 2px solid black; /* Add a border around the entire grid */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+}
+
+.cell {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  border: 1px solid lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:nth-child(3n+3):not(:last-child),
+.cell:nth-last-child(-n+9):nth-child(1),
+.cell:nth-child(-n+9):nth-child(1) {
+  border-right: 2px solid black; /* Subgrid border (vertical) */
+}
+
+.cell:nth-child(n+19):nth-child(-n+21) {
+  border-top: 2px solid darkslategray; /* Subgrid border (horizontal) */
+}
+
 
 /* Dropdown Menu */
 .dropdown {
@@ -206,10 +240,12 @@ button:hover, .dropdown-button:hover {
 footer {
   text-align: center;
   margin-top: 20px;
+  margin-bottom: 2px;
   background-color: floralwhite;
   color: black;
   font-family: Optima, sans-serif;
   padding: 20px;
   position: relative;
   z-index: 0;
+  border-radius: 5px; 
 }
