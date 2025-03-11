@@ -78,6 +78,20 @@ h2, p, button, input {
   margin-bottom: 10px;
 }
 
+/* Left Panel: Instructions */
+.left-panel p {
+  font-family: 'Copperplate', fantasy; /* Update the font */
+  font-size: 16px; /* Adjust font size */
+  color: 	#484848; /* Set the text color to a dark gray */
+  line-height: 1.6; /* Improve readability with line spacing */
+  text-align: justify; /* Align text for a cleaner look */
+  margin-top: 10px; /* Add spacing above the paragraph */
+  padding: 10px; /* Optional padding for spacing within the panel */
+  background-color: #f4f4f4; /* Optional light background for emphasis */
+  border-radius: 5px; /* Optional rounded corners */
+}
+
+
 /* Sudoku Grid */
 .sudoku-grid {
   display: grid;
@@ -104,7 +118,7 @@ h2, p, button, input {
 .cell.fixed {
   font-weight: bold;
   color: darkblue;
-  background-color: ghostwhite; /* Ghost white for fixed cells */
+  background-color: transparent; /* Ensure input cells inherit the background */
 }
 
 .cell input {
