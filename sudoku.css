@@ -186,17 +186,12 @@ h2, p, button, input {
   font-family: Monaco, monospace;
 }
 
-.controls button:hover {
-  background-color: #d8a7a0; /* Slightly lighter shade for hover effect */
+.controls {
+  text-align: center;
+  margin-top: 20px; /* Space above the controls */
 }
 
-/* Footer */
 footer {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #e8d4d1;
-  border-radius: 5px;
-  color: midnightblue; /* Footer text color */
-  font-family: Avenir, sans-serif;
   text-align: center;
+  margin-top: 20px; /* Space above the footer */
 }
