@@ -221,8 +221,9 @@ button, .dropdown-button {
   border-radius: 5px; /* Rounded button corners */
   cursor: pointer; /* Pointer cursor on hover */
   font-family: Monaco, monospace;
-  font-size: 14px; /* Consistent font size */
+  font-size: 16px; /* Consistent font size */
   text-align: center;
+  margin: 10px;
 }
 
 button:hover, .dropdown-button:hover {
