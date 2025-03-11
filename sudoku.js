@@ -1,16 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
   const grid = document.getElementById("sudoku-grid");
-  const dropdownMenu = document.querySelector(".dropdown-menu");
-  const difficultyButtons = dropdownMenu.querySelectorAll(".difficulty-option");
-  let selectedDifficulty = "medium"; // Default difficulty
+  const timerElement = document.getElementById("timer");
+  let timerInterval;
 
-  // Handle difficulty selection
-  difficultyButtons.forEach(button => {
-    button.addEventListener("click", function () {
-      selectedDifficulty = this.dataset.difficulty; // Get difficulty from data attribute
-      alert(`Difficulty set to: ${selectedDifficulty}`); // Optional confirmation alert
-    });
-  });
+  // Timer setup
+  function startTimer() {
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+
+    timerInterval = setInterval(() => {
+      seconds++;
+      if (seconds === 60) {
+        seconds = 0;
+        minutes++;
+      }
+      if (minutes === 60) {
+        minutes = 0;
+        hours++;
+      }
+
+      // Format the timer display as HH:MM:SS
+      const formattedTime = 
+        String(hours).padStart(2, "0") + ":" +
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+      timerElement.textContent = formattedTime;
+    }, 1000); // Update every second
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+    timerElement.textContent = "00:00:00"; // Reset timer display
+  }
 
   // Generate a Sudoku puzzle with difficulty
   function generateSudoku(difficulty) {
@@ -48,10 +70,10 @@ document.addEventListener("DOMContentLoaded", function () {
     return puzzle;
   }
 
+  let selectedDifficulty = "medium";
   let initialPuzzle = generateSudoku(selectedDifficulty);
   let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
 
-  // Function to render the Sudoku grid
   function renderPuzzle(puzzle) {
     grid.innerHTML = "";
     for (let row = 0; row < 9; row++) {
@@ -60,14 +82,13 @@ document.addEventListener("DOMContentLoaded", function () {
         cell.classList.add("cell");
 
         if (puzzle[row][col] !== 0) {
-          cell.textContent = puzzle[row][col]; // Display fixed numbers
+          cell.textContent = puzzle[row][col];
           cell.classList.add("fixed");
         } else {
           const input = document.createElement("input");
           input.type = "text";
-          input.maxLength = 1; // Limit input to single digit
+          input.maxLength = 1;
           input.addEventListener("input", function () {
-            // Allow only numbers 1-9
             if (/^[1-9]$/.test(this.value)) {
               currentPuzzle[row][col] = parseInt(this.value);
             } else {
@@ -81,23 +102,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Handle "New Game" button
   document.getElementById("new-game").addEventListener("click", () => {
-    initialPuzzle = generateSudoku(selectedDifficulty); // Use the selected difficulty
+    resetTimer(); // Reset timer on new game
+    startTimer(); // Start timer
+    initialPuzzle = generateSudoku(selectedDifficulty);
     currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
     renderPuzzle(currentPuzzle);
   });
 
-  // Handle "Check Solution" button
+  document.getElementById("reset").addEventListener("click", () => {
+    resetTimer(); // Reset timer
+    startTimer(); // Restart timer
+    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+    renderPuzzle(currentPuzzle);
+  });
+
   document.getElementById("check-solution").addEventListener("click", () => {
+    clearInterval(timerInterval); // Stop timer when checking solution
     if (isValidSudoku(currentPuzzle)) {
       alert("Congratulations! The solution is correct!");
     } else {
       alert("The solution is incorrect. Keep trying!");
+      startTimer(); // Resume timer if incorrect
     }
   });
 
-  // Validate if the current Sudoku is solved correctly
   function isValidSudoku(board) {
     function isUnique(array) {
       let nums = array.filter(num => num !== 0);
@@ -128,13 +157,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
 
-  // Handle "Reset" button
-  document.getElementById("reset").addEventListener("click", () => {
-    alert("Resetting the puzzle!");
-    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-    renderPuzzle(currentPuzzle);
-  });
+  // Start the initial timer
+  startTimer();
 
-  // Initial render
+  // Initial render of the puzzle
   renderPuzzle(currentPuzzle);
 });
