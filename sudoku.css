@@ -114,6 +114,74 @@ h2, p, button, input {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: lightcoral;
+  color: papayawhip;
+  padding: 10px 20px;
+  border: 1px solid lightcoral;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Monaco, monospace;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: mistyrose;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: lightgray;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* General Button Styling */
+button, .dropdown-button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: lightcoral;
+  color: papayawhip;
+  border: 1px solid lightcoral;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Monaco, monospace;
+  font-size: 16px;
+  text-align: center;
+}
+
+button:hover, .dropdown-button:hover {
+  background-color: coral;
+  color: white;
+}
+
+/* Controls Styling */
+.controls {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
 /* Cell Styling */
 .cell {
   width: 100%;
@@ -230,74 +298,6 @@ h2, p, button, input {
 .cell:nth-child(n + 70):nth-child(-n + 72),
 .cell:nth-child(n + 79):nth-child(-n + 81) {
   background-color: mintcream; /* Mintcream */
-}
-
-/* Dropdown Menu */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-button {
-  background-color: lightcoral;
-  color: papayawhip;
-  padding: 10px 20px;
-  border: 1px solid lightcoral;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: Monaco, monospace;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: mistyrose;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 10px 15px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: lightgray;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* General Button Styling */
-button, .dropdown-button {
-  padding: 10px 20px;
-  margin: 5px;
-  background-color: lightcoral;
-  color: papayawhip;
-  border: 1px solid lightcoral;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: Monaco, monospace;
-  font-size: 16px;
-  text-align: center;
-}
-
-button:hover, .dropdown-button:hover {
-  background-color: coral;
-  color: white;
-}
-
-/* Controls Styling */
-.controls {
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
 }
 
 /* Footer */
