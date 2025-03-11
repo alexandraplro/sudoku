@@ -123,55 +123,55 @@ h2, p, button, input {
 .cell:nth-child(9n+1):nth-child(-n+9),
 .cell:nth-child(9n+10):nth-child(-n+18),
 .cell:nth-child(9n+19):nth-child(-n+27) {
-  background-color: #f9f9f9; /* Light Gray */
+  background-color: mintcream; /* Mintcream */
 }
 
 .cell:nth-child(9n+4):nth-child(-n+6),
 .cell:nth-child(9n+13):nth-child(-n+15),
 .cell:nth-child(9n+22):nth-child(-n+24) {
-  background-color: #ffd6e8; /* Light Pink */
+  background-color: seashell; /* Seashell */
 }
 
 .cell:nth-child(9n+7):nth-child(-n+9),
 .cell:nth-child(9n+16):nth-child(-n+18),
 .cell:nth-child(9n+25):nth-child(-n+27) {
-  background-color: #d6f7e5; /* Light Mint Green */
+  background-color: mintcream; /* Mint Green */
 }
 
 .cell:nth-child(9n+28):nth-child(-n+30),
 .cell:nth-child(9n+37):nth-child(-n+39),
 .cell:nth-child(9n+46):nth-child(-n+48) {
-  background-color: #ffd6e8; /* Light Pink */
+  background-color: seashell; /* Seashell */
 }
 
 .cell:nth-child(9n+31):nth-child(-n+33),
 .cell:nth-child(9n+40):nth-child(-n+42),
 .cell:nth-child(9n+49):nth-child(-n+51) {
-  background-color: #f9f9f9; /* Light Gray */
+  background-color: mintcream; /* Mintcream */
 }
 
 .cell:nth-child(9n+34):nth-child(-n+36),
 .cell:nth-child(9n+43):nth-child(-n+45),
 .cell:nth-child(9n+52):nth-child(-n+54) {
-  background-color: #d6f7e5; /* Light Mint Green */
+  background-color: seasehll; /* Seashell */
 }
 
 .cell:nth-child(9n+55):nth-child(-n+57),
 .cell:nth-child(9n+64):nth-child(-n+66),
 .cell:nth-child(9n+73):nth-child(-n+75) {
-  background-color: #d6f7e5; /* Light Mint Green */
+  background-color: mintcream; /* Mintcream */
 }
 
 .cell:nth-child(9n+58):nth-child(-n+60),
 .cell:nth-child(9n+67):nth-child(-n+69),
 .cell:nth-child(9n+76):nth-child(-n+78) {
-  background-color: #ffd6e8; /* Light Pink */
+  background-color: seashell; /* Seashell */
 }
 
 .cell:nth-child(9n+61):nth-child(-n+63),
 .cell:nth-child(9n+70):nth-child(-n+72),
 .cell:nth-child(9n+79):nth-child(-n+81) {
-  background-color: #f9f9f9; /* Light Gray */
+  background-color: mintcream; /* Mintcream */
 }
 
 /* Button Styling */
