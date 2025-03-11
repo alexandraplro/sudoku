@@ -34,15 +34,17 @@ h1, h2, p, button, input {
 /* Left Panel: How to Play */
 .left-panel h2 {
   color: darkblue;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
   font-size: 1.2em;
   margin-bottom: 10px;
 }
 
 /* Right Panel: Image */
 .right-panel img {
-  max-width: 200%;
+  max-width: 2800%;
   height: auto;
   border-radius: 0px;
+  align: center;
 }
 
 /* Sudoku Grid */
