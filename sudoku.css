@@ -15,7 +15,7 @@ h1 {
 
 h2, p, button, input {
   font-family: Papyrus, fantasy; /* Ensure other elements inherit Avenir font */
-  color: 	steelblue;
+  color: steelblue;
   font-size: 12;
 }
 
@@ -83,7 +83,7 @@ h2, p, button, input {
 .left-panel p {
   font-family: 'Chalkduster', fantasy; /* Update the font */
   font-size: 16px; /* Adjust font size */
-  color: 	#484848; /* Set the text color to a dark gray */
+  color: #484848; /* Set the text color to a dark gray */
   line-height: 1.6; /* Improve readability with line spacing */
   text-align: justify; /* Align text for a cleaner look */
   margin-top: 10px; /* Add spacing above the paragraph */
@@ -91,7 +91,6 @@ h2, p, button, input {
   background-color: white; /* Optional light background for emphasis */
   border-radius: 5px; /* Optional rounded corners */
 }
-
 
 /* Sudoku Grid */
 .sudoku-grid {
@@ -136,113 +135,45 @@ h2, p, button, input {
   outline: 2px solid blue;
 }
 
-/* Sudoku Grid Colors for 3x3 Subgrids */
-.cell:nth-child(1),
-.cell:nth-child(2),
-.cell:nth-child(3),
-.cell:nth-child(10),
-.cell:nth-child(11),
-.cell:nth-child(12),
-.cell:nth-child(19),
-.cell:nth-child(20),
-.cell:nth-child(21) {
-  background-color: mintcream; /* Top-left subgrid */
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block; /* Allows horizontal placement of buttons */
 }
 
-.cell:nth-child(4),
-.cell:nth-child(5),
-.cell:nth-child(6),
-.cell:nth-child(13),
-.cell:nth-child(14),
-.cell:nth-child(15),
-.cell:nth-child(22),
-.cell:nth-child(23),
-.cell:nth-child(24) {
-  background-color: seashell; /* Top-center subgrid */
+.dropdown-button {
+  background-color: lightcoral;
+  color: papayawhip;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Monaco, monospace;
 }
 
-.cell:nth-child(7),
-.cell:nth-child(8),
-.cell:nth-child(9),
-.cell:nth-child(16),
-.cell:nth-child(17),
-.cell:nth-child(18),
-.cell:nth-child(25),
-.cell:nth-child(26),
-.cell:nth-child(27) {
-  background-color: mintcream; /* Top-right subgrid */
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for dropdown */
+  z-index: 1;
 }
 
-.cell:nth-child(28),
-.cell:nth-child(29),
-.cell:nth-child(30),
-.cell:nth-child(37),
-.cell:nth-child(38),
-.cell:nth-child(39),
-.cell:nth-child(46),
-.cell:nth-child(47),
-.cell:nth-child(48) {
-  background-color: seashell; /* Middle-left subgrid */
+.dropdown-content a {
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block; /* Makes each link block-level */
+  font-family: Monaco, monospace;
 }
 
-.cell:nth-child(31),
-.cell:nth-child(32),
-.cell:nth-child(33),
-.cell:nth-child(40),
-.cell:nth-child(41),
-.cell:nth-child(42),
-.cell:nth-child(49),
-.cell:nth-child(50),
-.cell:nth-child(51) {
-  background-color: mintcream; /* Middle-center subgrid */
+.dropdown-content a:hover {
+  background-color: lightgray; /* Highlight menu items on hover */
 }
 
-.cell:nth-child(34),
-.cell:nth-child(35),
-.cell:nth-child(36),
-.cell:nth-child(43),
-.cell:nth-child(44),
-.cell:nth-child(45),
-.cell:nth-child(52),
-.cell:nth-child(53),
-.cell:nth-child(54) {
-  background-color: seashell; /* Middle-right subgrid */
-}
-
-.cell:nth-child(55),
-.cell:nth-child(56),
-.cell:nth-child(57),
-.cell:nth-child(64),
-.cell:nth-child(65),
-.cell:nth-child(66),
-.cell:nth-child(73),
-.cell:nth-child(74),
-.cell:nth-child(75) {
-  background-color: mintcream; /* Bottom-left subgrid */
-}
-
-.cell:nth-child(58),
-.cell:nth-child(59),
-.cell:nth-child(60),
-.cell:nth-child(67),
-.cell:nth-child(68),
-.cell:nth-child(69),
-.cell:nth-child(76),
-.cell:nth-child(77),
-.cell:nth-child(78) {
-  background-color: seashell; /* Bottom-center subgrid */
-}
-
-.cell:nth-child(61),
-.cell:nth-child(62),
-.cell:nth-child(63),
-.cell:nth-child(70),
-.cell:nth-child(71),
-.cell:nth-child(72),
-.cell:nth-child(79),
-.cell:nth-child(80),
-.cell:nth-child(81) {
-  background-color: mintcream; /* Bottom-right subgrid */
+.dropdown:hover .dropdown-content {
+  display: block; /* Show menu when hovering over the dropdown */
 }
 
 /* Button Styling */
@@ -265,6 +196,7 @@ h2, p, button, input {
   z-index: 1; /* Keep it above other elements if overlapping occurs */
 }
 
+/* Footer */
 footer {
   text-align: center;
   margin-top: 40px; /* Add more space between the controls and footer */
