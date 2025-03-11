@@ -47,6 +47,7 @@ h2, p, button, input {
   background-color: white; /* Match background color */
   border-radius: 5px;
   text-align: center; /* Center text and elements */
+  color: darkred; 
 }
 
 /* Timer Container Styles */
@@ -82,7 +83,7 @@ h2, p, button, input {
 
 /* Left Panel: Instructions */
 .left-panel p {
-  font-family: Papyrus, fantasy;/* Update the font */
+  font-family: Monaco, monospace;/* Update the font */
   font-size: 16px; /* Adjust font size */
   color: #484848; /* Set the text color to a dark gray */
   line-height: 1.6; /* Improve readability with line spacing */
