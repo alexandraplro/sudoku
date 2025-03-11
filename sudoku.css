@@ -77,11 +77,12 @@ h2, p, button, input {
   color: darkred; /* Color for the "How to Play?" title */
   font-size: 1.2em;
   margin-bottom: 10px;
+  
 }
 
 /* Left Panel: Instructions */
 .left-panel p {
-  font-family: 'Chalkduster', fantasy; /* Update the font */
+  font-family: Papyrus, fantasy;/* Update the font */
   font-size: 16px; /* Adjust font size */
   color: #484848; /* Set the text color to a dark gray */
   line-height: 1.6; /* Improve readability with line spacing */
@@ -191,7 +192,7 @@ h2, p, button, input {
 .controls {
   text-align: center; /* Align buttons in the center */
   margin-top: 20px; /* Space above the controls */
-  margin-bottom: 20px; /* Space below, keeping it away from the footer */
+  margin-bottom: 10px; /* Space below, keeping it away from the footer */
   position: relative; /* Ensure it stays in place */
   z-index: 1; /* Keep it above other elements if overlapping occurs */
 }
@@ -199,7 +200,7 @@ h2, p, button, input {
 /* Footer */
 footer {
   text-align: center;
-  margin-top: 40px; /* Add more space between the controls and footer */
+  margin-top: 20px; /* Add more space between the controls and footer */
   background-color: floralwhite;
   color: black;
   font-family: Optima, sans-serif;
