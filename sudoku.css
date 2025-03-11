@@ -5,6 +5,7 @@ body {
   background-color: #e8d4d1; /* Light off-white background */
   margin: 0; /* Removes default margins */
   padding: 20px;
+  color: black;
 }
 
 h1 {
