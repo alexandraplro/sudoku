@@ -275,5 +275,5 @@ footer {
 footer p {
   font-family: Optima, sans-serif; /* Override font for paragraph tags in footer */
   color: black; /* Ensure footer text is black */
-  font-size: 12px; /* Example of smaller font size for footer */
+  font-size: 14px; /* Example of smaller font size for footer */
 }
