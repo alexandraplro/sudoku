@@ -83,7 +83,7 @@ h1 {
 
 .left-panel p {
   font-family: Monaco, monospace;
-  font-size: 14px;
+  font-size: 16px;
   color: #484848;
   line-height: 1.6;
   text-align: left;
@@ -275,5 +275,5 @@ footer {
 footer p {
   font-family: Optima, sans-serif; /* Override font for paragraph tags in footer */
   color: black; /* Ensure footer text is black */
-  font-size: 14px; /* Example of smaller font size for footer */
+  font-size: 16px; /* Example of smaller font size for footer */
 }
