@@ -1,6 +1,7 @@
 /* General Styling */
 body {
   font-family: Avenir, sans-serif; /* Set Avenir font globally */
+  font-size: 24;
   text-align: center;
   background-color: #e8d4d1; /* Light off-white background */
   margin: 0; /* Removes default margins */
@@ -41,7 +42,8 @@ h2, p, button, input {
 }
 
 .left-panel {
-  color: steelblue; /* Font color */
+  color: darkred; /* Font color */
+  font-size: 20;
 }
 
 .right-panel {
@@ -65,9 +67,9 @@ h2, p, button, input {
 /* Timer Text Styles */
 #timer {
   font-family: 'Lucida Console', monospace;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
-  color: darkslategray;
+  color: #5b9aa0;
   text-align: center;
 }
 
@@ -174,7 +176,7 @@ h2, p, button, input {
 footer {
   text-align: center;
   margin-top: 20px;
-  margin-bottom: 2px;
+  margin-bottom: 20px;
   background-color: floralwhite;
   color: black; /* Font color corrected */
   font-family: Optima, sans-serif;
