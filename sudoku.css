@@ -1,7 +1,7 @@
 /* General Styling */
 body {
   font-family: Avenir, sans-serif; /* Set Avenir font globally */
-  font-size: 24;
+  font-size: 24px;
   text-align: center;
   background-color: #e8d4d1; /* Light off-white background */
   margin: 0; /* Removes default margins */
@@ -17,8 +17,8 @@ h1 {
 
 h2, p, button, input {
   font-family: Monaco, monospace; /* Ensure other elements inherit Monaco font */
-  color: steelblue;
-  font-size: 12px;
+  color: black;
+  font-size: 14px;
 }
 
 /* Game Layout */
@@ -43,11 +43,12 @@ h2, p, button, input {
 
 .left-panel {
   color: darkred; /* Font color */
-  font-size: 20;
+  font-size: 20px;
 }
 
 .right-panel {
   color: darkred;
+  font-size: 20px;
 }
 
 /* Timer Container Styles */
