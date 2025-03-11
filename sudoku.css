@@ -14,7 +14,7 @@ h1 {
 }
 
 h2, p, button, input {
-  font-family: Monaco, monospace; /* Ensure other elements inherit Avenir font */
+  font-family: Monaco, monospace; /* Ensure other elements inherit Monaco font */
   color: steelblue;
   font-size: 12;
 }
@@ -37,17 +37,16 @@ h2, p, button, input {
   background-color: white; /* Match the background with the rest of the body */
   border-radius: 5px; /* Rounded corners */
   text-align: center;
-  font-family: Monaco, monospace; /* Font changed to Monaco */
   color: steelblue; /* Font color */
 }
 
 .right-panel {
   width: 300px;
   padding: 10px;
-  background-color: white; /* Match background color */
+  background-color: white;
   border-radius: 5px;
-  text-align: center; /* Center text and elements */
-  color: darkred; 
+  text-align: center;
+  color: darkred;
 }
 
 /* Timer Container Styles */
@@ -55,53 +54,51 @@ h2, p, button, input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 220px; /* Clock size */
+  width: 220px;
   height: 220px;
-  background-color: linen; /* Clock background color */
-  border: 5px solid rosybrown; /* Clock border color */
+  background-color: linen;
+  border: 5px solid rosybrown;
   border-radius: 10%; /* Slightly rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle 3D effect */
-  margin: 0 auto; /* Center horizontally within the panel */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
 }
 
 /* Timer Text Styles */
 #timer {
-  font-family: 'Lucida Console', monospace; /* Digital clock font */
-  font-size: 24px; /* Readable font size */
+  font-family: 'Lucida Console', monospace;
+  font-size: 24px;
   font-weight: bold;
-  color: darkslategray; /* Timer text color */
+  color: darkslategray;
   text-align: center;
 }
 
 /* Left Panel: How to Play */
 .left-panel h2 {
-  color: darkred; /* Color for the "How to Play?" title */
+  color: darkred;
   font-size: 1.2em;
   margin-bottom: 10px;
-  
 }
 
-/* Left Panel: Instructions */
 .left-panel p {
-  font-family: Monaco, monospace;/* Update the font */
-  font-size: 16px; /* Adjust font size */
-  color: #484848; /* Set the text color to a dark gray */
-  line-height: 1.6; /* Improve readability with line spacing */
-  text-align: justify; /* Align text for a cleaner look */
-  margin-top: 10px; /* Add spacing above the paragraph */
-  padding: 10px; /* Optional padding for spacing within the panel */
-  background-color: white; /* Optional light background for emphasis */
-  border-radius: 5px; /* Optional rounded corners */
+  font-family: Monaco, monospace;
+  font-size: 16px;
+  color: #484848;
+  line-height: 1.6;
+  text-align: justify;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
 }
 
 /* Sudoku Grid */
 .sudoku-grid {
   display: grid;
-  grid-template-columns: repeat(9, 1fr); /* 9 columns */
+  grid-template-columns: repeat(9, 1fr);
   gap: 1px;
   max-width: 360px;
   margin: 20px auto;
-  background-color: lavenderblush; /* Background color */
+  background-color: lavenderblush;
   padding: 5px;
 }
 
@@ -110,17 +107,16 @@ h2, p, button, input {
   width: 100%;
   height: 40px;
   text-align: center;
-  border: 1px solid lightblue; /* Regular grid lines */
+  border: 1px solid lightblue;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Avenir, sans-serif; /* Avenir font for grid cells */
 }
 
 .cell.fixed {
   font-weight: bold;
   color: darkblue;
-  background-color: transparent; /* Ensure input cells inherit the background */
+  background-color: transparent;
 }
 
 .cell input {
@@ -129,7 +125,7 @@ h2, p, button, input {
   text-align: center;
   border: none;
   font-size: 18px;
-  background-color: transparent; /* Ensure input cells inherit the background */
+  background-color: transparent;
   color: black;
 }
 
@@ -140,26 +136,25 @@ h2, p, button, input {
 /* Dropdown Menu */
 .dropdown {
   position: relative;
-  display: inline-block; /* Allows horizontal placement of buttons */
+  display: inline-block;
 }
 
 .dropdown-button {
   background-color: lightcoral;
   color: papayawhip;
   padding: 10px 20px;
-  border: none;
+  border: 1px solid lightcoral;
   border-radius: 5px;
   cursor: pointer;
   font-family: Monaco, monospace;
 }
 
 .dropdown-content {
-  display: none; /* Hidden by default */
+  display: none;
   position: absolute;
   background-color: mistyrose;
-  font-family: Monaco, monospace;
   min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for dropdown */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -167,46 +162,53 @@ h2, p, button, input {
   color: black;
   padding: 10px 15px;
   text-decoration: none;
-  display: block; /* Makes each link block-level */
-  font-family: Monaco, monospace;
+  display: block;
 }
 
 .dropdown-content a:hover {
-  background-color: lightgray; /* Highlight menu items on hover */
+  background-color: lightgray;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block; /* Show menu when hovering over the dropdown */
+  display: block;
 }
 
-/* Button Styling */
-.controls button {
+/* General Button Styling */
+button, .dropdown-button {
   padding: 10px 20px;
   margin: 5px;
-  background-color: lightcoral; /* Button background */
-  color: papayawhip; /* Button text color */
+  background-color: lightcoral;
+  color: papayawhip;
   border: 1px solid lightcoral;
   border-radius: 5px;
   cursor: pointer;
   font-family: Monaco, monospace;
+  font-size: 16px;
+  text-align: center;
 }
 
+button:hover, .dropdown-button:hover {
+  background-color: coral;
+  color: white;
+}
+
+/* Controls Styling */
 .controls {
-  text-align: center; /* Align buttons in the center */
-  margin-top: 20px; /* Space above the controls */
-  margin-bottom: 10px; /* Space below, keeping it away from the footer */
-  position: relative; /* Ensure it stays in place */
-  z-index: 1; /* Keep it above other elements if overlapping occurs */
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Footer */
 footer {
   text-align: center;
-  margin-top: 20px; /* Add more space between the controls and footer */
+  margin-top: 20px;
   background-color: floralwhite;
   color: black;
   font-family: Optima, sans-serif;
-  padding: 20px; /* Optional: Ensure consistent padding */
-  position: relative; /* Keep it at the bottom of its container */
-  z-index: 0; /* Ensure no overlap with other elements */
+  padding: 20px;
+  position: relative;
+  z-index: 0;
 }
