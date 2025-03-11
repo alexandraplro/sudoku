@@ -2,7 +2,7 @@
 body {
   font-family: Avenir, sans-serif; /* Set Avenir font globally */
   text-align: center;
-  background-color: #f9ccac; /* Light off-white background */
+  background-color: #e8d4d1; /* Light off-white background */
   margin: 0; /* Removes default margins */
   padding: 20px;
 }
@@ -14,7 +14,7 @@ h1 {
 }
 
 h2, p, button, input {
-  font-family: Papyrus, fantasy; /* Ensure other elements inherit Avenir font */
+  font-family: Monaco, monospace; /* Ensure other elements inherit Avenir font */
   color: steelblue;
   font-size: 12;
 }
@@ -37,7 +37,7 @@ h2, p, button, input {
   background-color: white; /* Match the background with the rest of the body */
   border-radius: 5px; /* Rounded corners */
   text-align: center;
-  font-family: Copperplate, serif; /* Font changed to Copperplate */
+  font-family: Monaco, monospace; /* Font changed to Monaco */
   color: steelblue; /* Font color */
 }
 
@@ -200,7 +200,7 @@ h2, p, button, input {
 footer {
   text-align: center;
   margin-top: 40px; /* Add more space between the controls and footer */
-  background-color: peachpuff;
+  background-color: floralwhite;
   color: black;
   font-family: Optima, sans-serif;
   padding: 20px; /* Optional: Ensure consistent padding */
