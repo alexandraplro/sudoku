@@ -1,19 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
   const grid = document.getElementById("sudoku-grid");
 
-  // Example Sudoku puzzle (0 means empty cells)
-  let initialPuzzle = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
-  ];
+  // Generate a Sudoku puzzle with difficulty
+  function generateSudoku(difficulty) {
+    // Base puzzle (a full solution can be generated programmatically too)
+    let solution = [
+      [5, 3, 4, 6, 7, 8, 9, 1, 2],
+      [6, 7, 2, 1, 9, 5, 3, 4, 8],
+      [1, 9, 8, 3, 4, 2, 5, 6, 7],
+      [8, 5, 9, 7, 6, 1, 4, 2, 3],
+      [4, 2, 6, 8, 5, 3, 7, 9, 1],
+      [7, 1, 3, 9, 2, 4, 8, 5, 6],
+      [9, 6, 1, 5, 3, 7, 2, 8, 4],
+      [2, 8, 7, 4, 1, 9, 6, 3, 5],
+      [3, 4, 5, 2, 8, 6, 1, 7, 9]
+    ];
 
+    // Remove cells to match the difficulty level
+    let cellsToRemove;
+    if (difficulty === "easy") {
+      cellsToRemove = 20; // Fewer cells removed
+    } else if (difficulty === "medium") {
+      cellsToRemove = 40;
+    } else if (difficulty === "hard") {
+      cellsToRemove = 60; // More cells removed
+    }
+
+    let puzzle = JSON.parse(JSON.stringify(solution));
+    while (cellsToRemove > 0) {
+      let row = Math.floor(Math.random() * 9);
+      let col = Math.floor(Math.random() * 9);
+      if (puzzle[row][col] !== 0) {
+        puzzle[row][col] = 0;
+        cellsToRemove--;
+      }
+    }
+
+    return puzzle;
+  }
+
+  let initialPuzzle = generateSudoku("medium"); // Default difficulty
   let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
 
   // Function to render the Sudoku grid
@@ -77,12 +103,19 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
 
-  // Handle New Game button
+  // Handle New Game with selected difficulty
   document.getElementById("new-game").addEventListener("click", () => {
-    alert("Generating a new puzzle!");
-    // Ideally, generate a new puzzle (static puzzle for now)
-    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-    renderPuzzle(currentPuzzle);
+    let difficulty = prompt("Choose difficulty: easy, medium, or hard");
+    if (["easy", "medium", "hard"].includes(difficulty)) {
+      initialPuzzle = generateSudoku(difficulty);
+      currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+      renderPuzzle(currentPuzzle);
+    } else {
+      alert("Invalid difficulty! Defaulting to medium.");
+      initialPuzzle = generateSudoku("medium");
+      currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+      renderPuzzle(currentPuzzle);
+    }
   });
 
   // Handle Check Solution button
