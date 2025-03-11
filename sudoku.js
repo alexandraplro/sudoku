@@ -1,9 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
   const grid = document.getElementById("sudoku-grid");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+  const difficultyButtons = dropdownMenu.querySelectorAll(".difficulty-option");
+  let selectedDifficulty = "medium"; // Default difficulty
+
+  // Handle difficulty selection
+  difficultyButtons.forEach(button => {
+    button.addEventListener("click", function () {
+      selectedDifficulty = this.dataset.difficulty; // Get difficulty from data attribute
+      alert(`Difficulty set to: ${selectedDifficulty}`); // Optional confirmation alert
+    });
+  });
 
   // Generate a Sudoku puzzle with difficulty
   function generateSudoku(difficulty) {
-    // Base puzzle (a full solution can be generated programmatically too)
     let solution = [
       [5, 3, 4, 6, 7, 8, 9, 1, 2],
       [6, 7, 2, 1, 9, 5, 3, 4, 8],
@@ -16,14 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
       [3, 4, 5, 2, 8, 6, 1, 7, 9]
     ];
 
-    // Remove cells to match the difficulty level
     let cellsToRemove;
     if (difficulty === "easy") {
-      cellsToRemove = 20; // Fewer cells removed
+      cellsToRemove = 20;
     } else if (difficulty === "medium") {
       cellsToRemove = 40;
     } else if (difficulty === "hard") {
-      cellsToRemove = 60; // More cells removed
+      cellsToRemove = 60;
     }
 
     let puzzle = JSON.parse(JSON.stringify(solution));
@@ -39,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return puzzle;
   }
 
-  let initialPuzzle = generateSudoku("medium"); // Default difficulty
+  let initialPuzzle = generateSudoku(selectedDifficulty);
   let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
 
   // Function to render the Sudoku grid
@@ -59,10 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
           input.maxLength = 1; // Limit input to single digit
           input.addEventListener("input", function () {
             // Allow only numbers 1-9
-            if (!/^[1-9]$/.test(this.value)) {
-              this.value = "";
-            } else {
+            if (/^[1-9]$/.test(this.value)) {
               currentPuzzle[row][col] = parseInt(this.value);
+            } else {
+              this.value = "";
             }
           });
           cell.appendChild(input);
@@ -71,6 +80,22 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+
+  // Handle "New Game" button
+  document.getElementById("new-game").addEventListener("click", () => {
+    initialPuzzle = generateSudoku(selectedDifficulty); // Use the selected difficulty
+    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+    renderPuzzle(currentPuzzle);
+  });
+
+  // Handle "Check Solution" button
+  document.getElementById("check-solution").addEventListener("click", () => {
+    if (isValidSudoku(currentPuzzle)) {
+      alert("Congratulations! The solution is correct!");
+    } else {
+      alert("The solution is incorrect. Keep trying!");
+    }
+  });
 
   // Validate if the current Sudoku is solved correctly
   function isValidSudoku(board) {
@@ -103,31 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
 
-  // Handle New Game with selected difficulty
-  document.getElementById("new-game").addEventListener("click", () => {
-    let difficulty = prompt("Choose difficulty: easy, medium, or hard");
-    if (["easy", "medium", "hard"].includes(difficulty)) {
-      initialPuzzle = generateSudoku(difficulty);
-      currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-      renderPuzzle(currentPuzzle);
-    } else {
-      alert("Invalid difficulty! Defaulting to medium.");
-      initialPuzzle = generateSudoku("medium");
-      currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-      renderPuzzle(currentPuzzle);
-    }
-  });
-
-  // Handle Check Solution button
-  document.getElementById("check-solution").addEventListener("click", () => {
-    if (isValidSudoku(currentPuzzle)) {
-      alert("Congratulations! The solution is correct!");
-    } else {
-      alert("The solution is incorrect. Keep trying!");
-    }
-  });
-
-  // Handle Reset button
+  // Handle "Reset" button
   document.getElementById("reset").addEventListener("click", () => {
     alert("Resetting the puzzle!");
     currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
