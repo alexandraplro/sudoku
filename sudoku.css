@@ -154,7 +154,25 @@ h2, p, button, input {
   background-color: mintcream; /* Top-left Subgrid */
 }
 
-/* Additional Subgrids... (retained from your original code) */
+
+/* General Button Styling */
+button, .dropdown-button {
+  padding: 10px 20px;
+  background-color: lightcoral; /* Match the color */
+  color: papayawhip; /* Button text color */
+  border: 1px solid lightcoral;
+  border-radius: 5px; /* Rounded button corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-family: Monaco, monospace;
+  font-size: 16px; /* Consistent font size */
+  text-align: center;
+}
+
+button:hover, .dropdown-button:hover {
+  background-color: coral; /* Slightly brighter on hover */
+  color: white;
+}
+
 
 .dropdown {
   position: relative;
