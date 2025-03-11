@@ -32,33 +32,48 @@ h2, p, button, input {
   width: 300px;
   padding: 10px;
   background-color: white; /* Match the background with the rest of the body */
-  border-radius: 5px; /* Keeps rounded corners */
+  border-radius: 5px; /* Rounded corners */
   text-align: center;
   font-family: Copperplate, serif; /* Font changed to Copperplate */
-  color: steelblue; /* Font color changed */
+  color: steelblue; /* Font color */
 }
 
 .right-panel {
   width: 300px;
   padding: 10px;
-  background-color: white;
+  background-color: white; /* Match background color */
   border-radius: 5px;
+  text-align: center; /* Center text and elements */
+}
+
+/* Timer Container Styles */
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px; /* Clock size */
+  height: 120px;
+  background-color: lightgray; /* Clock background color */
+  border: 5px solid darkgray; /* Clock border color */
+  border-radius: 10%; /* Slightly rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle 3D effect */
+  margin: 0 auto; /* Center horizontally within the panel */
+}
+
+/* Timer Text Styles */
+#timer {
+  font-family: 'Lucida Console', monospace; /* Digital clock font */
+  font-size: 24px; /* Readable font size */
+  font-weight: bold;
+  color: darkslategray; /* Timer text color */
   text-align: center;
 }
 
 /* Left Panel: How to Play */
 .left-panel h2 {
-  color: darkred; /* Ensures header matches the left panel text color */
+  color: darkred; /* Color for the "How to Play?" title */
   font-size: 1.2em;
   margin-bottom: 10px;
-}
-
-/* Right Panel: Image */
-.right-panel img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0px;
-  align: center;
 }
 
 /* Sudoku Grid */
@@ -68,10 +83,11 @@ h2, p, button, input {
   gap: 1px;
   max-width: 360px;
   margin: 20px auto;
-  background-color:lavenderblush; /* Background for grid container */
+  background-color: lavenderblush; /* Background color */
   padding: 5px;
 }
 
+/* Cell Styling */
 .cell {
   width: 100%;
   height: 40px;
@@ -83,14 +99,12 @@ h2, p, button, input {
   font-family: Avenir, sans-serif; /* Avenir font for grid cells */
 }
 
-/* Fixed Cell Styling */
 .cell.fixed {
   font-weight: bold;
   color: darkblue;
   background-color: ghostwhite; /* Ghost white for fixed cells */
 }
 
-/* Editable Cell Styling */
 .cell input {
   width: 100%;
   height: 100%;
@@ -99,11 +113,6 @@ h2, p, button, input {
   font-size: 18px;
   background-color: transparent; /* Ensure input cells inherit the background */
   color: black;
-
-  /* Remove number input arrows */
-  -moz-appearance: textfield;
-  -webkit-appearance: none;
-  appearance: none;
 }
 
 .cell input:focus {
@@ -111,75 +120,54 @@ h2, p, button, input {
 }
 
 /* Sudoku Grid Colors for 3x3 Subgrids */
-.sudoku-grid {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr); /* 9 columns */
-  gap: 1px;
-  max-width: 360px;
-  margin: 20px auto;
-  background-color: snow; /* Background for grid container */
-  padding: 5px;
-}
-
-/* Assign colors to each 3x3 subgrid */
-
-/* Top-left block */
 .cell:nth-child(9n+1):nth-child(-n+9),
 .cell:nth-child(9n+10):nth-child(-n+18),
 .cell:nth-child(9n+19):nth-child(-n+27) {
   background-color: #f9f9f9; /* Light Gray */
 }
 
-/* Top-center block */
 .cell:nth-child(9n+4):nth-child(-n+6),
 .cell:nth-child(9n+13):nth-child(-n+15),
 .cell:nth-child(9n+22):nth-child(-n+24) {
   background-color: #ffd6e8; /* Light Pink */
 }
 
-/* Top-right block */
 .cell:nth-child(9n+7):nth-child(-n+9),
 .cell:nth-child(9n+16):nth-child(-n+18),
 .cell:nth-child(9n+25):nth-child(-n+27) {
   background-color: #d6f7e5; /* Light Mint Green */
 }
 
-/* Middle-left block */
 .cell:nth-child(9n+28):nth-child(-n+30),
 .cell:nth-child(9n+37):nth-child(-n+39),
 .cell:nth-child(9n+46):nth-child(-n+48) {
   background-color: #ffd6e8; /* Light Pink */
 }
 
-/* Middle-center block */
 .cell:nth-child(9n+31):nth-child(-n+33),
 .cell:nth-child(9n+40):nth-child(-n+42),
 .cell:nth-child(9n+49):nth-child(-n+51) {
   background-color: #f9f9f9; /* Light Gray */
 }
 
-/* Middle-right block */
 .cell:nth-child(9n+34):nth-child(-n+36),
 .cell:nth-child(9n+43):nth-child(-n+45),
 .cell:nth-child(9n+52):nth-child(-n+54) {
   background-color: #d6f7e5; /* Light Mint Green */
 }
 
-/* Bottom-left block */
 .cell:nth-child(9n+55):nth-child(-n+57),
 .cell:nth-child(9n+64):nth-child(-n+66),
 .cell:nth-child(9n+73):nth-child(-n+75) {
   background-color: #d6f7e5; /* Light Mint Green */
 }
 
-/* Bottom-center block */
 .cell:nth-child(9n+58):nth-child(-n+60),
 .cell:nth-child(9n+67):nth-child(-n+69),
 .cell:nth-child(9n+76):nth-child(-n+78) {
   background-color: #ffd6e8; /* Light Pink */
 }
 
-/* Bottom-right block */
 .cell:nth-child(9n+61):nth-child(-n+63),
 .cell:nth-child(9n+70):nth-child(-n+72),
 .cell:nth-child(9n+79):nth-child(-n+81) {
@@ -190,72 +178,25 @@ h2, p, button, input {
 .controls button {
   padding: 10px 20px;
   margin: 5px;
-  background-color: lightcoral; /* Button background color changed */
-  color: 	papayawhip; /* Button font color changed */
+  background-color: lightcoral; /* Button background */
+  color: papayawhip; /* Button text color */
   border: 1px solid lightcoral;
   border-radius: 5px;
   cursor: pointer;
-  font-family: Monaco, monospace; /* Font changed to Monaco */
+  font-family: Monaco, monospace;
 }
 
 .controls button:hover {
   background-color: #d8a7a0; /* Slightly lighter shade for hover effect */
 }
 
-/* Dropdown Menu Styling */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-button {
-  padding: 10px 20px;
-  background-color: lightcoral; /* Matches other button styling */
-  color: papayawhip;
-  border: 1px solid lightcoral;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: Monaco, monospace; /* Matches button font */
-}
-
-.dropdown-menu {
-  display: none; /* Hidden by default */
-  position: absolute;
-  background-color: white;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 1;
-  min-width: 120px; /* Ensure menu fits contents nicely */
-}
-
-.dropdown-menu button {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  background: none;
-  border: none;
-  text-align: left;
-  color: papayawhip;
-  font-family: Monaco, monospace; /* Matches button styling */
-  cursor: pointer;
-}
-
-.dropdown-menu button:hover {
-  background-color: #f0e6e6; /* Light hover effect */
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block; /* Show menu on hover */
-}
-
 /* Footer */
 footer {
   margin-top: 20px;
   padding: 10px;
-  background-color: #e8d4d1; /* Footer color changed */
+  background-color: #e8d4d1;
   border-radius: 5px;
-  color: midnightblue; /* Footer text color changed */
-  font-family: Avenir, sans-serif; /* Avenir font for footer */
+  color: midnightblue; /* Footer text color */
+  font-family: Avenir, sans-serif;
   text-align: center;
 }
