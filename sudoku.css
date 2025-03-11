@@ -13,7 +13,9 @@ h1 {
 }
 
 h2, p, button, input {
-  font-family: Avenir, sans-serif; /* Ensure other elements inherit Avenir font */
+  font-family: Papyrus, fantasy; /* Ensure other elements inherit Avenir font */
+  color: 	steelblue;
+  font-size: 12;
 }
 
 /* Game Layout */
