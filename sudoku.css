@@ -24,7 +24,7 @@ h1, h2, p, button, input {
 
 /* Left and Right Panels */
 .left-panel, .right-panel {
-  width: 150px;
+  width: 300px;
   padding: 10px;
   background-color: lightblue; /* Match the background with the rest of the body */
   border-radius: 5px; /* Keeps rounded corners */
