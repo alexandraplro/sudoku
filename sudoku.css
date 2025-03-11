@@ -15,8 +15,8 @@ h1 {
   font-weight: bold;
 }
 
-h2, p, button, input {
-  font-family: Monaco, monospace; /* Ensure other elements inherit Monaco font */
+.main-content h2, .main-content p, .main-content button, .main-content input {
+  font-family: Monaco, monospace;
   color: black;
   font-size: 1.2em;
 }
