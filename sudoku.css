@@ -68,7 +68,7 @@ h2, p, button, input {
   gap: 1px;
   max-width: 360px;
   margin: 20px auto;
-  background-color: darkblue; /* Background for grid container */
+  background-color: snow; /* Background for grid container */
   padding: 5px;
 }
 
