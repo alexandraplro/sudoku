@@ -2,13 +2,18 @@
 body {
   font-family: Avenir, sans-serif; /* Set Avenir font globally */
   text-align: center;
-  background-color: lightblue; /* Light blue background for the entire body */
+  background-color: #faf6f6; /* Light off-white background */
   margin: 0; /* Removes default margins */
   padding: 20px;
 }
 
-h1, h2, p, button, input {
-  font-family: Avenir, sans-serif; /* Ensure all elements inherit Avenir font */
+h1 {
+  font-family: Papyrus, fantasy; /* Title font changed to Papyrus */
+  color: darkslategray; /* Title color changed */
+}
+
+h2, p, button, input {
+  font-family: Avenir, sans-serif; /* Ensure other elements inherit Avenir font */
 }
 
 /* Game Layout */
@@ -23,18 +28,27 @@ h1, h2, p, button, input {
 }
 
 /* Left and Right Panels */
-.left-panel, .right-panel {
+.left-panel {
   width: 300px;
   padding: 10px;
   background-color: lightblue; /* Match the background with the rest of the body */
   border-radius: 5px; /* Keeps rounded corners */
   text-align: center;
+  font-family: Copperplate, serif; /* Font changed to Copperplate */
+  color: steelblue; /* Font color changed */
+}
+
+.right-panel {
+  width: 300px;
+  padding: 10px;
+  background-color: lightblue;
+  border-radius: 5px;
+  text-align: center;
 }
 
 /* Left Panel: How to Play */
 .left-panel h2 {
-  color: darkblue;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+  color: steelblue; /* Ensures header matches the left panel text color */
   font-size: 1.2em;
   margin-bottom: 10px;
 }
@@ -159,25 +173,25 @@ h1, h2, p, button, input {
 .controls button {
   padding: 10px 20px;
   margin: 5px;
-  background-color: #ffccdd;
-  color: darkblue;
+  background-color: rosybrown; /* Button background color changed */
+  color: midnightblue; /* Button font color changed */
   border: 1px solid darkblue;
   border-radius: 5px;
   cursor: pointer;
-  font-family: Avenir, sans-serif; /* Avenir font for buttons */
+  font-family: Monaco, monospace; /* Font changed to Monaco */
 }
 
 .controls button:hover {
-  background-color: #ffaabb;
+  background-color: #d8a7a0; /* Slightly lighter shade for hover effect */
 }
 
 /* Footer */
 footer {
   margin-top: 20px;
   padding: 10px;
-  background-color: #FFDAB9; /* Light salmon color */
+  background-color: #e8d4d1; /* Footer color changed */
   border-radius: 5px;
-  color: black;
+  color: midnightblue; /* Footer text color changed */
   font-family: Avenir, sans-serif; /* Avenir font for footer */
   text-align: center;
 }
