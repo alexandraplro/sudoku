@@ -40,9 +40,9 @@ h1, h2, p, button, input {
 
 /* Right Panel: Image */
 .right-panel img {
-  max-width: 100%;
+  max-width: 200%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 /* Sudoku Grid */
