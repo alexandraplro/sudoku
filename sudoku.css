@@ -22,7 +22,7 @@ h2, p, button, input {
   justify-content: center; /* Center items horizontally */
   align-items: flex-start; /* Align items at the top */
   gap: 20px;
-  background-color: lavenderblush; /* Apply light blue background */
+  background-color: white; /* Apply light blue background */
   padding: 20px;
   border-radius: 10px; /* Optional: For a rounded look */
 }
@@ -31,7 +31,7 @@ h2, p, button, input {
 .left-panel {
   width: 300px;
   padding: 10px;
-  background-color: lavenderblush; /* Match the background with the rest of the body */
+  background-color: white; /* Match the background with the rest of the body */
   border-radius: 5px; /* Keeps rounded corners */
   text-align: center;
   font-family: Copperplate, serif; /* Font changed to Copperplate */
@@ -41,14 +41,14 @@ h2, p, button, input {
 .right-panel {
   width: 300px;
   padding: 10px;
-  background-color: lavenderblush;
+  background-color: white;
   border-radius: 5px;
   text-align: center;
 }
 
 /* Left Panel: How to Play */
 .left-panel h2 {
-  color: steelblue; /* Ensures header matches the left panel text color */
+  color: darkred; /* Ensures header matches the left panel text color */
   font-size: 1.2em;
   margin-bottom: 10px;
 }
@@ -68,7 +68,7 @@ h2, p, button, input {
   gap: 1px;
   max-width: 360px;
   margin: 20px auto;
-  background-color: snow; /* Background for grid container */
+  background-color:lavenderblush; /* Background for grid container */
   padding: 5px;
 }
 
@@ -108,6 +108,82 @@ h2, p, button, input {
 
 .cell input:focus {
   outline: 2px solid blue;
+}
+
+/* Sudoku Grid Colors for 3x3 Subgrids */
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr); /* 9 columns */
+  gap: 1px;
+  max-width: 360px;
+  margin: 20px auto;
+  background-color: snow; /* Background for grid container */
+  padding: 5px;
+}
+
+/* Assign colors to each 3x3 subgrid */
+
+/* Top-left block */
+.cell:nth-child(9n+1):nth-child(-n+9),
+.cell:nth-child(9n+10):nth-child(-n+18),
+.cell:nth-child(9n+19):nth-child(-n+27) {
+  background-color: #f9f9f9; /* Light Gray */
+}
+
+/* Top-center block */
+.cell:nth-child(9n+4):nth-child(-n+6),
+.cell:nth-child(9n+13):nth-child(-n+15),
+.cell:nth-child(9n+22):nth-child(-n+24) {
+  background-color: #ffd6e8; /* Light Pink */
+}
+
+/* Top-right block */
+.cell:nth-child(9n+7):nth-child(-n+9),
+.cell:nth-child(9n+16):nth-child(-n+18),
+.cell:nth-child(9n+25):nth-child(-n+27) {
+  background-color: #d6f7e5; /* Light Mint Green */
+}
+
+/* Middle-left block */
+.cell:nth-child(9n+28):nth-child(-n+30),
+.cell:nth-child(9n+37):nth-child(-n+39),
+.cell:nth-child(9n+46):nth-child(-n+48) {
+  background-color: #ffd6e8; /* Light Pink */
+}
+
+/* Middle-center block */
+.cell:nth-child(9n+31):nth-child(-n+33),
+.cell:nth-child(9n+40):nth-child(-n+42),
+.cell:nth-child(9n+49):nth-child(-n+51) {
+  background-color: #f9f9f9; /* Light Gray */
+}
+
+/* Middle-right block */
+.cell:nth-child(9n+34):nth-child(-n+36),
+.cell:nth-child(9n+43):nth-child(-n+45),
+.cell:nth-child(9n+52):nth-child(-n+54) {
+  background-color: #d6f7e5; /* Light Mint Green */
+}
+
+/* Bottom-left block */
+.cell:nth-child(9n+55):nth-child(-n+57),
+.cell:nth-child(9n+64):nth-child(-n+66),
+.cell:nth-child(9n+73):nth-child(-n+75) {
+  background-color: #d6f7e5; /* Light Mint Green */
+}
+
+/* Bottom-center block */
+.cell:nth-child(9n+58):nth-child(-n+60),
+.cell:nth-child(9n+67):nth-child(-n+69),
+.cell:nth-child(9n+76):nth-child(-n+78) {
+  background-color: #ffd6e8; /* Light Pink */
+}
+
+/* Bottom-right block */
+.cell:nth-child(9n+61):nth-child(-n+63),
+.cell:nth-child(9n+70):nth-child(-n+72),
+.cell:nth-child(9n+79):nth-child(-n+81) {
+  background-color: #f9f9f9; /* Light Gray */
 }
 
 /* Button Styling */
