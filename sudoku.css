@@ -2,7 +2,7 @@
 body {
   font-family: Avenir, sans-serif; /* Set Avenir font globally */
   text-align: center;
-  background-color: #faf6f6; /* Light off-white background */
+  background-color: #f9ccac; /* Light off-white background */
   margin: 0; /* Removes default margins */
   padding: 20px;
 }
@@ -10,6 +10,7 @@ body {
 h1 {
   font-family: Papyrus, fantasy; /* Title font changed to Papyrus */
   color: darkslategray; /* Title color changed */
+  font-weight: bold;
 }
 
 h2, p, button, input {
@@ -53,10 +54,10 @@ h2, p, button, input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px; /* Clock size */
-  height: 120px;
-  background-color: antiquewhite; /* Clock background color */
-  border: 5px solid darkred; /* Clock border color */
+  width: 220px; /* Clock size */
+  height: 220px;
+  background-color: linen; /* Clock background color */
+  border: 5px solid rosybrown; /* Clock border color */
   border-radius: 10%; /* Slightly rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle 3D effect */
   margin: 0 auto; /* Center horizontally within the panel */
@@ -257,12 +258,20 @@ h2, p, button, input {
 }
 
 .controls {
-  text-align: center;
+  text-align: center; /* Align buttons in the center */
   margin-top: 20px; /* Space above the controls */
+  margin-bottom: 20px; /* Space below, keeping it away from the footer */
+  position: relative; /* Ensure it stays in place */
+  z-index: 1; /* Keep it above other elements if overlapping occurs */
 }
 
 footer {
   text-align: center;
-  margin-top: 20px; /* Space above the footer */
-  background-color: palevioletred;
+  margin-top: 40px; /* Add more space between the controls and footer */
+  background-color: peachpuff;
+  color: black;
+  font-family: Optima, sans-serif;
+  padding: 20px; /* Optional: Ensure consistent padding */
+  position: relative; /* Keep it at the bottom of its container */
+  z-index: 0; /* Ensure no overlap with other elements */
 }
