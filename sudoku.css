@@ -55,8 +55,8 @@ h2, p, button, input {
   align-items: center;
   width: 120px; /* Clock size */
   height: 120px;
-  background-color: lightgray; /* Clock background color */
-  border: 5px solid darkgray; /* Clock border color */
+  background-color: antiquewhite; /* Clock background color */
+  border: 5px solid darkred; /* Clock border color */
   border-radius: 10%; /* Slightly rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle 3D effect */
   margin: 0 auto; /* Center horizontally within the panel */
@@ -80,14 +80,14 @@ h2, p, button, input {
 
 /* Left Panel: Instructions */
 .left-panel p {
-  font-family: 'Copperplate', fantasy; /* Update the font */
+  font-family: 'Chalkduster', fantasy; /* Update the font */
   font-size: 16px; /* Adjust font size */
   color: 	#484848; /* Set the text color to a dark gray */
   line-height: 1.6; /* Improve readability with line spacing */
   text-align: justify; /* Align text for a cleaner look */
   margin-top: 10px; /* Add spacing above the paragraph */
   padding: 10px; /* Optional padding for spacing within the panel */
-  background-color: #f4f4f4; /* Optional light background for emphasis */
+  background-color: white; /* Optional light background for emphasis */
   border-radius: 5px; /* Optional rounded corners */
 }
 
@@ -136,58 +136,112 @@ h2, p, button, input {
 }
 
 /* Sudoku Grid Colors for 3x3 Subgrids */
-.cell:nth-child(9n+1):nth-child(-n+9),
-.cell:nth-child(9n+10):nth-child(-n+18),
-.cell:nth-child(9n+19):nth-child(-n+27) {
-  background-color: mintcream; /* Mintcream */
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3),
+.cell:nth-child(10),
+.cell:nth-child(11),
+.cell:nth-child(12),
+.cell:nth-child(19),
+.cell:nth-child(20),
+.cell:nth-child(21) {
+  background-color: mintcream; /* Top-left subgrid */
 }
 
-.cell:nth-child(9n+4):nth-child(-n+6),
-.cell:nth-child(9n+13):nth-child(-n+15),
-.cell:nth-child(9n+22):nth-child(-n+24) {
-  background-color: seashell; /* Seashell */
+.cell:nth-child(4),
+.cell:nth-child(5),
+.cell:nth-child(6),
+.cell:nth-child(13),
+.cell:nth-child(14),
+.cell:nth-child(15),
+.cell:nth-child(22),
+.cell:nth-child(23),
+.cell:nth-child(24) {
+  background-color: seashell; /* Top-center subgrid */
 }
 
-.cell:nth-child(9n+7):nth-child(-n+9),
-.cell:nth-child(9n+16):nth-child(-n+18),
-.cell:nth-child(9n+25):nth-child(-n+27) {
-  background-color: mintcream; /* Mint Green */
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9),
+.cell:nth-child(16),
+.cell:nth-child(17),
+.cell:nth-child(18),
+.cell:nth-child(25),
+.cell:nth-child(26),
+.cell:nth-child(27) {
+  background-color: mintcream; /* Top-right subgrid */
 }
 
-.cell:nth-child(9n+28):nth-child(-n+30),
-.cell:nth-child(9n+37):nth-child(-n+39),
-.cell:nth-child(9n+46):nth-child(-n+48) {
-  background-color: seashell; /* Seashell */
+.cell:nth-child(28),
+.cell:nth-child(29),
+.cell:nth-child(30),
+.cell:nth-child(37),
+.cell:nth-child(38),
+.cell:nth-child(39),
+.cell:nth-child(46),
+.cell:nth-child(47),
+.cell:nth-child(48) {
+  background-color: seashell; /* Middle-left subgrid */
 }
 
-.cell:nth-child(9n+31):nth-child(-n+33),
-.cell:nth-child(9n+40):nth-child(-n+42),
-.cell:nth-child(9n+49):nth-child(-n+51) {
-  background-color: mintcream; /* Mintcream */
+.cell:nth-child(31),
+.cell:nth-child(32),
+.cell:nth-child(33),
+.cell:nth-child(40),
+.cell:nth-child(41),
+.cell:nth-child(42),
+.cell:nth-child(49),
+.cell:nth-child(50),
+.cell:nth-child(51) {
+  background-color: mintcream; /* Middle-center subgrid */
 }
 
-.cell:nth-child(9n+34):nth-child(-n+36),
-.cell:nth-child(9n+43):nth-child(-n+45),
-.cell:nth-child(9n+52):nth-child(-n+54) {
-  background-color: seasehll; /* Seashell */
+.cell:nth-child(34),
+.cell:nth-child(35),
+.cell:nth-child(36),
+.cell:nth-child(43),
+.cell:nth-child(44),
+.cell:nth-child(45),
+.cell:nth-child(52),
+.cell:nth-child(53),
+.cell:nth-child(54) {
+  background-color: seashell; /* Middle-right subgrid */
 }
 
-.cell:nth-child(9n+55):nth-child(-n+57),
-.cell:nth-child(9n+64):nth-child(-n+66),
-.cell:nth-child(9n+73):nth-child(-n+75) {
-  background-color: mintcream; /* Mintcream */
+.cell:nth-child(55),
+.cell:nth-child(56),
+.cell:nth-child(57),
+.cell:nth-child(64),
+.cell:nth-child(65),
+.cell:nth-child(66),
+.cell:nth-child(73),
+.cell:nth-child(74),
+.cell:nth-child(75) {
+  background-color: mintcream; /* Bottom-left subgrid */
 }
 
-.cell:nth-child(9n+58):nth-child(-n+60),
-.cell:nth-child(9n+67):nth-child(-n+69),
-.cell:nth-child(9n+76):nth-child(-n+78) {
-  background-color: seashell; /* Seashell */
+.cell:nth-child(58),
+.cell:nth-child(59),
+.cell:nth-child(60),
+.cell:nth-child(67),
+.cell:nth-child(68),
+.cell:nth-child(69),
+.cell:nth-child(76),
+.cell:nth-child(77),
+.cell:nth-child(78) {
+  background-color: seashell; /* Bottom-center subgrid */
 }
 
-.cell:nth-child(9n+61):nth-child(-n+63),
-.cell:nth-child(9n+70):nth-child(-n+72),
-.cell:nth-child(9n+79):nth-child(-n+81) {
-  background-color: mintcream; /* Mintcream */
+.cell:nth-child(61),
+.cell:nth-child(62),
+.cell:nth-child(63),
+.cell:nth-child(70),
+.cell:nth-child(71),
+.cell:nth-child(72),
+.cell:nth-child(79),
+.cell:nth-child(80),
+.cell:nth-child(81) {
+  background-color: mintcream; /* Bottom-right subgrid */
 }
 
 /* Button Styling */
@@ -210,4 +264,5 @@ h2, p, button, input {
 footer {
   text-align: center;
   margin-top: 20px; /* Space above the footer */
+  background-color: palevioletred;
 }
