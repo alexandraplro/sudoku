@@ -18,7 +18,7 @@ h1 {
 h2, p, button, input {
   font-family: Monaco, monospace; /* Ensure other elements inherit Monaco font */
   color: black;
-  font-size: 14px;
+  font-size: 1.2em;
 }
 
 /* Game Layout */
