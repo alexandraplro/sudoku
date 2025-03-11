@@ -16,6 +16,11 @@
       <p>
         Sudoku is a logic-based puzzle where you fill a 9×9 grid with numbers 1–9. Each row, column, 
         and 3×3 subgrid must contain each number only once. Use logic and deduction to solve!
+        
+        When stuck on a Sudoku puzzle, the best approach is to scan the entire grid for "single candidates" 
+        - cells that can only contain one number, and then look for "naked pairs" where two cells in a row, 
+        column, or block only have the same two possible numbers; use these to eliminate potential numbers 
+        in other cells and make progress on the puzzle. 
       </p>
     </div>
 
@@ -31,6 +36,13 @@
   </div>
 
   <div class="controls">
+    <!-- Added dropdown for difficulty levels -->
+    <label for="difficulty">Select Difficulty:</label>
+    <select id="difficulty">
+      <option value="easy">Easy</option>
+      <option value="medium" selected>Medium</option>
+      <option value="hard">Hard</option>
+    </select>
     <button id="new-game">New Game</button>
     <button id="check-solution">Check Solution</button>
     <button id="reset">Reset</button>
