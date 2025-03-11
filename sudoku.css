@@ -41,7 +41,7 @@ h1, h2, p, button, input {
 
 /* Right Panel: Image */
 .right-panel img {
-  max-width: 250%;
+  max-width: 220%;
   height: auto;
   border-radius: 0px;
   align: center;
