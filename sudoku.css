@@ -83,65 +83,6 @@ h2, p, button, input {
   font-family: Avenir, sans-serif; /* Avenir font for grid cells */
 }
 
-/* Background Colors for 3x3 Sections */
-
-/* First Row of Blocks */
-.cell:nth-child(n+1):nth-child(-n+3),
-.cell:nth-child(n+10):nth-child(-n+12),
-.cell:nth-child(n+19):nth-child(-n+21) {
-  background-color: #f9f9f9; /* Light gray */
-}
-
-.cell:nth-child(n+4):nth-child(-n+6),
-.cell:nth-child(n+13):nth-child(-n+15),
-.cell:nth-child(n+22):nth-child(-n+24) {
-  background-color: #f6e58d; /* Light yellow */
-}
-
-.cell:nth-child(n+7):nth-child(-n+9),
-.cell:nth-child(n+16):nth-child(-n+18),
-.cell:nth-child(n+25):nth-child(-n+27) {
-  background-color: #dff9fb; /* Light blue */
-}
-
-/* Second Row of Blocks */
-.cell:nth-child(n+28):nth-child(-n+30),
-.cell:nth-child(n+37):nth-child(-n+39),
-.cell:nth-child(n+46):nth-child(-n+48) {
-  background-color: #f6e58d; /* Light yellow */
-}
-
-.cell:nth-child(n+31):nth-child(-n+33),
-.cell:nth-child(n+40):nth-child(-n+42),
-.cell:nth-child(n+49):nth-child(-n+51) {
-  background-color: #dff9fb; /* Light blue */
-}
-
-.cell:nth-child(n+34):nth-child(-n+36),
-.cell:nth-child(n+43):nth-child(-n+45),
-.cell:nth-child(n+52):nth-child(-n+54) {
-  background-color: #f6e58d; /* Light yellow */
-}
-
-/* Third Row of Blocks */
-.cell:nth-child(n+55):nth-child(-n+57),
-.cell:nth-child(n+64):nth-child(-n+66),
-.cell:nth-child(n+73):nth-child(-n+75) {
-  background-color: #dff9fb; /* Light blue */
-}
-
-.cell:nth-child(n+58):nth-child(-n+60),
-.cell:nth-child(n+67):nth-child(-n+69),
-.cell:nth-child(n+76):nth-child(-n+78) {
-  background-color: #f9f9f9; /* Light gray */
-}
-
-.cell:nth-child(n+61):nth-child(-n+63),
-.cell:nth-child(n+70):nth-child(-n+72),
-.cell:nth-child(n+79):nth-child(-n+81) {
-  background-color: #dff9fb; /* Light blue */
-}
-
 /* Fixed Cell Styling */
 .cell.fixed {
   font-weight: bold;
@@ -183,6 +124,53 @@ h2, p, button, input {
 
 .controls button:hover {
   background-color: #d8a7a0; /* Slightly lighter shade for hover effect */
+}
+
+/* Dropdown Menu Styling */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  padding: 10px 20px;
+  background-color: rosybrown; /* Matches other button styling */
+  color: midnightblue;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Monaco, monospace; /* Matches button font */
+}
+
+.dropdown-menu {
+  display: none; /* Hidden by default */
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1;
+  min-width: 120px; /* Ensure menu fits contents nicely */
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background: none;
+  border: none;
+  text-align: left;
+  color: midnightblue;
+  font-family: Monaco, monospace; /* Matches button styling */
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0e6e6; /* Light hover effect */
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* Show menu on hover */
 }
 
 /* Footer */
