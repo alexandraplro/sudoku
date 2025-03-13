@@ -66,6 +66,10 @@ body {
   color: black;
 }
 
+.row > .col-md-4 {
+    padding: 10px;
+}
+
 h1 {
   font-family: "Papyrus", fantasy, Arial, sans-serif;
   color: var(--background-dark);
