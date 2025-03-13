@@ -119,9 +119,37 @@ h1 {
 }
 
 /* Subgrid Coloring */
-.sudoku-grid .cell:nth-child(27n + 1),
-.sudoku-grid .cell:nth-child(27n + 2),
-.sudoku-grid .cell:nth-child
+.subgrid-1 {
+  background-color: lavender;
+}
+
+.subgrid-2 {
+  background-color: aliceblue;
+}
+.subgrid-3 {
+  background-color: lavender;
+}
+
+.subgrid-4 {
+  background-color: aliceblue;
+}
+.subgrid-5 {
+  background-color: lavender;
+}
+
+.subgrid-6 {
+  background-color: aliceblue;
+}
+.subgrid-7 {
+  background-color: lavender;
+}
+
+.subgrid-8 {
+  background-color: aliceblue;
+}
+.subgrid-9 {
+  background-color: lavender;
+}
 
 .cell {
   width: 100%;
