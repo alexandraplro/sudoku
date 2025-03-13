@@ -30,6 +30,23 @@ body {
   color: black;
 }
 
+.bg-white {
+  background-color: white !important;
+}
+
+.levels-btn {
+  background-color: antiquewhite;
+  border: none;
+  color: black;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.levels-btn:hover {
+  background-color: darkgray;
+  color: white;
+}
+
 h1 {
   font-family: Papyrus, fantasy;
   color: var(--background-dark);
