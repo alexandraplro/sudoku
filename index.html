@@ -25,19 +25,40 @@
 </header>
 
   <!-- Main Content -->
+  <body class="bg-white">
   <div class="container my-4">
     <div class="row">
       <!-- Left Panel -->
-      <div class="col-12 col-md-4 mb-3">
+      <div class="col-md-4">
         <div class="p-3 border bg-light rounded">
-          <h2>HOW TO PLAY?</h2>
+          <h2>How to Play?</h2>
           <p>
-            Sudoku is a logic-based puzzle where you fill a 9×9 grid with numbers 1–9. Each row, column,
-            and 3×3 subgrid must contain each number only once. Use logic and deduction to solve!
+            Sudoku is a logic-based puzzle where you fill a 9×9 grid with numbers 1–9.
+            Each row, column, and 3×3 subgrid must contain each number only once.
             <br><br>
             When stuck, scan the entire grid for "single candidates" (cells that can only contain one number) 
             and look for "naked pairs." These strategies help you eliminate numbers in other cells and progress!
           </p>
+        </div>
+      </div>
+
+      <!-- Center Panel -->
+      <div class="col-md-4 text-center">
+        <div class="p-3 border bg-light rounded">
+          <div id="sudoku-grid"></div>
+          <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle levels-btn" type="button" data-bs-toggle="dropdown">
+              Levels
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Easy</a></li>
+              <li><a class="dropdown-item" href="#">Medium</a></li>
+              <li><a class="dropdown-item" href="#">Hard</a></li>
+            </ul>
+          </div>
+          <button id="new-game" class="btn btn-secondary mt-2 levels-btn">NEW GAME</button>
+          <button id="reset" class="btn btn-secondary mt-2 levels-btn">Reset</button>
+          <button id="check-solution" class="btn btn-secondary mt-2 levels-btn">Check Solution</button>
         </div>
       </div>
 
@@ -147,9 +168,9 @@
             </div>
           </div>
           <!-- Controls -->
-          <div class="dropdown mt-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-              LEVELS
+           <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle levels-btn" type="button" data-bs-toggle="dropdown">
+              Levels
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Easy</a></li>
@@ -157,9 +178,9 @@
               <li><a class="dropdown-item" href="#">Hard</a></li>
             </ul>
           </div>
-          <button id="new-game" class="btn btn-primary mt-2">NEW GAME</button>
-          <button id="check-solution" class="btn btn-success mt-2">CHECK SOLUTION</button>
-          <button id="reset" class="btn btn-warning mt-2">RESET</button>
+          <button id="new-game" class="btn btn-secondary mt-2 levels-btn">NEW GAME</button>
+          <button id="reset" class="btn btn-secondary mt-2 levels-btn">RESET</button>
+          <button id="check-solution" class="btn btn-secondary mt-2 levels-btn">CHECK SOLUTION</button>
         </div>
       </div>
 
@@ -172,9 +193,12 @@
           </div>
 
           <!-- Number Keypad -->
-          <div class="number-keypad mt-4">
-            <h3>Keypad</h3>
-            <div class="d-grid gap-2">
+          <div class="col-md-4">
+            <div class="p-3 border bg-light rounded text-center">
+              <h2>Timer</h2>
+              <div id="timer" class="display-5">00:00:00</div>
+              <h3 class="mt-4">Keypad</h3>
+              <div class="d-grid gap-2">
               <button class="btn btn-outline-primary keypad-btn" data-value="1">1</button>
               <button class="btn btn-outline-primary keypad-btn" data-value="2">2</button>
               <button class="btn btn-outline-primary keypad-btn" data-value="3">3</button>
@@ -185,12 +209,12 @@
               <button class="btn btn-outline-primary keypad-btn" data-value="8">8</button>
               <button class="btn btn-outline-primary keypad-btn" data-value="9">9</button>
               <button class="btn btn-outline-danger keypad-btn" data-value="0">Clear</button>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</body>
 
   <!-- Footer -->
   <footer class="bg-dark text-center text-white py-3">
