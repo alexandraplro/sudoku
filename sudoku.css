@@ -6,6 +6,9 @@
   --background-light: floralwhite;
   --background-dark: darkslategray;
   --text-dark: #484848;
+  --keypad-bg: #f7f7f7; /* Subtle background for the keypad */
+  --subgrid-color-1: lavender;
+  --subgrid-color-2: aliceblue;
 }
 
 /* General Styling */
@@ -115,6 +118,11 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Subgrid Coloring */
+.sudoku-grid .cell:nth-child(27n + 1),
+.sudoku-grid .cell:nth-child(27n + 2),
+.sudoku-grid .cell:nth-child
+
 .cell {
   width: 100%;
   height: 40px;
@@ -127,6 +135,41 @@ h1 {
 
 .cell input:focus {
   outline: 2px solid blue;
+}
+
+/* Keypad Container */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: var(--keypad-bg);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Keypad Buttons */
+.keypad button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s ease, color 0.3s ease;
+}
+
+.keypad button:hover {
+  background-color: var(--highlight-color);
+  color: white;
+  transform: scale(1.05); /* Adds a slight zoom effect */
+}
+
+.keypad button:active {
+  transform: scale(0.95); /* Provides feedback on click */
 }
 
 /* Buttons */
@@ -159,3 +202,16 @@ footer {
   padding: 20px;
   border-radius: 5px;
 }
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .keypad {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .keypad button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
