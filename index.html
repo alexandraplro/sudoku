@@ -46,27 +46,6 @@
       <div class="col-md-4 text-center">
         <div class="p-3 border bg-light rounded">
           <div id="sudoku-grid"></div>
-          <div class="d-flex flex-column align-items-center gap-2 mt-3">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle levels-btn" type="button" data-bs-toggle="dropdown">
-              Levels
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Easy</a></li>
-                <li><a class="dropdown-item" href="#">Medium</a></li>
-                <li><a class="dropdown-item" href="#">Hard</a></li>
-              </ul>
-          </div>
-          <button id="new-game" class="btn btn-secondary levels-btn">NEW GAME</button>
-          <button id="reset" class="btn btn-secondary levels-btn">RESET</button>
-          <button id="check-solution" class="btn btn-secondary levels-btn">CHECK SOLUTION</button>
-          </div>
-      </div>
-
-      <!-- Sudoku Grid and Controls -->
-      <div class="col-12 col-md-4 mb-3 text-center">
-        <div class="p-3 border bg-light rounded">
-          <div class="sudoku-grid" id="sudoku-grid">
             <!-- Grid dynamically populated with JavaScript -->
             <div class="subgrid">
               <div class="cell"></div>
@@ -168,21 +147,21 @@
               <div class="cell"></div>
             </div>
           </div>
-          <!-- Controls -->
-           <div class="dropdown mt-3">
-            <button class="btn btn-secondary dropdown-toggle levels-btn" type="button" data-bs-toggle="dropdown">
+          <div class="d-flex flex-column align-items-center gap-2 mt-3">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle levels-btn" type="button" data-bs-toggle="dropdown">
               Levels
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Easy</a></li>
-              <li><a class="dropdown-item" href="#">Medium</a></li>
-              <li><a class="dropdown-item" href="#">Hard</a></li>
-            </ul>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Easy</a></li>
+                <li><a class="dropdown-item" href="#">Medium</a></li>
+                <li><a class="dropdown-item" href="#">Hard</a></li>
+              </ul>
           </div>
-          <button id="new-game" class="btn btn-secondary mt-2 levels-btn">NEW GAME</button>
-          <button id="reset" class="btn btn-secondary mt-2 levels-btn">RESET</button>
-          <button id="check-solution" class="btn btn-secondary mt-2 levels-btn">CHECK SOLUTION</button>
-        </div>
+          <button id="new-game" class="btn btn-secondary levels-btn">NEW GAME</button>
+          <button id="reset" class="btn btn-secondary levels-btn">RESET</button>
+          <button id="check-solution" class="btn btn-secondary levels-btn">CHECK SOLUTION</button>
+         </div>
       </div>
 
       <!-- Right Panel -->
@@ -196,8 +175,6 @@
           <!-- Number Keypad -->
           <div class="col-md-4">
             <div class="p-3 border bg-light rounded text-center">
-              <h2>Timer</h2>
-              <div id="timer" class="display-5">00:00:00</div>
             <div class="number-keypad mt-4">
               <div class="d-grid gap-2">
               <button class="btn btn-outline-primary keypad-btn" data-value="1">1</button>
