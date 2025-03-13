@@ -209,6 +209,11 @@ h1 {
   outline: 2px solid blue;
 }
 
+.empty-cell {
+    background-color: transparent;
+    border: 1px transparent;
+}
+
 /* Keypad Container */
 .keypad {
   display: grid;
