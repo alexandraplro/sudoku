@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Timer setup
   function startTimer() {
+    clearInterval(timerInterval); // Ensure no duplicate timers
     let hours = 0;
     let minutes = 0;
     let seconds = 0;
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         hours++;
       }
 
-      const formattedTime = 
+      const formattedTime =
         String(hours).padStart(2, "0") + ":" +
         String(minutes).padStart(2, "0") + ":" +
         String(seconds).padStart(2, "0");
@@ -33,15 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
     timerElement.textContent = "00:00:00"; // Reset timer display
   }
 
-  // Dropdown button functionality
-  document.querySelector('.dropdown-button').addEventListener('click', function() {
-    const dropdownContent = document.querySelector('.dropdown-content');
-    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-  });
-
   // Generate a Sudoku puzzle with difficulty
   function generateSudoku(difficulty) {
-    let solution = [
+    const solution = [
       [5, 3, 4, 6, 7, 8, 9, 1, 2],
       [6, 7, 2, 1, 9, 5, 3, 4, 8],
       [1, 9, 8, 3, 4, 2, 5, 6, 7],
@@ -53,21 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
       [3, 4, 5, 2, 8, 6, 1, 7, 9]
     ];
 
-    let cellsToRemove;
-    if (difficulty === "easy") {
-      cellsToRemove = 20;
-    } else if (difficulty === "medium") {
-      cellsToRemove = 40;
-    } else if (difficulty === "hard") {
-      cellsToRemove = 60;
-    }
+    let cellsToRemove = difficulty === "easy" ? 20 : difficulty === "medium" ? 40 : 60;
+    const puzzle = JSON.parse(JSON.stringify(solution)); // Deep copy of the solution
 
-    let puzzle = JSON.parse(JSON.stringify(solution));
     while (cellsToRemove > 0) {
-      let row = Math.floor(Math.random() * 9);
-      let col = Math.floor(Math.random() * 9);
+      const row = Math.floor(Math.random() * 9);
+      const col = Math.floor(Math.random() * 9);
       if (puzzle[row][col] !== 0) {
-        puzzle[row][col] = 0;
+        puzzle[row][col] = 0; // Remove cell value
         cellsToRemove--;
       }
     }
@@ -79,51 +67,55 @@ document.addEventListener("DOMContentLoaded", function () {
   let initialPuzzle = generateSudoku(selectedDifficulty);
   let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
 
+  // Render Sudoku Grid
   function renderPuzzle(puzzle) {
-    grid.innerHTML = "";
-    for (let row = 0; row < 9; row++) {
-      for (let col = 0; col < 9; col++) {
+    grid.innerHTML = ""; // Clear the grid
+    puzzle.forEach((row, rowIndex) => {
+      row.forEach((value, colIndex) => {
         const cell = document.createElement("div");
         cell.classList.add("cell");
 
-        if (puzzle[row][col] !== 0) {
-          cell.textContent = puzzle[row][col];
+        if (value !== 0) {
+          cell.textContent = value;
           cell.classList.add("fixed");
         } else {
           const input = document.createElement("input");
           input.type = "text";
           input.maxLength = 1;
+          input.setAttribute("aria-label", `Cell at row ${rowIndex + 1}, column ${colIndex + 1}`);
           input.addEventListener("input", function () {
             if (/^[1-9]$/.test(this.value)) {
-              currentPuzzle[row][col] = parseInt(this.value);
+              currentPuzzle[rowIndex][colIndex] = parseInt(this.value);
             } else {
-              this.value = "";
+              this.value = ""; // Clear invalid input
             }
           });
           cell.appendChild(input);
         }
+
         grid.appendChild(cell);
-      }
-    }
+      });
+    });
   }
 
+  // Button Event Listeners
   document.getElementById("new-game").addEventListener("click", () => {
-    resetTimer(); // Reset timer on new game
-    startTimer(); // Start timer
+    resetTimer();
+    startTimer();
     initialPuzzle = generateSudoku(selectedDifficulty);
     currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
     renderPuzzle(currentPuzzle);
   });
 
   document.getElementById("reset").addEventListener("click", () => {
-    resetTimer(); // Reset timer
-    startTimer(); // Restart timer
+    resetTimer();
+    startTimer();
     currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
     renderPuzzle(currentPuzzle);
   });
 
   document.getElementById("check-solution").addEventListener("click", () => {
-    clearInterval(timerInterval); // Stop timer when checking solution
+    clearInterval(timerInterval); // Stop the timer
     if (isValidSudoku(currentPuzzle)) {
       alert("Congratulations! The solution is correct!");
     } else {
@@ -132,24 +124,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Validate the Sudoku Board
   function isValidSudoku(board) {
     function isUnique(array) {
-      let nums = array.filter(num => num !== 0);
+      const nums = array.filter(num => num !== 0);
       return nums.length === new Set(nums).size;
     }
 
-    for (let row = 0; row < 9; row++) {
-      if (!isUnique(board[row])) return false;
-    }
-
-    for (let col = 0; col < 9; col++) {
-      let column = board.map(row => row[col]);
-      if (!isUnique(column)) return false;
+    for (let i = 0; i < 9; i++) {
+      if (!isUnique(board[i])) return false; // Check rows
+      if (!isUnique(board.map(row => row[i]))) return false; // Check columns
     }
 
     for (let i = 0; i < 9; i += 3) {
       for (let j = 0; j < 9; j += 3) {
-        let grid = [];
+        const grid = [];
         for (let x = 0; x < 3; x++) {
           for (let y = 0; y < 3; y++) {
             grid.push(board[i + x][j + y]);
@@ -162,9 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
 
-  // Start the initial timer
+  // Start the initial game and timer
   startTimer();
-
-  // Initial render of the puzzle
   renderPuzzle(currentPuzzle);
 });
