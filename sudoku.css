@@ -42,7 +42,7 @@ h1 {
 }
 
 .dropdown:hover .dropdown-menu {
-  display: block;
+  display: block; /* Show dropdown on hover */
 }
 
 /* General Styling */
@@ -150,6 +150,14 @@ h1 {
   padding: 5px;
   border: 2px solid black;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#sudoku-grid {
+  margin-top: 20px; /* Add some space between grid and buttons */
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr); /* Ensure 9x9 grid layout */
+  gap: 1px; /* Space between cells */
 }
 
 /* Subgrid Styling */
