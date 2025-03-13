@@ -43,7 +43,16 @@ h1 {
 }
 
 .dropdown:hover .dropdown-menu {
-  display: block; /* Show dropdown on hover */
+    display: block; /* Show the menu when hovering */
+    position: absolute; /* Keep proper positioning */
+}
+
+.dropdown:hover .dropdown-toggle {
+    background-color: #f8f9fa; /* Optional: Change button background color on hover */
+}
+
+.dropdown:focus-within .dropdown-menu {
+    display: block;
 }
 
 .left-panel h2 {
