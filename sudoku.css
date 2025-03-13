@@ -118,47 +118,23 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Subgrid Coloring */
-.subgrid-1 {
-  background-color: lavender;
-}
-
-.subgrid-2 {
-  background-color: aliceblue;
-}
-.subgrid-3 {
-  background-color: lavender;
-}
-
-.subgrid-4 {
-  background-color: aliceblue;
-}
-.subgrid-5 {
-  background-color: lavender;
-}
-
-.subgrid-6 {
-  background-color: aliceblue;
-}
-.subgrid-7 {
-  background-color: lavender;
-}
-
-.subgrid-8 {
-  background-color: aliceblue;
-}
-.subgrid-9 {
-  background-color: lavender;
+/* Subgrid Styling */
+.subgrid {
+  margin: 5px; /* Adjust as needed for spacing */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Ensures 3 cells per row in subgrid */
+  grid-gap: 1px; /* Optional: Adds slight spacing between cells */
 }
 
 .cell {
-  width: 100%;
+  width: 40px;
   height: 40px;
   text-align: center;
   border: 1px solid lightblue;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box; /* Ensure margins and paddings are accounted */
 }
 
 .cell input:focus {
