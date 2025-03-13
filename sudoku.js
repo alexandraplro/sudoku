@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const grid = document.getElementById("sudoku-grid");
   const timerElement = document.getElementById("timer");
   let timerInterval;
+  let selectedInput = null; // Track the currently selected cell input
 
   // Timer setup
   function startTimer() {
@@ -83,6 +84,13 @@ document.addEventListener("DOMContentLoaded", function () {
           input.type = "text";
           input.maxLength = 1;
           input.setAttribute("aria-label", `Cell at row ${rowIndex + 1}, column ${colIndex + 1}`);
+          input.dataset.row = rowIndex; // Save row index for logic
+          input.dataset.col = colIndex; // Save col index for logic
+          input.addEventListener("click", function () {
+            if (selectedInput) selectedInput.classList.remove("selected");
+            selectedInput = this;
+            selectedInput.classList.add("selected");
+          });
           input.addEventListener("input", function () {
             if (/^[1-9]$/.test(this.value)) {
               currentPuzzle[rowIndex][colIndex] = parseInt(this.value);
@@ -97,6 +105,31 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  // Handle Keypad Button Clicks
+  document.querySelectorAll(".keypad-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      if (!selectedInput) {
+        alert("Please select a cell first!");
+        return;
+      }
+
+      const value = this.getAttribute("data-value");
+      if (value === "0") {
+        // Clear the cell
+        selectedInput.value = "";
+        const row = selectedInput.dataset.row;
+        const col = selectedInput.dataset.col;
+        currentPuzzle[row][col] = 0;
+      } else if (/^[1-9]$/.test(value)) {
+        // Set the value in the selected cell
+        selectedInput.value = value;
+        const row = selectedInput.dataset.row;
+        const col = selectedInput.dataset.col;
+        currentPuzzle[row][col] = parseInt(value);
+      }
+    });
+  });
 
   // Button Event Listeners
   document.getElementById("new-game").addEventListener("click", () => {
