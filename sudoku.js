@@ -78,46 +78,53 @@ document.addEventListener("DOMContentLoaded", function () {
       row.forEach((value, colIndex) => {
         const cell = document.createElement("div");
         cell.classList.add("cell");
+        
+    // Determine subgrid colors
+    const subgridRow = Math.floor(rowIndex / 3);
+    const subgridCol = Math.floor(colIndex / 3);
+    const isSubgridEven = (subgridRow + subgridCol) % 2 === 0;
+    cell.style.backgroundColor = isSubgridEven ? 'aliceblue' : 'snow';
 
-        // Add subgrid-specific classes for borders
-        if (rowIndex % 3 === 0) cell.classList.add("top-border");
-        if (colIndex % 3 === 0) cell.classList.add("left-border");
-        if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
-        if (colIndex % 3 === 2) cell.classList.add("right-border");
+    // Add subgrid-specific classes for borders
+    if (rowIndex % 3 === 0) cell.classList.add("top-border");
+    if (colIndex % 3 === 0) cell.classList.add("left-border");
+    if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
+    if (colIndex % 3 === 2) cell.classList.add("right-border");
+        
+    // Handle fixed values and inputs
+    if (value !== 0) {
+      cell.textContent = value;
+      cell.classList.add("fixed");
+    } else {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.maxLength = 1;
+      input.dataset.row = rowIndex;
+      input.dataset.col = colIndex;
 
-        if (value !== 0) {
-          cell.textContent = value;
-          cell.classList.add("fixed");
-        } else {
-          const input = document.createElement("input");
-          input.type = "text";
-          input.maxLength = 1;
-          input.dataset.row = rowIndex;
-          input.dataset.col = colIndex;
+      // Add input to inputs array for navigation
+      inputs.push(input);
 
-          // Add input to inputs array for navigation
-          inputs.push(input);
-
-          input.addEventListener("click", function () {
-            if (selectedInput) selectedInput.classList.remove("selected");
-            selectedInput = this;
-            selectedInput.classList.add("selected");
-          });
-
-          input.addEventListener("input", function () {
-            if (/^[1-9]$/.test(this.value)) {
-              currentPuzzle[rowIndex][colIndex] = parseInt(this.value);
-            } else {
-              this.value = ""; // Clear invalid input
-            }
-          });
-          cell.appendChild(input);
-        }
-
-        grid.appendChild(cell);
+      input.addEventListener("click", function () {
+        if (selectedInput) selectedInput.classList.remove("selected");
+        selectedInput = this;
+        selectedInput.classList.add("selected");
       });
-    });
+        input.addEventListener("input", function () {
+        if (/^[1-9]$/.test(this.value)) {
+          currentPuzzle[rowIndex][colIndex] = parseInt(this.value);
+        } else {
+          this.value = ""; // Clear invalid input
+        }
+      });
 
+      cell.appendChild(input);
+    }
+
+    grid.appendChild(cell);
+  });
+});
+         
     // Add keyboard navigation
     inputs.forEach((input, index) => {
       input.addEventListener("keydown", (e) => {
