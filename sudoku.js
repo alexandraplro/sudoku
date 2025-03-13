@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const timerElement = document.getElementById("timer");
   let timerInterval;
   let selectedInput = null; // Track the currently selected cell input
+  const inputs = []; // Store all input elements for navigation
 
   // Timer setup
   function startTimer() {
@@ -71,10 +72,18 @@ document.addEventListener("DOMContentLoaded", function () {
   // Render Sudoku Grid
   function renderPuzzle(puzzle) {
     grid.innerHTML = ""; // Clear the grid
+    inputs.length = 0; // Reset inputs array for navigation
+
     puzzle.forEach((row, rowIndex) => {
       row.forEach((value, colIndex) => {
         const cell = document.createElement("div");
         cell.classList.add("cell");
+
+        // Add subgrid-specific classes for borders
+        if (rowIndex % 3 === 0) cell.classList.add("top-border");
+        if (colIndex % 3 === 0) cell.classList.add("left-border");
+        if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
+        if (colIndex % 3 === 2) cell.classList.add("right-border");
 
         if (value !== 0) {
           cell.textContent = value;
@@ -83,14 +92,18 @@ document.addEventListener("DOMContentLoaded", function () {
           const input = document.createElement("input");
           input.type = "text";
           input.maxLength = 1;
-          input.setAttribute("aria-label", `Cell at row ${rowIndex + 1}, column ${colIndex + 1}`);
-          input.dataset.row = rowIndex; // Save row index for logic
-          input.dataset.col = colIndex; // Save col index for logic
+          input.dataset.row = rowIndex;
+          input.dataset.col = colIndex;
+
+          // Add input to inputs array for navigation
+          inputs.push(input);
+
           input.addEventListener("click", function () {
             if (selectedInput) selectedInput.classList.remove("selected");
             selectedInput = this;
             selectedInput.classList.add("selected");
           });
+
           input.addEventListener("input", function () {
             if (/^[1-9]$/.test(this.value)) {
               currentPuzzle[rowIndex][colIndex] = parseInt(this.value);
@@ -104,80 +117,54 @@ document.addEventListener("DOMContentLoaded", function () {
         grid.appendChild(cell);
       });
     });
-  }
 
-  // Handle Keypad Button Clicks
-  document.querySelectorAll(".keypad-btn").forEach((button) => {
-    button.addEventListener("click", function () {
-      if (!selectedInput) {
-        alert("Please select a cell first!");
-        return;
-      }
-
-      const value = this.getAttribute("data-value");
-      if (value === "0") {
-        // Clear the cell
-        selectedInput.value = "";
-        const row = selectedInput.dataset.row;
-        const col = selectedInput.dataset.col;
-        currentPuzzle[row][col] = 0;
-      } else if (/^[1-9]$/.test(value)) {
-        // Set the value in the selected cell
-        selectedInput.value = value;
-        const row = selectedInput.dataset.row;
-        const col = selectedInput.dataset.col;
-        currentPuzzle[row][col] = parseInt(value);
-      }
+    // Add keyboard navigation
+    inputs.forEach((input, index) => {
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowUp" && index >= 9) inputs[index - 9].focus();
+        else if (e.key === "ArrowDown" && index < 72) inputs[index + 9].focus();
+        else if (e.key === "ArrowLeft" && index % 9 !== 0) inputs[index - 1].focus();
+        else if (e.key === "ArrowRight" && (index + 1) % 9 !== 0) inputs[index + 1].focus();
+      });
     });
-  });
-
-  // Button Event Listeners
-  document.getElementById("new-game").addEventListener("click", () => {
-    resetTimer();
-    startTimer();
-    initialPuzzle = generateSudoku(selectedDifficulty);
-    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-    renderPuzzle(currentPuzzle);
-  });
-
-  document.getElementById("reset").addEventListener("click", () => {
-    resetTimer();
-    startTimer();
-    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-    renderPuzzle(currentPuzzle);
-  });
-
-  document.getElementById("check-solution").addEventListener("click", () => {
-    clearInterval(timerInterval); // Stop the timer
-    if (isValidSudoku(currentPuzzle)) {
-      alert("Congratulations! The solution is correct!");
-    } else {
-      alert("The solution is incorrect. Keep trying!");
-      startTimer(); // Resume timer if incorrect
-    }
-  });
+  }
 
   // Validate the Sudoku Board
   function isValidSudoku(board) {
-    function isUnique(array) {
+    function isUnique(array, highlightCells = []) {
       const nums = array.filter(num => num !== 0);
-      return nums.length === new Set(nums).size;
+      const uniqueNums = new Set(nums);
+      if (nums.length !== uniqueNums.size) {
+        // Highlight invalid cells
+        highlightCells.forEach(cell => cell.classList.add("error"));
+        return false;
+      }
+      return true;
     }
 
+    // Clear previous errors
+    document.querySelectorAll(".cell").forEach(cell => cell.classList.remove("error"));
+
     for (let i = 0; i < 9; i++) {
-      if (!isUnique(board[i])) return false; // Check rows
-      if (!isUnique(board.map(row => row[i]))) return false; // Check columns
+      const rowCells = grid.querySelectorAll(`input[data-row="${i}"]`);
+      const colCells = grid.querySelectorAll(`input[data-col="${i}"]`);
+      const rowValues = Array.from(rowCells).map(cell => parseInt(cell.value) || 0);
+      const colValues = Array.from(colCells).map(cell => parseInt(cell.value) || 0);
+
+      if (!isUnique(rowValues, Array.from(rowCells))) return false; // Check rows
+      if (!isUnique(colValues, Array.from(colCells))) return false; // Check columns
     }
 
     for (let i = 0; i < 9; i += 3) {
       for (let j = 0; j < 9; j += 3) {
-        const grid = [];
+        const subgridCells = [];
         for (let x = 0; x < 3; x++) {
           for (let y = 0; y < 3; y++) {
-            grid.push(board[i + x][j + y]);
+            subgridCells.push(grid.querySelector(`input[data-row="${i + x}"][data-col="${j + y}"]`));
           }
         }
-        if (!isUnique(grid)) return false;
+        const subgridValues = subgridCells.map(cell => parseInt(cell.value) || 0);
+        if (!isUnique(subgridValues, subgridCells)) return false;
       }
     }
 
