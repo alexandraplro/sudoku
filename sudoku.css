@@ -19,16 +19,6 @@ h1 {
   font-weight: bold;
 }
 
-/* General Styling */
-body {
-  font-family: Avenir, sans-serif;
-  font-size: 24px;
-  text-align: center;
-  background-color: var(--background-light);
-  margin: 0;
-  padding: 20px;
-  color: black;
-}
 
 .bg-white {
   background-color: white !important;
@@ -45,6 +35,25 @@ body {
 .levels-btn:hover {
   background-color: darkgray;
   color: white;
+}
+
+.bg-mistyrose {
+  background-color: mistyrose !important;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* General Styling */
+body {
+  font-family: Avenir, sans-serif;
+  font-size: 24px;
+  text-align: center;
+  background-color: var(--background-light);
+  margin: 0;
+  padding: 20px;
+  color: black;
 }
 
 h1 {
