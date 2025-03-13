@@ -9,6 +9,8 @@
   --keypad-bg: #f7f7f7; /* Subtle background for the keypad */
   --subgrid-color-1: lavender;
   --subgrid-color-2: aliceblue;
+  --panel-title-color: darkred;
+  --panel-paragraph-color: black;
 }
 
 .bg-antiquewhite {
@@ -18,7 +20,6 @@ h1 {
   font-size: 1.8rem;
   font-weight: bold;
 }
-
 
 .bg-white {
   background-color: white !important;
@@ -45,6 +46,15 @@ h1 {
   display: block; /* Show dropdown on hover */
 }
 
+.left-panel h2 {
+  color: var(--panel-title-color); /* Define a variable or replace with a specific color */
+}
+
+/* Left panel paragraph (p) color */
+.left-panel p {
+  color: var(--panel-paragraph-color); /* Define a variable or replace with a specific color */
+}
+
 /* General Styling */
 body {
   font-family: Avenir, sans-serif;
@@ -57,7 +67,7 @@ body {
 }
 
 h1 {
-  font-family: Papyrus, fantasy;
+  font-family: "Papyrus", fantasy, Arial, sans-serif;
   color: var(--background-dark);
   font-weight: bold;
 }
@@ -214,7 +224,7 @@ h1 {
 
 /* Keypad Buttons */
 .keypad button {
-  background-color: plum;
+  background-color: var(--keypad-bg); /* Or define --keypad-button-color */
   color: white;
   border: none;
   padding: 15px;
@@ -235,6 +245,11 @@ h1 {
 }
 
 /* Buttons */
+.button-custom {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
 button, .dropdown-button {
   padding: 5px 10px;
   background-color: var(--primary-color);
@@ -251,6 +266,17 @@ button, .dropdown-button {
 button:hover, .dropdown-button:hover {
   background-color: var(--highlight-color);
   color: white;
+}
+
+/* Custom styles for dropdown button using both .button-custom and .dropdown-toggle */
+.button-custom.dropdown-toggle {
+  background-color: var(--primary-color) !important;
+  color: var(--secondary-color) !important;
+}
+
+.button-custom:focus {
+  outline: 2px solid var(--highlight-color);
+  box-shadow: 0 0 5px var(--highlight-color);
 }
 
 .error {
