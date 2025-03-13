@@ -137,6 +137,22 @@ h1 {
   box-sizing: border-box; /* Ensure margins and paddings are accounted */
 }
 
+.top-border {
+  border-top: 3px solid black;
+}
+
+.bottom-border {
+  border-bottom: 3px solid black;
+}
+
+.left-border {
+  border-left: 3px solid black;
+}
+
+.right-border {
+  border-right: 3px solid black;
+}
+
 .cell input:focus {
   outline: 2px solid blue;
 }
@@ -193,6 +209,11 @@ button, .dropdown-button {
 button:hover, .dropdown-button:hover {
   background-color: var(--highlight-color);
   color: white;
+}
+
+.error {
+  background-color: lightpink;
+  border-color: red;
 }
 
 /* Footer */
