@@ -11,6 +11,14 @@
   --subgrid-color-2: aliceblue;
 }
 
+.bg-antiquewhite {
+  background-color: antiquewhite !important;
+}
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
 /* General Styling */
 body {
   font-family: Avenir, sans-serif;
