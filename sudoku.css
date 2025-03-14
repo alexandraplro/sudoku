@@ -66,6 +66,13 @@ header h1 {
   margin: 20px; /* Reset margin, if needed */
 }
 
+.modal-content {
+  background-color: antiquewhite;
+  color: darkslategray;
+  border: 2px solid teal;
+  
+}
+
 .container {
   display: flex; /* Flexbox to align items horizontally */
   justify-content: space-between; /* Moves nav to the right */
