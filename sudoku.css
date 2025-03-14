@@ -27,7 +27,10 @@ header {
   background-color: mistyrose; /* Change this to your desired color */
   color: black; /* Optional: Ensure the text contrasts with the background */
   border-radius: 15px; /* Adjust this value to control how round the edges appear */
-  overflow: hidden; 
+  overflow: hidden;
+  margin: 0; /* Removes any external margins */
+  padding: 0; /* Removes internal padding */
+  width: 100%; /* Ensures full width across the page */
 }
 
 header .nav {
@@ -54,7 +57,10 @@ header .nav-item a:hover {
 
 header .container {
   justify-content: space-between; /* Space out title and navigation menu */
+  max-width: 100%; /* Makes the container span the full width */
+  padding: 0; /* Removes internal spacing inside the container */
 }
+
 
 header h1 {
   margin: 20px; /* Reset margin, if needed */
@@ -142,6 +148,11 @@ h1 {
 /* Left panel paragraph (p) color */
 .left-panel p {
   color: var(--panel-paragraph-color); /* Define a variable or replace with a specific color */
+}
+
+footer .container {
+  max-width: 100%; /* Makes the container span the full width */
+  padding: 0; /* Removes internal spacing inside the container */
 }
 
 /* General Styling */
@@ -437,11 +448,12 @@ footer {
   background-color: var(--background-light);
   color: black;
   font-family: Optima, sans-serif;
-  padding: 20px;
   border-radius: 5px;
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
+  margin: 0; /* Removes any external margins */
+  padding: 0; /* Removes internal padding */
 }
 
 /* Responsive Design */
