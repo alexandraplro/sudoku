@@ -134,13 +134,14 @@ h1 {
   visibility: visible; /* Ensures it's interactive */
 }
 
-
+.dropdown:hover .dropdown-menu,
 .dropdown.show .dropdown-menu {
-    display: block; /* Bootstrap toggles this class on click */
-}
-
-.dropdown:hover .dropdown-toggle {
-    background-color: #f8f9fa; /* Optional: Change button background color on hover */
+  background-color: #f8f9fa;
+  display: block; /* Ensure it's visible */
+  position: absolute; /* Ensure it's absolutely positioned */
+  top: 100%; /* Align just below the button */
+  left: 0; /* Align with the left edge of the button */
+  margin: 0; /* Remove margin differences */
 }
 
 .dropdown:focus-within .dropdown-menu {
@@ -444,7 +445,7 @@ button:hover, .dropdown-button:hover {
 }
 
 .levels-btn {
-  margin-top: 20px; /* Adds space below the LEVEL button */
+  margin-top: 30px; /* Adds space below the LEVEL button */
   
 }
 
