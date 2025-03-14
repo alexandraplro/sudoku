@@ -295,7 +295,7 @@ h1 {
   color: black;
   max-width: 400px; /* Adjust as per your layout */
   height: 400px; /* Maintain aspect ratio */
-  margin-top: 50px;
+  margin-top: 60px;
   align-items: center; /* Centers items horizontally */
   justify-content: center; /
 }
