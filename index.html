@@ -48,8 +48,29 @@
       <div id="sudoku-grid" class="sudoku-grid">
         <!-- Sudoku grid dynamically populated by JavaScript -->
       </div>
-      <!-- Buttons for Levels and Actions -->
-      <div class="grid-buttons d-flex flex-column align-items-center gap-2 mt-3">
+      <!-- Keypad -->
+      <div class="number-keypad mt-4">
+            <button class="button-custom keypad-btn" data-value="1">1</button>
+            <button class="button-custom keypad-btn" data-value="2">2</button>
+            <button class="button-custom keypad-btn" data-value="3">3</button>
+            <button class="button-custom keypad-btn" data-value="4">4</button>
+            <button class="button-custom keypad-btn" data-value="5">5</button>
+            <button class="button-custom keypad-btn" data-value="6">6</button>
+            <button class="button-custom keypad-btn" data-value="7">7</button>
+            <button class="button-custom keypad-btn" data-value="8">8</button>
+            <button class="button-custom keypad-btn" data-value="9">9</button>
+            <button class="button-custom keypad-btn" data-value="0">Clear</button>
+      </div>
+    </div>
+    
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="p-3 custom-panel rounded">
+        <h2>TIMER</h2>
+        <div class="timer-container">
+          <p id="timer" class="display-5">00:00:00</p>
+        </div>
+        <div class="grid-buttons d-flex flex-column align-items-center gap-2 mt-3">
         <div class="dropdown">
           <button class="btn dropdown-toggle button-custom levels-btn" type="button" data-bs-toggle="dropdown" aria-expandedl="false">
           LEVEL
@@ -61,7 +82,6 @@
           </ul>
         </div>
       </div>
-
         <!-- New container for Reset and New Game buttons -->
         <div class="horizontal-buttons d-flex justify-content-center gap-2">
           <button id="new-game" class="button-custom">NEW GAME</button>
@@ -69,31 +89,8 @@
         </div>
           <button id="check-solution" class="button-custom">CHECK SOLUTION</button>
       </div>
-
-
-    <!-- Right Panel -->
-    <div class="right-panel">
-      <div class="p-3 custom-panel rounded">
-        <h2>TIMER</h2>
-        <div class="timer-container">
-          <p id="timer" class="display-5">00:00:00</p>
-        </div>
-        <div class="number-keypad mt-4">
-            <button class="button-custom keypad-btn" data-value="1">1</button>
-            <button class="button-custom keypad-btn" data-value="2">2</button>
-            <button class="button-custom keypad-btn" data-value="3">3</button>
-            <button class="button-custom keypad-btn" data-value="4">4</button>
-            <button class="button-custom keypad-btn" data-value="5">5</button>
-            <button class="button-custom keypad-btn" data-value="6">6</button>
-            <button class="button-custom keypad-btn" data-value="7">7</button>
-            <button class="button-custom keypad-btn" data-value="8">8</button>
-            <button class="button-custom keypad-btn" data-value="9">9</button>
-            <button class="button-custom keypad-btn" data-value="0">Clear</button>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
 </body>
 
   <!-- Footer -->
