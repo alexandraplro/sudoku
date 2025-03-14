@@ -334,7 +334,7 @@ h1 {
 /* Keypad Buttons */
 .keypad button {
   background-color: var(--keypad-bg); /* Or define --keypad-button-color */
-  color: white;
+  color: ;
   border: none;
   padding: 15px;
   font-size: 18px;
