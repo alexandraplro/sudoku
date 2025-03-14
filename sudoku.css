@@ -243,8 +243,8 @@ h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 60%;
-  max-width: 220px;
+  width: 40%;
+  max-width: 200px;
   height: auto;
   aspect-ratio: 1; /* Ensures a perfect square */
   background-color: linen;
