@@ -13,6 +13,16 @@
   --panel-paragraph-color: black;
 }
 
+input {
+    all: unset; /* Resets all browser styles */
+    width: 100%; /* Matches cell width */
+    height: 100%; /* Matches cell height */
+    text-align: center;
+    font-size: inherit;
+    line-height: inherit;
+    box-sizing: border-box;
+}
+
 .bg-antiquewhite {
   background-color: antiquewhite !important;
 }
@@ -166,11 +176,11 @@ h1 {
 .sudoku-grid {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  gap: 1px;
+  gap: 0px;
   max-width: 100%;
   margin: 20px auto;
-  background-color: snow;
-  padding: 5px;
+  background-color: white;
+  padding: 0px;
   border: 2px solid black;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -180,7 +190,8 @@ h1 {
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(9, 1fr); /* Ensure 9x9 grid layout */
-  gap: 1px; /* Space between cells */
+  gap: 0px; /* Space between cells */
+  border: 2px lightslategray; 
 }
 
 /* Subgrid Styling */
@@ -195,11 +206,25 @@ h1 {
   width: 40px;
   height: 40px;
   text-align: center;
-  border: 1px solid lightblue;
+  box-shadow: inset 0 0 0 1px lightblue; /* Adds a consistent light blue border */
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box; /* Ensure margins and paddings are accounted */
+}
+
+.cell input {
+    width: 100%; /* Ensures the input fills the cell */
+    height: 100%; /* Matches the height of the cell */
+    border: none; /* Removes input borders */
+    background-color: transparent; /* Transparent background to match grid */
+    text-align: center; /* Aligns numbers */
+    box-sizing: border-box; /* Ensures padding doesn’t affect size */
+    font-size: inherit; /* Matches parent font size */
+    outline: none; /* Removes focus outline */
+    padding: 0; /* Eliminates extra padding */
+    margin: 0; /* Prevents unintended spacing */
 }
 
 .top-border {
@@ -223,8 +248,8 @@ h1 {
 }
 
 .empty-cell {
-    background-color: transparent;
-    border: 1px transparent;
+    background-color: white;
+    border: 1px solid transparent;
 }
 
 /* Keypad Container */
