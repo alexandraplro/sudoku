@@ -250,6 +250,7 @@ h1 {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%; /* Ensures full width on small screens */
+  gap: 20px;
 }
 
 /* Sudoku Grid */
@@ -265,6 +266,7 @@ h1 {
   max-width: 400px; /* Adjust as per your layout */
   height: 400px; /* Maintain aspect ratio */
   margin: 0 auto; 
+  margin-top: 30px;
   padding-top: 40px;
   padding-bottom: 40px;
 }
@@ -419,7 +421,7 @@ button:hover, .dropdown-button:hover {
 }
 
 .levels-btn {
-  /* Remove or refine properties that may override button-custom styles */
+  margin-bottom: 20px; /* Adds space below the LEVEL button */
 }
 
 .error {
