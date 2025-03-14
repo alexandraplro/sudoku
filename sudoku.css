@@ -69,21 +69,35 @@ header h1 {
 }
 
 .modal-content {
-  border: 2px solid #e76f51; /* Warm terra-cotta border */
+  border: 2px solid peachpuff; /* Warm terra-cotta border */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   background-color: antiquewhite; /* Matches page theme */
   color: #333; /* Dark text for readability */
+  font: 'Avenir', sans-serif;
 }
 
 .modal-header {
-  background-color: #e76f51; /* Terra-cotta header */
-  color: #fff; /* White text for contrast */
+  background-color: seashell; /* Terra-cotta header */
+  color: dimgray; /* White text for contrast */
 }
 
 .modal-footer {
-  border-top: 2px solid #e76f51; /* Footer border to tie theme together */
+  border-top: 2px solid seashell; /* Footer border to tie theme together */
   background-color: mistyrose; /* Soft footer background */
+}
+
+.custom-close-btn {
+  background: darkslategray; /* Remove background */
+  border: none; /* Remove border */
+  font-size: 20px; /* Adjust size */
+  color: snow; /* Terra-cotta color for your theme */
+  cursor: pointer;
+}
+
+.custom-close-btn:hover {
+  color: slategray; /* Slightly darker on hover */
+  transform: scale(1.1); /* Subtle hover effect */
 }
 
 .container {
