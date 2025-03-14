@@ -26,6 +26,8 @@ input {
 header {
   background-color: mistyrose; /* Change this to your desired color */
   color: black; /* Optional: Ensure the text contrasts with the background */
+  border-radius: 15px; /* Adjust this value to control how round the edges appear */
+  overflow: hidden; 
 }
 
 header .nav {
@@ -93,13 +95,20 @@ h1 {
   background-color: mistyrose !important;
 }
 
+
+.grid-buttons {
+  margin-top: 20px; /* Add extra spacing, if needed, between sections */
+}
+
 .dropdown-menu {
     position: absolute;
     z-index: 1050;
     display: none;
     top: 100%;          /* Position directly below the button */
     left: 0;            /* Aligns menu with the button's left edge */
-    margin-top: 0.5rem;
+    margin-top: 0;
+    background-color: lavenderblush; 
+    color: darkgray;
 }
 
 .dropdown.show .dropdown-menu {
@@ -310,6 +319,7 @@ h1 {
   gap: 10px;
   background-color: var(--keypad-bg);
   padding: 20px;
+  padding-top: 10px;
   border-radius: 10px;
   max-width: 300px;
   margin: 20px auto;
@@ -388,6 +398,7 @@ footer {
   font-family: Optima, sans-serif;
   padding: 20px;
   border-radius: 5px;
+  overflow: hidden;
   width: 100%;
   box-sizing: border-box;
 }
