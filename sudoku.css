@@ -79,6 +79,10 @@ header h1 {
   padding: 20px; /* Keep the inner content spaced properly */
 }
 
+.left-panel h2 {
+  margin-bottom: 20px; /* Adds internal spacing in the container */
+}
+
 .bg-antiquewhite {
   background-color: antiquewhite !important;
 }
@@ -252,6 +256,7 @@ h1 {
   border-radius: 10%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 #timer {
@@ -287,7 +292,7 @@ h1 {
   grid-template-rows: repeat(9, 1fr);   /* 9 rows of equal height */
   margin-top: 20px; /* Add some space between grid and buttons */
   margin-bottom: 20px;
-  border: 2px lightslategray; 
+  border: 2px solid black; 
   font-size: 14;
   color: black;
   max-width: 400px; /* Adjust as per your layout */
