@@ -152,8 +152,8 @@ h1 {
 }
 
 .dropdown-item:hover {
-  background-color: lightcoral;
-  color: white;
+  background-color: salmon;
+  color: papayawhip;
 }
 
 .left-panel h2 {
@@ -296,6 +296,8 @@ h1 {
   max-width: 400px; /* Adjust as per your layout */
   height: 400px; /* Maintain aspect ratio */
   margin-top: 50px;
+  align-items: center; /* Centers items horizontally */
+  justify-content: center; /
 }
 
 .cell {
