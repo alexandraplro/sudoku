@@ -23,6 +23,34 @@ input {
     box-sizing: border-box;
 }
 
+header .nav {
+  list-style: none; /* Removes bullet points */
+  display: flex; /* Aligns list items inline */
+  gap: 15px; /* Adds spacing between links */
+  margin: 0; /* Removes default margins */
+  padding: 0; /* Removes default padding */
+}
+
+header .nav-item a {
+  color: black; /* Sets text color */
+  text-decoration: none; /* Removes underline */
+  font-weight: bold; /* Optional: Makes text bold */
+  padding: 5px 10px; /* Adds padding for spacing */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+header .nav-item a:hover {
+  background-color: lightcoral; /* Optional: Highlight link on hover */
+  color: white; /* Optional: Changes text color on hover */
+  border-radius: 5px; /* Optional: Makes hover effect rounded */
+}
+
+.container {
+  display: flex; /* Flexbox to align items horizontally */
+  justify-content: space-between; /* Moves nav to the right */
+  align-items: center; /* Vertically centers header content */
+}
+
 .bg-antiquewhite {
   background-color: antiquewhite !important;
 }
@@ -125,6 +153,7 @@ h1 {
   padding: 10px;
   background-color: white;
   border-radius: 5px;
+  line-height: 1.5;
   text-align: center;
   min-width: 200px; /* Prevent them from becoming too small */
   max-width: 400px; /* Prevent them from being too wide */
@@ -335,6 +364,8 @@ footer {
   font-family: Optima, sans-serif;
   padding: 20px;
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Responsive Design */
