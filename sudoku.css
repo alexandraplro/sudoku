@@ -76,7 +76,6 @@ header h1 {
   background-color: white; /* Use a custom light color */
   border: none;
   border-radius: 10px; /* Add rounded corners if needed */
-  padding: 20px; /* Keep the inner content spaced properly */
 }
 
 .left-panel h2 {
@@ -207,7 +206,7 @@ h1 {
   align-items: flex-start;
   gap: 20px;
   background-color: white;
-  padding: 20px;
+  padding: 0;
   border-radius: 10px;
   flex-wrap: nowrap; /* Ensure it wraps on smaller screens */
   width: 100%;
