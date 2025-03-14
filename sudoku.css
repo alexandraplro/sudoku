@@ -186,13 +186,16 @@ h1 {
 }
 
 #sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr); /* 9 columns of equal width */
+  grid-template-rows: repeat(9, 1fr);   /* 9 rows of equal height */
+  gap: 0; 
   margin-top: 20px; /* Add some space between grid and buttons */
   margin-bottom: 20px;
-  display: grid;
-  grid-template-columns: repeat(9, 1fr); /* Ensure 9x9 grid layout */
-  gap: 0px; /* Space between cells */
   border: 2px lightslategray; 
   font-size: 0;
+  width: 100%; /* Adjust as per your layout */
+  height: auto; /* Maintain aspect ratio */
 }
 
 /* Subgrid Styling */
@@ -204,11 +207,15 @@ h1 {
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
+  display: flex;
+  width: 100px;
+  height: 0px;
+  padding-bottom: 100%; /* Makes cells perfectly square */
   text-align: center;
+  box-sizing: border-box; /* Includes padding and border in size calculations */
+  border: none; 
   box-shadow: inset 0 0 0 1px lightblue; /* Adds a consistent light blue border */
-  border: none;
+  border: 1px lightblue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,7 +229,7 @@ h1 {
     background-color: transparent; /* Transparent background to match grid */
     text-align: center; /* Aligns numbers */
     box-sizing: border-box; /* Ensures padding doesn’t affect size */
-    font-size: inherit; /* Matches parent font size */
+    font-size: 1.5rem; /* Matches parent font size */
     outline: none; /* Removes focus outline */
     padding: 0; /* Eliminates extra padding */
     margin: 0; /* Prevents unintended spacing */
