@@ -80,6 +80,7 @@ header h1 {
 .modal-header {
   background-color: seashell; /* Terra-cotta header */
   color: dimgray; /* White text for contrast */
+  font-size: 20px;
 }
 
 .modal-footer {
