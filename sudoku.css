@@ -294,8 +294,7 @@ h1 {
   color: black;
   max-width: 400px; /* Adjust as per your layout */
   height: 400px; /* Maintain aspect ratio */
-  margin: 0 auto; 
-  margin-top: 40px;
+  margin-top: 50px;
   margin: 20px auto;
 }
 
@@ -467,7 +466,7 @@ button:hover, .dropdown-button:hover {
 /* Footer */
 footer {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
   background-color: var(--background-light);
   color: black;
