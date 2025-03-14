@@ -112,7 +112,6 @@ h1 {
   background-color: mistyrose !important;
 }
 
-
 .grid-buttons {
   margin-top: 20px; /* Add extra spacing, if needed, between sections */
 }
@@ -228,7 +227,7 @@ h1 {
   min-width: 250px; /* Prevent them from becoming too small */
   max-width: 400px; /* Prevent them from being too wide */
   padding: 10px;
-  margin: 0;
+  margin: 10;
 }
 
 .left-panel {
@@ -290,7 +289,6 @@ h1 {
   flex: 1 1 400px; /* Allow grid to resize within limits */
   grid-template-columns: repeat(9, 1fr); /* 9 columns of equal width */
   grid-template-rows: repeat(9, 1fr);   /* 9 rows of equal height */
-  margin-top: 20px; /* Add some space between grid and buttons */
   margin-bottom: 20px;
   border: 1px solid black; 
   font-size: 14;
@@ -299,8 +297,7 @@ h1 {
   height: 400px; /* Maintain aspect ratio */
   margin: 0 auto; 
   margin-top: 30px;
-  padding-top: 40px;
-  padding-bottom: 20px;
+  margin: 20px auto;
 }
 
 .cell {
