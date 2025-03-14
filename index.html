@@ -19,12 +19,29 @@
     <h1 class="mb-0">Sudoku Challenge</h1>
     <nav>
       <ul class="nav justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link">Sudoku's History</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#sudokuHistoryModal">Sudoku's History</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Contact Us</a></li>
       </ul>
     </nav>
   </div>
 </header>
+
+<div class="modal fade" id="sudokuHistoryModal" tabindex="-1" aria-labelledby="sudokuHistoryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sudokuHistoryLabel">Sudoku History</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Sudoku originated in the 18th century, evolving into the modern logic puzzle we know today. It became widely popular through Japanese publications in the late 20th century and remains a favorite mental challenge worldwide.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <body class="bg-white">
   <div class="game-layout">
