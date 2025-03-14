@@ -331,6 +331,7 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Keypad Buttons */
 .keypad button {
   background-color: var(--keypad-bg); /* Or define --keypad-button-color */
