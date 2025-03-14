@@ -259,6 +259,7 @@ h1 {
   height: 400px; /* Maintain aspect ratio */
   margin: 0 auto; 
   padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .cell {
