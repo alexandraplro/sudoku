@@ -296,7 +296,6 @@ h1 {
   max-width: 400px; /* Adjust as per your layout */
   height: 400px; /* Maintain aspect ratio */
   margin-top: 50px;
-  margin: 20px auto;
 }
 
 .cell {
@@ -476,7 +475,6 @@ footer {
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
-  margin: 0; /* Removes any external margins */
   padding: 0; /* Removes internal padding */
 }
 
