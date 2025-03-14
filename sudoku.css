@@ -292,7 +292,7 @@ h1 {
   margin: 0 auto; 
   margin-top: 30px;
   padding-top: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 .cell {
@@ -327,19 +327,19 @@ h1 {
 }
 
 .top-border {
-  border-top: 1px midnightblue;
+  border-top: 1px solid black;
 }
 
 .bottom-border {
-  border-bottom: 1px 	midnightblue;
+  border-bottom: 1px solid black;
 }
 
 .left-border {
-  border-left: 3px solid black;
+  border-left: 1px solid black;
 }
 
 .right-border {
-  border-right: 3px solid black;
+  border-right: 1px solid black;
 }
 
 .cell input:focus {
@@ -445,7 +445,7 @@ button:hover, .dropdown-button:hover {
 }
 
 .levels-btn {
-  margin-top: 30px; /* Adds space below the LEVEL button */
+  margin-top: 50px; /* Adds space below the LEVEL button */
   
 }
 
