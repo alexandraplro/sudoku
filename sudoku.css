@@ -80,9 +80,13 @@ h1 {
   background-color: mistyrose !important;
 }
 
+.dropdown-menu {
+    position: absolute;
+    z-index: 1050;
+}
+
 .dropdown:hover .dropdown-menu {
-    display: block; /* Show the menu when hovering */
-    position: absolute; /* Keep proper positioning */
+    display: none; /* Rely on Bootstrap's default click behavior */
 }
 
 .dropdown:hover .dropdown-toggle {
