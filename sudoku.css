@@ -443,7 +443,8 @@ button:hover, .dropdown-button:hover {
 }
 
 .levels-btn {
-  margin-bottom: 20px; /* Adds space below the LEVEL button */
+  margin-top: 20px; /* Adds space below the LEVEL button */
+  
 }
 
 .error {
