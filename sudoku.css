@@ -23,6 +23,11 @@ input {
     box-sizing: border-box;
 }
 
+header {
+  background-color: mistyrose; /* Change this to your desired color */
+  color: black; /* Optional: Ensure the text contrasts with the background */
+}
+
 header .nav {
   list-style: none; /* Removes bullet points */
   display: flex; /* Aligns list items inline */
@@ -43,6 +48,14 @@ header .nav-item a:hover {
   background-color: lightcoral; /* Optional: Highlight link on hover */
   color: white; /* Optional: Changes text color on hover */
   border-radius: 5px; /* Optional: Makes hover effect rounded */
+}
+
+header .container {
+  justify-content: space-between; /* Space out title and navigation menu */
+}
+
+header h1 {
+  margin: 20px; /* Reset margin, if needed */
 }
 
 .container {
@@ -83,10 +96,14 @@ h1 {
 .dropdown-menu {
     position: absolute;
     z-index: 1050;
+    display: none;
+}
+
+.dropdown.show .dropdown-menu {
+    display: block; /* Bootstrap toggles this class on click */
 }
 
 .dropdown:hover .dropdown-menu {
-    display: none; /* Rely on Bootstrap's default click behavior */
 }
 
 .dropdown:hover .dropdown-toggle {
@@ -218,7 +235,7 @@ h1 {
   flex: 1 1 400px; /* Allow grid to resize within limits */
   grid-template-columns: repeat(9, 1fr); /* 9 columns of equal width */
   grid-template-rows: repeat(9, 1fr);   /* 9 rows of equal height */
-  margin-top: 20px; /* Add some space between grid and buttons */
+  margin-top: 40px; /* Add some space between grid and buttons */
   margin-bottom: 20px;
   border: 2px lightslategray; 
   font-size: 0;
