@@ -115,15 +115,17 @@ h1 {
     display: block; /* Bootstrap toggles this class on click */
 }
 
-.dropdown:hover .dropdown-menu {
-}
-
 .dropdown:hover .dropdown-toggle {
     background-color: #f8f9fa; /* Optional: Change button background color on hover */
 }
 
 .dropdown:focus-within .dropdown-menu {
     display: block;
+}
+
+.dropdown-item:hover {
+  background-color: lightcoral;
+  color: white;
 }
 
 .left-panel h2 {
