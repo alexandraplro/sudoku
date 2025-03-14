@@ -406,6 +406,12 @@ h1 {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.horizontal-buttons {
+  display: flex;
+  justify-content: center; /* Centers the buttons horizontally */
+  gap: 10px; /* Adds spacing between buttons */
+}
+
 .button-custom:hover {
   background-color: var(--highlight-color);
   color: white;
