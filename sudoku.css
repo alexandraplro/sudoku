@@ -67,10 +67,21 @@ header h1 {
 }
 
 .modal-content {
-  background-color: antiquewhite;
-  color: darkslategray;
-  border: 2px solid teal;
-  
+  border: 2px solid #e76f51; /* Warm terra-cotta border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  background-color: antiquewhite; /* Matches page theme */
+  color: #333; /* Dark text for readability */
+}
+
+.modal-header {
+  background-color: #e76f51; /* Terra-cotta header */
+  color: #fff; /* White text for contrast */
+}
+
+.modal-footer {
+  border-top: 2px solid #e76f51; /* Footer border to tie theme together */
+  background-color: mistyrose; /* Soft footer background */
 }
 
 .container {
