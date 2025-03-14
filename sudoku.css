@@ -76,6 +76,7 @@ header h1 {
   background-color: white; /* Use a custom light color */
   border: none;
   border-radius: 10px; /* Add rounded corners if needed */
+  margin-top: 30px;
 }
 
 .left-panel h2 {
