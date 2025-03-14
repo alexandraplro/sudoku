@@ -327,20 +327,24 @@ h1 {
   padding-top: 10px;
   border-radius: 10px;
   max-width: 300px;
-  margin: 20px auto;
+  margin:auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 
 /* Keypad Buttons */
 .keypad button {
   background-color: var(--keypad-bg); /* Or define --keypad-button-color */
-  color: ;
+  color: var(--secondary-color);
   border: none;
   padding: 15px;
   font-size: 18px;
+  font-family: Arial, sans-serif;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  aspect-ratio: 1 / 1; /* Ensures buttons are square */
+  width: 100%; /* Adjust width to fit grid cells */
+  height: auto; /* Height will automatically match width due to aspect-ratio */
   transition: transform 0.2s, background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -349,6 +353,7 @@ h1 {
   color: white;
   transform: scale(1.05); /* Adds a slight zoom effect */
 }
+
 
 .keypad button:active {
   transform: scale(0.95); /* Provides feedback on click */
