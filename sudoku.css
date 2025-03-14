@@ -352,6 +352,18 @@ h1 {
 .button-custom {
   background-color: var(--primary-color);
   color: var(--secondary-color);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: Monaco, monospace;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button-custom:hover {
+  background-color: var(--highlight-color);
+  color: white;
 }
 
 button, .dropdown-button {
@@ -381,6 +393,10 @@ button:hover, .dropdown-button:hover {
 .button-custom:focus {
   outline: 2px solid var(--highlight-color);
   box-shadow: 0 0 5px var(--highlight-color);
+}
+
+.levels-btn {
+  /* Remove or refine properties that may override button-custom styles */
 }
 
 .error {
