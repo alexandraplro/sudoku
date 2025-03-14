@@ -406,6 +406,10 @@ button:hover, .dropdown-button:hover {
   box-shadow: 0 0 5px var(--highlight-color);
 }
 
+.keypad-btn[data-value="0"] {
+  grid-column: span 3; /* Makes the "Clear" button span all 3 columns */
+}
+
 .levels-btn {
   /* Remove or refine properties that may override button-custom styles */
 }
