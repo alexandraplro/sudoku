@@ -18,7 +18,7 @@ input {
     width: 100%; /* Matches cell width */
     height: 100%; /* Matches cell height */
     text-align: center;
-    font-size: inherit;
+    font-size: 12px;
     line-height: inherit;
     box-sizing: border-box;
 }
@@ -192,6 +192,7 @@ h1 {
   grid-template-columns: repeat(9, 1fr); /* Ensure 9x9 grid layout */
   gap: 0px; /* Space between cells */
   border: 2px lightslategray; 
+  font-size: 0;
 }
 
 /* Subgrid Styling */
@@ -199,7 +200,7 @@ h1 {
   margin: 5px; /* Adjust as needed for spacing */
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Ensures 3 cells per row in subgrid */
-  grid-gap: 1px; /* Optional: Adds slight spacing between cells */
+  grid-gap: 0px; /* Optional: Adds slight spacing between cells */
 }
 
 .cell {
