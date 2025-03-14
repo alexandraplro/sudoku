@@ -67,8 +67,8 @@ header h1 {
 }
 
 .custom-panel {
-  background-color: var(--background-light); /* Use a custom light color */
-  border: 2px solid var(--primary-color); /* Define a specific border color */
+  background-color: white; /* Use a custom light color */
+  border: none;
   border-radius: 10px; /* Add rounded corners if needed */
   padding: 20px; /* Keep the inner content spaced properly */
 }
@@ -232,7 +232,7 @@ h1 {
 
 #timer {
   font-family: 'Lucida Console', monospace;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
   color: maroon;
   text-align: center;
