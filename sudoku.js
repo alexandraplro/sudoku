@@ -78,12 +78,12 @@ document.addEventListener("DOMContentLoaded", function () {
       row.forEach((value, colIndex) => {
         const cell = document.createElement("div");
         cell.classList.add("cell");
-        
+
     // Determine subgrid colors
     const subgridRow = Math.floor(rowIndex / 3);
     const subgridCol = Math.floor(colIndex / 3);
     const isSubgridEven = (subgridRow + subgridCol) % 2 === 0;
-    cell.style.backgroundColor = isSubgridEven ? 'aliceblue' : 'snow';
+    cell.style.backgroundColor = isSubgridEven ? "var(--subgrid-color-1)" : "var(--subgrid-color-2)";
 
     // Add subgrid-specific classes for borders
     if (rowIndex % 3 === 0) cell.classList.add("top-border");
