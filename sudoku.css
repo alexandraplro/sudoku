@@ -25,7 +25,7 @@ input {
 
 header {
   background-color: mistyrose; /* Change this to your desired color */
-  color: black; /* Optional: Ensure the text contrasts with the background */
+  color: cadetblue; /* Optional: Ensure the text contrasts with the background */
   border-radius: 15px; /* Adjust this value to control how round the edges appear */
   overflow: hidden;
   margin: 0; /* Removes any external margins */
@@ -39,10 +39,12 @@ header .nav {
   gap: 15px; /* Adds spacing between links */
   margin: 0; /* Removes default margins */
   padding: 0; /* Removes default padding */
+  font: 'Avenir', sans-serif;
+  color: darkslategray;
 }
 
 header .nav-item a {
-  color: black; /* Sets text color */
+  color: darkslategray; /* Sets text color */
   text-decoration: none; /* Removes underline */
   font-weight: bold; /* Optional: Makes text bold */
   padding: 5px 10px; /* Adds padding for spacing */
@@ -313,7 +315,7 @@ h1 {
   color: black;
   max-width: 400px; /* Adjust as per your layout */
   height: 400px; /* Maintain aspect ratio */
-  margin-top: 60px;
+  margin-top: 80px;
   align-items: center; /* Centers items horizontally */
   justify-content: center; /
 }
