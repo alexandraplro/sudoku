@@ -97,6 +97,9 @@ h1 {
     position: absolute;
     z-index: 1050;
     display: none;
+    top: 100%;          /* Position directly below the button */
+    left: 0;            /* Aligns menu with the button's left edge */
+    margin-top: 0.5rem;
 }
 
 .dropdown.show .dropdown-menu {
