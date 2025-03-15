@@ -135,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   console.log("Sudoku grid rendered successfully!");
+  console.log("Inputs for empty cells:", inputs);
 }
 
          
@@ -195,8 +196,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let i = 0; i < 9; i++) {
       const rowCells = grid.querySelectorAll(`input[data-row="${i}"]`);
+      console.log(`Row ${i} cells:`, rowCells);
+        const rowValues = Array.from(rowCells)
+          .filter(cell => cell !== null) // Filter out any null cells
+          .map(cell => parseInt(cell.value) || 0);
+
+        
+
       const colCells = grid.querySelectorAll(`input[data-col="${i}"]`);
-      const rowValues = Array.from(rowCells).map(cell => parseInt(cell.value) || 0);
+      const colValues = Array.from(colCells)
+        .filter(cell => cell !== null) // Ensure no null elements
+        .map(cell => parseInt(cell.value) || 0);
+
+
       const colValues = Array.from(colCells).map(cell => parseInt(cell.value) || 0);
 
       if (!isUnique(rowValues, Array.from(rowCells))) return false; // Check rows
@@ -211,7 +223,10 @@ document.addEventListener("DOMContentLoaded", function () {
             subgridCells.push(grid.querySelector(`input[data-row="${i + x}"][data-col="${j + y}"]`));
           }
         }
-        const subgridValues = subgridCells.map(cell => parseInt(cell.value) || 0);
+        const subgridValues = subgridCells
+          .filter(cell => cell !== null) // Ensure no null elements
+          .map(cell => parseInt(cell.value) || 0);
+
         if (!isUnique(subgridValues, subgridCells)) return false;
       }
     }
