@@ -136,16 +136,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
+  level.addEventListener("click", function () {
+    selectedDifficulty = this.textContent.trim().toLowerCase(); // Convert to lowercase
+    console.log(`Selected difficulty: ${selectedDifficulty}`);
+  });
+});
+
+level.addEventListener("click", function () {
+  selectedDifficulty = this.textContent.trim().toLowerCase();
+  console.log(`Selected difficulty: ${selectedDifficulty}`);
+  document.getElementById("current-difficulty").textContent = `Difficulty: ${this.textContent.trim()}`;
+});
+  
 // Start a new game
 document.getElementById("new-game").addEventListener("click", function () {
   initialPuzzle = generateSudoku(selectedDifficulty); // Generate new puzzle
-  document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
-  level.addEventListener("click", function () {
-    selectedDifficulty = this.textContent.trim().toLowerCase(); // Convert level to lowercase
-    console.log(`Selected difficulty: ${selectedDifficulty}`);
-    console.log("New Game button clicked!");
-    console.log("Selected Difficulty:", selectedDifficulty);
-  currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Reset current state
+  currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
   renderPuzzle(currentPuzzle); // Render new puzzle
   resetTimer(); // Reset and restart the timer
   startTimer();
