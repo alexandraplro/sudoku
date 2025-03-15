@@ -11,6 +11,8 @@
   --subgrid-color-2: aliceblue;
   --panel-title-color: darkred;
   --panel-paragraph-color: black;
+  --panel-title-color: darkslategray;
+  --panel-paragraph-color: gray;
 }
 
 input {
@@ -59,7 +61,6 @@ header .nav-item a:hover {
 
 header .container {
   justify-content: space-between; /* Space out title and navigation menu */
-  max-width: 100%; /* Makes the container span the full width */
   padding: 0; /* Removes internal spacing inside the container */
 }
 
@@ -167,24 +168,18 @@ h1 {
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-menu {
-  display: block; /* Make the dropdown visible */
-  opacity: 1; /* Ensure it's fully visible */
-  visibility: visible; /* Ensures it's interactive */
-}
-
 .dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
 .dropdown.show .dropdown-menu {
-  background-color: #f8f9fa;
-  display: block; /* Ensure it's visible */
-  position: absolute; /* Ensure it's absolutely positioned */
-  top: 100%; /* Align just below the button */
-  left: 0; /* Align with the left edge of the button */
-  margin: 0; /* Remove margin differences */
-}
-
-.dropdown:focus-within .dropdown-menu {
-    display: block;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  background-color: lavenderblush; /* Consistent theme */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .dropdown-item:hover {
@@ -245,7 +240,6 @@ h1 {
   background-color: white;
   padding: 0;
   border-radius: 10px;
-  flex-wrap: nowrap; /* Ensure it wraps on smaller screens */
   width: 100%;
   max-width: 1200px; /* Define enough space for panels and grid */
   margin: 0 auto; 
@@ -263,7 +257,7 @@ h1 {
   min-width: 250px; /* Prevent them from becoming too small */
   max-width: 400px; /* Prevent them from being too wide */
   padding: 10px;
-  margin: 10;
+  margin: 10px;
 }
 
 .left-panel {
@@ -289,7 +283,6 @@ h1 {
   background-color: linen;
   border: 5px solid rosybrown;
   border-radius: 10%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -520,6 +513,7 @@ footer {
 /* Responsive Design */
 @media (max-width: 786px) {
   .game-layout {
+    flex-wrap: wrap;
     flex-direction: column; /* Stack panels and grid vertically */
     align-items: center; /* Center align content */
   }
