@@ -26,7 +26,8 @@
   </div>
 </header>
 
-<div class="modal fade" id="sudokuHistoryModal" tabindex="-1" aria-labelledby="sudokuHistoryLabel" aria-hidden="true">
+<body class="bg-white">
+  <div class="modal fade" id="sudokuHistoryModal" tabindex="-1" aria-labelledby="sudokuHistoryLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,8 +43,7 @@
     </div>
   </div>
 </div>
-
-  <body class="bg-white">
+    
   <div class="game-layout">
     <!-- Left Panel -->
     <div class="left-panel">
@@ -63,6 +63,7 @@
     <div class="center-section">
       <!-- Sudoku Grid -->
       <div id="sudoku-grid" class="sudoku-grid">
+        <p>Loading Sudoku...</p>
         <!-- Sudoku grid dynamically populated by JavaScript -->
       </div>
       <!-- Keypad -->
@@ -93,13 +94,13 @@
         </div>
         <div class="grid-buttons d-flex flex-column align-items-center gap-2 mt-3">
         <div class="dropdown">
-          <button class="btn dropdown-toggle button-custom levels-btn" type="button" data-bs-toggle="dropdown" aria-expandedl="false">
+          <button class="btn dropdown-toggle button-custom levels-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           LEVEL
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">EASY</a></li>
-            <li><a class="dropdown-item" href="#">MEDIUM</a></li>
-            <li><a class="dropdown-item" href="#">HARD</a></li>
+            <li><a class="dropdown-item" href="#" onclick="event.preventDefault();">EASY</a></li>
+            <li><a class="dropdown-item" href="#" onclick="event.preventDefault();">MEDIUM</a></li>
+            <li><a class="dropdown-item" href="#" onclick="event.preventDefault();">HARD</a></li>
           </ul>
         </div>
       </div>
