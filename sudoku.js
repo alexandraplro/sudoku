@@ -14,9 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
       } else if (selectedInput && value === "0") { // If "Clear" is clicked
         selectedInput.value = ""; // Clear the selected cell
       }
-    });
+    } else {
+      alert("Please select a cell first!");
+    }
   });
-
+  
   // Timer setup
   function startTimer() {
     clearInterval(timerInterval); // Ensure no duplicate timers
