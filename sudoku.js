@@ -140,14 +140,14 @@ document.addEventListener("DOMContentLoaded", function () {
          
     // Add keyboard navigation
     inputs.forEach((input, index) => {
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowUp" && index >= 9) inputs[index - 9].focus();
-        else if (e.key === "ArrowDown" && index < 72) inputs[index + 9].focus();
-        else if (e.key === "ArrowLeft" && index % 9 !== 0) inputs[index - 1].focus();
-        else if (e.key === "ArrowRight" && (index + 1) % 9 !== 0) inputs[index + 1].focus();
-      });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowUp" && index >= 9) inputs[index - 9].focus();
+      else if (e.key === "ArrowDown" && index < 72) inputs[index + 9].focus();
+      else if (e.key === "ArrowLeft" && index % 9 !== 0) inputs[index - 1].focus();
+      else if (e.key === "ArrowRight" && (index + 1) % 9 !== 0) inputs[index + 1].focus();
     });
-  }
+  }); // Closes the inputs.forEach loop
+
 
   document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
     level.addEventListener("click", function () {
