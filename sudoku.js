@@ -120,12 +120,17 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         input.addEventListener("input", function () {
-          if (/^[1-9]$/.test(this.value)) {
-            currentPuzzle[rowIndex][colIndex] = parseInt(this.value, 10);
+          // Allow only numbers 1-9 and block everything else
+          const inputValue = this.value.trim();
+          if (/^[1-9]$/.test(inputValue)) {
+            currentPuzzle[rowIndex][colIndex] = parseInt(inputValue, 10); // Update puzzle
+            this.value = inputValue; // Ensure the input value remains visible
           } else {
             this.value = ""; // Clear invalid input
+            currentPuzzle[rowIndex][colIndex] = 0; // Reset grid value
           }
         });
+
 
         // Add the input field to the cell
         cell.appendChild(input);
