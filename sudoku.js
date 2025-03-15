@@ -7,17 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add click event listeners to keypad buttons
   document.querySelectorAll(".keypad-btn").forEach(button => {
-    button.addEventListener("click", function () {
-      const value = this.dataset.value; // Get the value of the button clicked
-      if (selectedInput && /^[1-9]$/.test(value)) { // If a cell is selected and the value is 1-9
-        selectedInput.value = value; // Set the value in the selected cell
-      } else if (selectedInput && value === "0") { // If "Clear" is clicked
-        selectedInput.value = ""; // Clear the selected cell
-      }
+  button.addEventListener("click", function () {
+    const value = this.dataset.value; // Get the value of the button clicked
+    if (selectedInput && /^[1-9]$/.test(value)) { // If a cell is selected and the value is 1-9
+      selectedInput.value = value; // Set the value in the selected cell
+    } else if (selectedInput && value === "0") { // If "Clear" is clicked
+      selectedInput.value = ""; // Clear the selected cell
     } else {
-      alert("Please select a cell first!");
+      alert("Please select a cell first!"); // Move this line inside the callback
     }
-  });
+  }); // Correctly closes the addEventListener callback
+});
   
   // Timer setup
   function startTimer() {
