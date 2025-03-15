@@ -75,6 +75,7 @@ header h1 {
   background-color: antiquewhite; /* Matches page theme */
   color: #333; /* Dark text for readability */
   font: 'Avenir', sans-serif;
+  margin-top: 10vh; 
 }
 
 .modal-header {
