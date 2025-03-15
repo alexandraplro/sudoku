@@ -143,11 +143,6 @@ document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
   });
 });
 
-level.addEventListener("click", function () {
-  selectedDifficulty = this.textContent.trim().toLowerCase();
-  console.log(`Selected difficulty: ${selectedDifficulty}`);
-  document.getElementById("current-difficulty").textContent = `Difficulty: ${this.textContent.trim()}`;
-});
   
 // Start a new game
 document.getElementById("new-game").addEventListener("click", function () {
