@@ -12,7 +12,8 @@
   <!-- Link to Custom CSS -->
   <link rel="stylesheet" href="sudoku.css">
 </head>
-  
+
+<body class="bg-white">
   <!-- Header -->
   <header class="bg-antiquewhite text-center p-3">
   <div class="container d-flex justify-content-between align-items-center">
@@ -25,8 +26,6 @@
     </nav>
   </div>
 </header>
-
-<body class="bg-white">
   <div class="modal fade" id="sudokuHistoryModal" tabindex="-1" aria-labelledby="sudokuHistoryLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -83,7 +82,6 @@
         </div>
             <button class="button-custom keypad-btn" data-value="0">Clear</button>
       </div>
-    </div>
     
     <!-- Right Panel -->
     <div class="right-panel">
@@ -98,9 +96,9 @@
           LEVEL
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" onclick="event.preventDefault();">EASY</a></li>
-            <li><a class="dropdown-item" href="#" onclick="event.preventDefault();">MEDIUM</a></li>
-            <li><a class="dropdown-item" href="#" onclick="event.preventDefault();">HARD</a></li>
+            <li><a class="dropdown-item" href="#" role="button" onclick="event.preventDefault();">EASY</a></li>
+            <li><a class="dropdown-item" href="#" role="button" onclick="event.preventDefault();">MEDIUM</a></li>
+            <li><a class="dropdown-item" href="#" role="button" onclick="event.preventDefault();">HARD</a></li>
           </ul>
         </div>
       </div>
