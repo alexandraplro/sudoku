@@ -359,7 +359,13 @@ h1 {
     margin: 0; /* Prevents unintended spacing */
     font-size: 1.5rem; /* Matches parent font size */  
     line-height: 1;
+    color: black;
 }
+
+.cell input.error {
+    background-color: #ffcccc; /* Light red for errors */
+}
+
 
 .top-border {
   border-top: 1px solid black;
