@@ -178,8 +178,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
   
-  // Validate the Sudoku Board
-  function isValidSudoku(board) {
+  // 
+  function isValidSudoku() {
     function isUnique(array, highlightCells = []) {
       const nums = array.filter(num => num !== 0);
       const uniqueNums = new Set(nums);
