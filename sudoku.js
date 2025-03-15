@@ -136,6 +136,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+// Start a new game
+document.getElementById("new-game").addEventListener("click", function () {
+  initialPuzzle = generateSudoku(selectedDifficulty); // Generate new puzzle
+  document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
+  level.addEventListener("click", function () {
+    selectedDifficulty = this.textContent.trim().toLowerCase(); // Convert level to lowercase
+    console.log(`Selected difficulty: ${selectedDifficulty}`);
+    console.log("New Game button clicked!");
+    console.log("Selected Difficulty:", selectedDifficulty);
+  currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Reset current state
+  renderPuzzle(currentPuzzle); // Render new puzzle
+  resetTimer(); // Reset and restart the timer
+  startTimer();
+  });
+});
+
+// Reset the current game
+document.getElementById("reset").addEventListener("click", function () {
+  currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Reset to initial puzzle
+  renderPuzzle(currentPuzzle); // Re-render puzzle
+});
+
+// Check the solution
+document.getElementById("check-solution").addEventListener("click", function () {
+  if (isValidSudoku(currentPuzzle)) {
+    alert("Congratulations! The solution is correct.");
+  } else {
+    alert("Keep trying!");
+  }
+});
+  
   // Validate the Sudoku Board
   function isValidSudoku(board) {
     function isUnique(array, highlightCells = []) {
@@ -148,27 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       return true;
     }
-
-    document.getElementById("new-game").addEventListener("click", function () {
-      initialPuzzle = generateSudoku(selectedDifficulty); // Generate new puzzle
-      currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Reset current state
-      renderPuzzle(currentPuzzle); // Render new puzzle
-      resetTimer(); // Reset and restart the timer
-      startTimer();
-    });
-
-    document.getElementById("reset").addEventListener("click", function () {
-      currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Reset to initial puzzle
-      renderPuzzle(currentPuzzle); // Re-render puzzle
-    });
-
-    document.getElementById("check-solution").addEventListener("click", function () {
-      if (isValidSudoku(currentPuzzle)) {
-      alert("Congratulations! The solution is correct.");
-      } else {
-      alert("There are errors in your solution. Keep trying!");
-      }
-    });
 
     // Clear previous errors
     document.querySelectorAll(".cell").forEach(cell => cell.classList.remove("error"));
