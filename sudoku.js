@@ -29,11 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
         String(seconds).padStart(2, "0");
       timerElement.textContent = formattedTime;
     }, 1000); // Update every second
+    console.log("Timer started");
   }
 
   function resetTimer() {
     clearInterval(timerInterval);
     timerElement.textContent = "00:00:00"; // Reset timer display
+    console.log("Timer reset");
   }
 
   // Generate a Sudoku puzzle with difficulty
@@ -152,10 +154,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
     level.addEventListener("click", function () {
-      selectedDifficulty = this.textContent.trim().toLowerCase();
-      console.log(`Selected difficulty: ${selectedDifficulty}`);
-    });
+    selectedDifficulty = this.textContent.trim().toLowerCase(); // Update the difficulty
+    console.log(`Selected difficulty: ${selectedDifficulty}`);
+    
+    // Regenerate puzzle for the selected difficulty
+    initialPuzzle = generateSudoku(selectedDifficulty); // Generate puzzle
+    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Deep copy for game state
+    renderPuzzle(currentPuzzle); // Update the grid
+
+    resetTimer(); // Reset the timer display
+    startTimer(); // Restart the timer
   });
+}); // Correctly closes the dropdown-menu listener loop
 
   document.getElementById("new-game").addEventListener("click", function () {
     initialPuzzle = generateSudoku(selectedDifficulty);
@@ -180,56 +190,58 @@ document.addEventListener("DOMContentLoaded", function () {
   
   // 
   function isValidSudoku() {
-    function isUnique(array, highlightCells = []) {
-      const nums = array.filter(num => num !== 0);
-      const uniqueNums = new Set(nums);
-      if (nums.length !== uniqueNums.size) {
-        // Highlight invalid cells
-        highlightCells.forEach(cell => cell.classList.add("error"));
-        return false;
-      }
-      return true;
+  function isUnique(array, highlightCells = []) {
+    const nums = array.filter(num => num !== 0); // Filter out empty cells
+    const uniqueNums = new Set(nums);
+    if (nums.length !== uniqueNums.size) {
+      highlightCells.forEach(cell => cell && cell.classList.add("error")); // Highlight invalid cells
+      return false;
     }
-
-    // Clear previous errors
-    document.querySelectorAll(".cell").forEach(cell => cell.classList.remove("error"));
-
-    for (let i = 0; i < 9; i++) {
-      const rowCells = grid.querySelectorAll(`input[data-row="${i}"]`);
-      console.log(`Row ${i} cells:`, rowCells);
-        const rowValues = Array.from(rowCells)
-          .filter(cell => cell !== null) // Filter out any null cells
-          .map(cell => parseInt(cell.value) || 0);
-
-        
-
-      const colCells = grid.querySelectorAll(`input[data-col="${i}"]`);
-      const colValues = Array.from(colCells)
-        .filter(cell => cell !== null) // Ensure no null elements
-        .map(cell => parseInt(cell.value) || 0);
-
-      if (!isUnique(rowValues, Array.from(rowCells))) return false; // Check rows
-      if (!isUnique(colValues, Array.from(colCells))) return false; // Check columns
-    }
-
-    for (let i = 0; i < 9; i += 3) {
-      for (let j = 0; j < 9; j += 3) {
-        const subgridCells = [];
-        for (let x = 0; x < 3; x++) {
-          for (let y = 0; y < 3; y++) {
-            subgridCells.push(grid.querySelector(`input[data-row="${i + x}"][data-col="${j + y}"]`));
-          }
-        }
-        const subgridValues = subgridCells
-          .filter(cell => cell !== null) // Ensure no null elements
-          .map(cell => parseInt(cell.value) || 0);
-
-        if (!isUnique(subgridValues, subgridCells)) return false;
-      }
-    }
-
     return true;
   }
+
+  // Clear previous error highlights
+  document.querySelectorAll(".cell").forEach(cell => cell.classList.remove("error"));
+
+  // Check if the grid is fully filled
+  const allInputs = grid.querySelectorAll("input");
+  for (const input of allInputs) {
+    if (!input.value || input.value === "0") {
+      alert("The grid is not complete! Fill all the cells before checking.");
+      return false;
+    }
+  }
+
+  // Validate Rows and Columns
+  for (let i = 0; i < 9; i++) {
+    const rowCells = grid.querySelectorAll(`input[data-row="${i}"]`);
+    const rowValues = Array.from(rowCells).map(cell => parseInt(cell.value) || 0);
+
+    const colCells = grid.querySelectorAll(`input[data-col="${i}"]`);
+    const colValues = Array.from(colCells).map(cell => parseInt(cell.value) || 0);
+
+    if (!isUnique(rowValues, Array.from(rowCells))) return false; // Invalid row
+    if (!isUnique(colValues, Array.from(colCells))) return false; // Invalid column
+  }
+
+  // Validate Subgrids
+  for (let i = 0; i < 9; i += 3) {
+    for (let j = 0; j < 9; j += 3) {
+      const subgridCells = [];
+      for (let x = 0; x < 3; x++) {
+        for (let y = 0; y < 3; y++) {
+          const cell = grid.querySelector(`input[data-row="${i + x}"][data-col="${j + y}"]`);
+          subgridCells.push(cell);
+        }
+      }
+      const subgridValues = subgridCells.map(cell => parseInt(cell.value) || 0);
+      if (!isUnique(subgridValues, subgridCells)) return false; // Invalid subgrid
+    }
+  }
+
+  return true; // Grid is valid
+}
+
 
   // Start the initial game and timer
   startTimer();
