@@ -67,34 +67,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let selectedDifficulty = "medium";
   let initialPuzzle = generateSudoku(selectedDifficulty);
+  console.log("Generated puzzle array (Initial):", initialPuzzle);
   let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
 
   function renderPuzzle(puzzle) {
+  console.log("Rendering Sudoku grid...");
   grid.innerHTML = ""; // Clear the grid
   inputs.length = 0; // Reset inputs array for navigation
 
   console.log("Puzzle data being rendered:", puzzle);
   console.log("Grid container element:", grid);
 
+  function renderPuzzle(puzzle) {
+  console.log("Rendering Sudoku grid...");
+  grid.innerHTML = ""; // Clear the grid
+  inputs.length = 0; // Reset inputs array for navigation
+
+  // Iterate through rows and columns to create cells
   puzzle.forEach((row, rowIndex) => {
     row.forEach((value, colIndex) => {
       console.log(`Rendering cell at row ${rowIndex}, col ${colIndex} with value:`, value);
+
+      // Create a cell for each value in the puzzle
       const cell = document.createElement("div");
       cell.classList.add("cell");
 
-      // Determine subgrid colors
+      // Set alternating subgrid colors
       const subgridRow = Math.floor(rowIndex / 3);
       const subgridCol = Math.floor(colIndex / 3);
       const isSubgridEven = (subgridRow + subgridCol) % 2 === 0;
       cell.style.backgroundColor = isSubgridEven ? "var(--subgrid-color-1)" : "var(--subgrid-color-2)";
 
-      // Add subgrid-specific classes for borders
+      // Add borders for subgrid visualization
       if (rowIndex % 3 === 0) cell.classList.add("top-border");
       if (colIndex % 3 === 0) cell.classList.add("left-border");
       if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
       if (colIndex % 3 === 2) cell.classList.add("right-border");
 
-      // Handle fixed values and inputs
+      // Populate cells with fixed values or input fields
       if (value !== 0) {
         cell.textContent = value;
         cell.classList.add("fixed");
@@ -105,9 +115,10 @@ document.addEventListener("DOMContentLoaded", function () {
         input.dataset.row = rowIndex;
         input.dataset.col = colIndex;
 
-        // Add input to inputs array for navigation
+        // Add the input element to the `inputs` array
         inputs.push(input);
 
+        // Add events for selecting and validating inputs
         input.addEventListener("click", function () {
           if (selectedInput) selectedInput.classList.remove("selected");
           selectedInput = this;
@@ -116,18 +127,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         input.addEventListener("input", function () {
           if (/^[1-9]$/.test(this.value)) {
-            currentPuzzle[rowIndex][colIndex] = parseInt(this.value);
+            currentPuzzle[rowIndex][colIndex] = parseInt(this.value, 10);
           } else {
             this.value = ""; // Clear invalid input
           }
         });
 
+        // Add the input field to the cell
         cell.appendChild(input);
       }
 
+      // Append the cell to the Sudoku grid
       grid.appendChild(cell);
     });
   });
+
+  console.log("Sudoku grid rendered successfully!");
 }
 
          
