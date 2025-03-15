@@ -69,61 +69,67 @@ document.addEventListener("DOMContentLoaded", function () {
   let initialPuzzle = generateSudoku(selectedDifficulty);
   let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
 
-  // Render Sudoku Grid
   function renderPuzzle(puzzle) {
-    grid.innerHTML = ""; // Clear the grid
-    inputs.length = 0; // Reset inputs array for navigation
+  grid.innerHTML = ""; // Clear the grid
+  inputs.length = 0; // Reset inputs array for navigation
 
-    puzzle.forEach((row, rowIndex) => {
-      row.forEach((value, colIndex) => {
-        const cell = document.createElement("div");
-        cell.classList.add("cell");
+  console.log("Puzzle data being rendered:", puzzle);
+  console.log("Grid container element:", grid);
 
-    // Determine subgrid colors
-    const subgridRow = Math.floor(rowIndex / 3);
-    const subgridCol = Math.floor(colIndex / 3);
-    const isSubgridEven = (subgridRow + subgridCol) % 2 === 0;
-    cell.style.backgroundColor = isSubgridEven ? "var(--subgrid-color-1)" : "var(--subgrid-color-2)";
+  puzzle.forEach((row, rowIndex) => {
+    row.forEach((value, colIndex) => {
+      console.log(`Rendering cell at row ${rowIndex}, col ${colIndex} with value:`, value);
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
 
-    // Add subgrid-specific classes for borders
-    if (rowIndex % 3 === 0) cell.classList.add("top-border");
-    if (colIndex % 3 === 0) cell.classList.add("left-border");
-    if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
-    if (colIndex % 3 === 2) cell.classList.add("right-border");
-        
-    // Handle fixed values and inputs
-    if (value !== 0) {
-      cell.textContent = value;
-      cell.classList.add("fixed");
-    } else {
-      const input = document.createElement("input");
-      input.type = "text";
-      input.maxLength = 1;
-      input.dataset.row = rowIndex;
-      input.dataset.col = colIndex;
+      // Determine subgrid colors
+      const subgridRow = Math.floor(rowIndex / 3);
+      const subgridCol = Math.floor(colIndex / 3);
+      const isSubgridEven = (subgridRow + subgridCol) % 2 === 0;
+      cell.style.backgroundColor = isSubgridEven ? "var(--subgrid-color-1)" : "var(--subgrid-color-2)";
 
-      // Add input to inputs array for navigation
-      inputs.push(input);
+      // Add subgrid-specific classes for borders
+      if (rowIndex % 3 === 0) cell.classList.add("top-border");
+      if (colIndex % 3 === 0) cell.classList.add("left-border");
+      if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
+      if (colIndex % 3 === 2) cell.classList.add("right-border");
 
-      input.addEventListener("click", function () {
-        if (selectedInput) selectedInput.classList.remove("selected");
-        selectedInput = this;
-        selectedInput.classList.add("selected");
-      });
+      // Handle fixed values and inputs
+      if (value !== 0) {
+        cell.textContent = value;
+        cell.classList.add("fixed");
+      } else {
+        const input = document.createElement("input");
+        input.type = "text";
+        input.maxLength = 1;
+        input.dataset.row = rowIndex;
+        input.dataset.col = colIndex;
+
+        // Add input to inputs array for navigation
+        inputs.push(input);
+
+        input.addEventListener("click", function () {
+          if (selectedInput) selectedInput.classList.remove("selected");
+          selectedInput = this;
+          selectedInput.classList.add("selected");
+        });
+
         input.addEventListener("input", function () {
-        if (/^[1-9]$/.test(this.value)) {
-          currentPuzzle[rowIndex][colIndex] = parseInt(this.value);
-        } else {
-          this.value = ""; // Clear invalid input
-        }
-      });
+          if (/^[1-9]$/.test(this.value)) {
+            currentPuzzle[rowIndex][colIndex] = parseInt(this.value);
+          } else {
+            this.value = ""; // Clear invalid input
+          }
+        });
 
-      cell.appendChild(input);
-    }
+        cell.appendChild(input);
+      }
 
-    grid.appendChild(cell);
+      grid.appendChild(cell);
+    });
   });
-});
+}
+
          
     // Add keyboard navigation
     inputs.forEach((input, index) => {
