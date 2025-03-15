@@ -75,14 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
   grid.innerHTML = ""; // Clear the grid
   inputs.length = 0; // Reset inputs array for navigation
 
-  console.log("Puzzle data being rendered:", puzzle);
-  console.log("Grid container element:", grid);
-
-  function renderPuzzle(puzzle) {
-  console.log("Rendering Sudoku grid...");
-  grid.innerHTML = ""; // Clear the grid
-  inputs.length = 0; // Reset inputs array for navigation
-
   // Iterate through rows and columns to create cells
   puzzle.forEach((row, rowIndex) => {
     row.forEach((value, colIndex) => {
@@ -157,38 +149,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
-  level.addEventListener("click", function () {
-    selectedDifficulty = this.textContent.trim().toLowerCase(); // Convert to lowercase
-    console.log(`Selected difficulty: ${selectedDifficulty}`);
+  document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
+    level.addEventListener("click", function () {
+      selectedDifficulty = this.textContent.trim().toLowerCase();
+      console.log(`Selected difficulty: ${selectedDifficulty}`);
+    });
   });
-});
 
-  
-// Start a new game
-document.getElementById("new-game").addEventListener("click", function () {
-  initialPuzzle = generateSudoku(selectedDifficulty); // Generate new puzzle
-  currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-  renderPuzzle(currentPuzzle); // Render new puzzle
-  resetTimer(); // Reset and restart the timer
-  startTimer();
+  document.getElementById("new-game").addEventListener("click", function () {
+    initialPuzzle = generateSudoku(selectedDifficulty);
+    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+    renderPuzzle(currentPuzzle);
+    resetTimer();
+    startTimer();
   });
-});
 
-// Reset the current game
-document.getElementById("reset").addEventListener("click", function () {
-  currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Reset to initial puzzle
-  renderPuzzle(currentPuzzle); // Re-render puzzle
-});
+  document.getElementById("reset").addEventListener("click", function () {
+    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+    renderPuzzle(currentPuzzle);
+  });
 
-// Check the solution
-document.getElementById("check-solution").addEventListener("click", function () {
-  if (isValidSudoku(currentPuzzle)) {
-    alert("Congratulations! The solution is correct.");
-  } else {
-    alert("Keep trying!");
-  }
-});
+  document.getElementById("check-solution").addEventListener("click", function () {
+    if (isValidSudoku(currentPuzzle)) {
+      alert("Congratulations! The solution is correct.");
+    } else {
+      alert("Keep trying!");
+    }
+  });
   
   // Validate the Sudoku Board
   function isValidSudoku(board) {
