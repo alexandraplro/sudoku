@@ -326,28 +326,29 @@ h1 {
   grid-template-rows: repeat(9, 1fr);   /* 9 rows of equal height */
   margin-bottom: 20px;
   border: 1px solid black; 
-  font-size: 14;
+  font-size: 14px;
   color: black;
   max-width: 400px; /* Adjust as per your layout */
   height: 400px; /* Maintain aspect ratio */
   margin-top: 80px;
   align-items: center; /* Centers items horizontally */
-  justify-content: center; /
+  justify-content: center; 
+  background-color: transparent; /* Ensures grid is visible */
 }
 
 .cell {
-  flex: 0 0 calc(100% / 9); /* Each cell takes 1/9th of the container's width */
   aspect-ratio: 1 / 1; /* Ensures cells are square */
   box-sizing: border-box; /* Includes padding and border in calculations */
   display: flex;
   text-align: center;
-  border: none; 
   box-shadow: inset 0 0 0 1px lightblue; /* Adds a consistent light blue border */
   border: 1px lightblue;
   justify-content: center;
   align-items: center;
   margin: 0;
   padding: 0;
+  font-size: 1.2rem; /* Adjust for better readability */
+  border: 1px solid lightblue; /* Optional: Replace box-shadow */
   background-color: transparent;
   color: black;
 }
