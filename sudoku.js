@@ -208,9 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .filter(cell => cell !== null) // Ensure no null elements
         .map(cell => parseInt(cell.value) || 0);
 
-
-      const colValues = Array.from(colCells).map(cell => parseInt(cell.value) || 0);
-
       if (!isUnique(rowValues, Array.from(rowCells))) return false; // Check rows
       if (!isUnique(colValues, Array.from(colCells))) return false; // Check columns
     }
