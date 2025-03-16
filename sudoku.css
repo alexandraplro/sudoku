@@ -90,6 +90,73 @@ header h1 {
   background-color: mistyrose; /* Soft footer background */
 }
 
+/* Styling the "Contact Us" modal content */
+#contactModal .modal-content {
+  background-color: lavenderblush; /* Unique background color */
+  border: 2px solid lightcoral;    /* Custom border color */
+  border-radius: 10px;             /* Consistent rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+  color: dimgray;                  /* Text color for readability */
+  font-family: 'Avenir', sans-serif; /* Maintain font consistency */
+  margin-top: 10vh; /* Center the modal vertically */
+}
+
+/* Modal header styling */
+#contactModal .modal-header {
+  background-color: seashell; /* Header background */
+  color: darkslategray;       /* Header text color */
+  font-size: 20px;            /* Header font size */
+  border-bottom: 2px solid lightcoral; /* Separator line */
+}
+
+/* Modal footer styling */
+#contactModal .modal-footer {
+  background-color: mistyrose; /* Footer background */
+  border-top: 2px solid lightcoral; /* Top border for the footer */
+}
+
+/* Custom close button styling */
+#contactModal .btn-close.custom-close-btn {
+  background: darkslategray; /* Custom dark background */
+  color: snow;               /* Light close button text color */
+  font-size: 20px;           /* Size for better visibility */
+  border: none;              /* Remove default border */
+  cursor: pointer;           /* Pointer for interactivity */
+}
+
+#contactModal .btn-close.custom-close-btn:hover {
+  color: slategray;          /* Hover color */
+  transform: scale(1.1);     /* Slight zoom effect */
+}
+
+/* Adjust inputs in the form */
+#contactModal .form-control {
+  background-color: antiquewhite; /* Soft input background */
+  border: 1px solid lightcoral;   /* Matching border */
+  border-radius: 5px;             /* Add rounded corners */
+  padding: 10px;                  /* Add spacing for readability */
+  color: black;                   /* Text color */
+}
+
+#contactModal .form-control:focus {
+  border-color: coral;           /* Highlighted border on focus */
+  outline: none;                 /* Remove default outline */
+  box-shadow: 0 0 5px coral;     /* Subtle glow effect */
+}
+
+/* Custom button styling */
+#contactModal .btn-primary {
+  background-color: coral;       /* Button background */
+  border: none;                  /* Remove border */
+  color: white;                  /* Text color */
+  font-weight: bold;             /* Bold text */
+  transition: background-color 0.3s ease;
+}
+
+#contactModal .btn-primary:hover {
+  background-color: darkred;     /* Darker shade on hover */
+}
+
 .custom-close-btn {
   background: darkslategray; /* Remove background */
   border: none; /* Remove border */
