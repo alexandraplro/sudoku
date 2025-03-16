@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // The "Close" button is already handled by Bootstrap's data-bs-dismiss="modal",
   // so no additional JavaScript is required for it.
 });
-});
+}});
   
   
   // Timer setup
