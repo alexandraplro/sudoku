@@ -20,33 +20,37 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // "Contact Us" modal logic
-  const sendButton = document.querySelector("#contactModal .btn-secondary"); // Close button
+  const sendMessageButton = document.getElementById("sendMessageButton");
   const nameField = document.getElementById("contactName");
   const emailField = document.getElementById("contactEmail");
   const messageField = document.getElementById("contactMessage");
 
-  sendButton.addEventListener("click", function () {
+  sendMessageButton.addEventListener("click", function () {
     const name = nameField.value.trim();
     const email = emailField.value.trim();
     const message = messageField.value.trim();
 
-    if (!name) nameField.style.borderColor = "red";
-      else nameField.style.borderColor = "";
-
-    if (!email) emailField.style.borderColor = "red";
-      else emailField.style.borderColor = "";
-
-    if (!message) messageField.style.borderColor = "red";
-      else messageField.style.borderColor = "";
-
+    // Validate the form fields
     if (!name || !email || !message) {
       alert("Please fill out all fields before submitting.");
-    return;
-}
+      if (!name) nameField.style.borderColor = "red";
+      if (!email) emailField.style.borderColor = "red";
+      if (!message) messageField.style.borderColor = "red";
+      return;
     }
 
+    // Clear the red borders if validation passes
+    nameField.style.borderColor = "";
+    emailField.style.borderColor = "";
+    messageField.style.borderColor = "";
+
+    // Example action: Display a thank-you message
     alert("Thank you for your message! We'll get back to you soon.");
   });
+
+  // The "Close" button is already handled by Bootstrap's data-bs-dismiss="modal",
+  // so no additional JavaScript is required for it.
+});
 });
   
   
@@ -216,29 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
     startTimer(); // Restart the timer
   });
 }); // Correctly closes the dropdown-menu listener loop
-
-  document.addEventListener("DOMContentLoaded", function () {
-  const sendButton = document.querySelector("#contactModal .btn-secondary"); // Close button
-  const nameField = document.getElementById("contactName");
-  const emailField = document.getElementById("contactEmail");
-  const messageField = document.getElementById("contactMessage");
-
-  sendButton.addEventListener("click", function () {
-    // Validate the form fields
-    const name = nameField.value.trim();
-    const email = emailField.value.trim();
-    const message = messageField.value.trim();
-
-    if (!name || !email || !message) {
-      alert("Please fill out all fields before submitting.");
-      return;
-    }
-
-    // Example action: Alert success message
-    alert("Thank you for your message! We'll get back to you soon.");
-  });
-});
-
   
   document.getElementById("new-game").addEventListener("click", function () {
     initialPuzzle = generateSudoku(selectedDifficulty);
