@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let timerInterval;
   let selectedInput = null; // Track the currently selected cell input
   const inputs = []; // Store all input elements for navigation
-
+ 
   // Add click event listeners to keypad buttons
   document.querySelectorAll(".keypad-btn").forEach(button => {
   button.addEventListener("click", function () {
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isUnique(subgridValues, subgridCells)) return false; // Invalid subgrid
     }
   }
-return true; // Grid is valid
+  return true; // Grid is valid
 } // Close the isValidSudoku function
 
 startTimer();
