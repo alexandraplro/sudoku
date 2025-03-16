@@ -186,6 +186,29 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 }); // Correctly closes the dropdown-menu listener loop
 
+  document.addEventListener("DOMContentLoaded", function () {
+  const sendButton = document.querySelector("#contactModal .btn-secondary"); // Close button
+  const nameField = document.getElementById("contactName");
+  const emailField = document.getElementById("contactEmail");
+  const messageField = document.getElementById("contactMessage");
+
+  sendButton.addEventListener("click", function () {
+    // Validate the form fields
+    const name = nameField.value.trim();
+    const email = emailField.value.trim();
+    const message = messageField.value.trim();
+
+    if (!name || !email || !message) {
+      alert("Please fill out all fields before submitting.");
+      return;
+    }
+
+    // Example action: Alert success message
+    alert("Thank you for your message! We'll get back to you soon.");
+  });
+});
+
+  
   document.getElementById("new-game").addEventListener("click", function () {
     initialPuzzle = generateSudoku(selectedDifficulty);
     currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
