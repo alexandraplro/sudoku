@@ -193,7 +193,6 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("Inputs for empty cells:", inputs);
 }
 
-         
     // Add keyboard navigation
     inputs.forEach((input, index) => {
     input.addEventListener("keydown", (e) => {
@@ -278,21 +277,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Validate Subgrids
-  for (let i = 0; i < 9; i += 3) {
-    for (let j = 0; j < 9; j += 3) {
-      const subgridCells = [];
-      for (let x = 0; x < 3; x++) {
-        for (let y = 0; y < 3; y++) {
-          const cell = grid.querySelector(`input[data-row="${i + x}"][data-col="${j + y}"]`);
-          subgridCells.push(cell);
-        }
-      }
-      const subgridValues = subgridCells.map(cell => parseInt(cell.value) || 0);
-      if (!isUnique(subgridValues, subgridCells)) return false; // Invalid subgrid
+  function isValidSudoku(puzzle) {
+    function isUnique(array) {
+        const nums = array.filter(num => num !== 0);
+        const uniqueNums = new Set(nums);
+        return nums.length === uniqueNums.size;
     }
-  }
-  return true; // Grid is valid
-} // Close the isValidSudoku function
+
+    // Validate Rows and Columns
+    for (let i = 0; i < 9; i++) {
+        if (!isUnique(puzzle[i])) return false; // Invalid row
+        if (!isUnique(puzzle.map(row => row[i]))) return false; // Invalid column
+    }
+
+    // Validate Subgrids
+    for (let i = 0; i < 9; i += 3) {
+        for (let j = 0; j < 9; j += 3) {
+            const subgrid = [];
+            for (let x = 0; x < 3; x++) {
+                for (let y = 0; y < 3; y++) {
+                    subgrid.push(puzzle[i + x][j + y]);
+                }
+            }
+            if (!isUnique(subgrid)) return false; // Invalid subgrid
+        }
+    }
+    return true; // Grid is valid
+}
 
 startTimer();
 renderPuzzle(currentPuzzle);
