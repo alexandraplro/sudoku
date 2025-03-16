@@ -90,71 +90,95 @@ header h1 {
   background-color: mistyrose; /* Soft footer background */
 }
 
-/* Styling the "Contact Us" modal content */
+/* Contact Us Modal Styles */
 #contactModal .modal-content {
-  background-color: lavenderblush; /* Unique background color */
-  border: 2px solid lightcoral;    /* Custom border color */
-  border-radius: 10px;             /* Consistent rounded corners */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
-  color: dimgray;                  /* Text color for readability */
-  font-family: 'Avenir', sans-serif; /* Maintain font consistency */
-  margin-top: 10vh; /* Center the modal vertically */
+  background-color: lavenderblush; /* Soft pastel for the background */
+  border: 2px solid lightcoral;    /* Subtle border to highlight the modal */
+  border-radius: 10px;            /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+  color: darkslategray;           /* Text color for readability */
+  font-family: 'Avenir', sans-serif; /* Consistent font style */
+  padding: 20px;                  /* Add internal spacing */
 }
 
-/* Modal header styling */
+/* Modal Header */
 #contactModal .modal-header {
-  background-color: seashell; /* Header background */
-  color: darkslategray;       /* Header text color */
-  font-size: 20px;            /* Header font size */
-  border-bottom: 2px solid lightcoral; /* Separator line */
+  background-color: seashell; /* Light color for header background */
+  color: darkred;             /* Distinctive text color */
+  font-size: 1.5rem;          /* Slightly larger font for the header */
+  border-bottom: 2px solid lightcoral; /* Clear separator line */
 }
 
-/* Modal footer styling */
+/* Modal Footer */
 #contactModal .modal-footer {
-  background-color: mistyrose; /* Footer background */
-  border-top: 2px solid lightcoral; /* Top border for the footer */
+  background-color: mistyrose; /* Matches theme colors */
+  border-top: 2px solid lightcoral; /* Divider between body and footer */
+  text-align: right;           /* Align buttons to the right */
+  padding: 10px;               /* Add spacing */
 }
 
-/* Custom close button styling */
-#contactModal .btn-close.custom-close-btn {
-  background: darkslategray; /* Custom dark background */
-  color: snow;               /* Light close button text color */
-  font-size: 20px;           /* Size for better visibility */
-  border: none;              /* Remove default border */
-  cursor: pointer;           /* Pointer for interactivity */
+/* Close Button */
+#contactModal .btn-close {
+  background: darkslategray; /* Close button background */
+  color: snow;               /* White text for contrast */
+  font-size: 1.2rem;         /* Adjust size for visibility */
+  border: none;              /* Remove border */
+  cursor: pointer;
+  padding: 5px;
 }
 
-#contactModal .btn-close.custom-close-btn:hover {
-  color: slategray;          /* Hover color */
-  transform: scale(1.1);     /* Slight zoom effect */
+#contactModal .btn-close:hover {
+  color: slategray;          /* Slightly different hover effect */
+  transform: scale(1.1);     /* Subtle zoom on hover */
 }
 
-/* Adjust inputs in the form */
+/* Input Fields */
 #contactModal .form-control {
-  background-color: antiquewhite; /* Soft input background */
-  border: 1px solid lightcoral;   /* Matching border */
-  border-radius: 5px;             /* Add rounded corners */
-  padding: 10px;                  /* Add spacing for readability */
-  color: black;                   /* Text color */
+  background-color: antiquewhite; /* Neutral input background */
+  border: 1px solid lightcoral;   /* Subtle border */
+  border-radius: 5px;             /* Smooth rounded edges */
+  padding: 10px;                  /* Add spacing within inputs */
+  font-size: 1rem;                /* Readable font size */
+  color: darkslategray;           /* Text color */
 }
 
 #contactModal .form-control:focus {
-  border-color: coral;           /* Highlighted border on focus */
-  outline: none;                 /* Remove default outline */
-  box-shadow: 0 0 5px coral;     /* Subtle glow effect */
+  border-color: coral;           /* Highlight border on focus */
+  box-shadow: 0 0 5px coral;     /* Gentle glow for focus effect */
+  outline: none;                 /* Remove default browser outline */
 }
 
-/* Custom button styling */
+/* Helper Text for Inputs */
+#contactModal .form-text {
+  font-size: 0.85rem;            /* Smaller font for helper text */
+  color: gray;                   /* Subtle gray color */
+}
+
+/* Textarea for Comments */
+#contactModal textarea.form-control {
+  resize: none;                  /* Prevent resizing */
+  height: auto;                  /* Adjust height naturally */
+  min-height: 100px;             /* Ensure enough space for writing */
+}
+
+/* Buttons */
 #contactModal .btn-primary {
   background-color: coral;       /* Button background */
-  border: none;                  /* Remove border */
-  color: white;                  /* Text color */
-  font-weight: bold;             /* Bold text */
-  transition: background-color 0.3s ease;
+  border: none;                  /* Clean appearance */
+  color: white;                  /* Text color for contrast */
+  font-weight: bold;             /* Emphasize the button text */
+  padding: 10px 20px;            /* Add spacing around the button */
+  border-radius: 5px;            /* Smooth, rounded edges */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 #contactModal .btn-primary:hover {
   background-color: darkred;     /* Darker shade on hover */
+}
+
+/* General Modal Styling */
+#contactModal {
+  z-index: 1050;                 /* Keep modal above other elements */
 }
 
 .custom-close-btn {
