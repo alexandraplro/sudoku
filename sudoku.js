@@ -234,50 +234,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("check-solution").addEventListener("click", function () {
     if (isValidSudoku(currentPuzzle)) {
-      alert("Congratulations! The solution is correct.");
+        alert("Congratulations! The solution is correct.");
     } else {
-      alert("Keep trying!");
+        alert("Keep trying!");
     }
-  });
-  
-  // 
-  function isValidSudoku() {
-  function isUnique(array, highlightCells = []) {
-    const nums = array.filter(num => num !== 0); // Filter out empty cells
-    const uniqueNums = new Set(nums);
-    if (nums.length !== uniqueNums.size) {
-      highlightCells.forEach(cell => cell && cell.classList.add("error")); // Highlight invalid cells
-      return false;
-    }
-    return true;
-  }
+});
 
-  // Clear previous error highlights
-  document.querySelectorAll(".cell").forEach(cell => cell.classList.remove("error"));
-
-  // Check if the grid is fully filled
-  const allInputs = grid.querySelectorAll("input");
-  for (const input of allInputs) {
-    if (!input.value || input.value === "0") {
-      alert("The grid is not complete! Fill all the cells before checking.");
-      return false;
-    }
-  }
-
-  // Validate Rows and Columns
-  for (let i = 0; i < 9; i++) {
-    const rowCells = grid.querySelectorAll(`input[data-row="${i}"]`);
-    const rowValues = Array.from(rowCells).map(cell => parseInt(cell.value) || 0);
-
-    const colCells = grid.querySelectorAll(`input[data-col="${i}"]`);
-    const colValues = Array.from(colCells).map(cell => parseInt(cell.value) || 0);
-
-    if (!isUnique(rowValues, Array.from(rowCells))) return false; // Invalid row
-    if (!isUnique(colValues, Array.from(colCells))) return false; // Invalid column
-  }
-
-  // Validate Subgrids
-  function isValidSudoku(puzzle) {
+function isValidSudoku(puzzle) {
     function isUnique(array) {
         const nums = array.filter(num => num !== 0);
         const uniqueNums = new Set(nums);
