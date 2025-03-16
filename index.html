@@ -48,43 +48,45 @@
   </div>
 </div>
 
-<!-- Contact Modal Trigger -->
-<li class="nav-item">
-  <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#contactModal">CONTACT</a>
-</li>
-
-<!-- Contact Modal -->
+<!-- Contact Us Modal -->
 <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      <!-- Modal Header -->
       <div class="modal-header">
         <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
         <button type="button" class="btn-close custom-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <!-- Modal Body -->
       <div class="modal-body">
         <form>
+          <!-- Name Field -->
           <div class="mb-3">
             <label for="contactName" class="form-label">Your Name</label>
             <input type="text" class="form-control" id="contactName" placeholder="Enter your name">
           </div>
+          <!-- Email Field -->
           <div class="mb-3">
-            <label for="contactEmail" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="contactEmail" placeholder="Enter your email">
+            <label for="contactEmail" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="contactEmail" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
+          <!-- Text Area for Comments -->
           <div class="mb-3">
-            <label for="contactMessage" class="form-label">Message</label>
-            <textarea class="form-control" id="contactMessage" rows="3" placeholder="Write your message"></textarea>
+            <label for="contactMessage" class="form-label">Comments / Questions / Suggestions</label>
+            <textarea class="form-control" id="contactMessage" rows="4" placeholder="Write your message here"></textarea>
+          </div>
           </div>
         </form>
       </div>
+      <!-- Modal Footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Send Message</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
-
     
   <div class="game-layout">
   <!-- Left Panel -->
