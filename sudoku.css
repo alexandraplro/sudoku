@@ -174,8 +174,10 @@ header h1 {
 }
 
 #contactModal .btn-primary:hover {
-  background-color: darkred;     /* Darker shade on hover */
+  transform: scale(1.05); /* Subtle zoom */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
 }
+
 
 /* General Modal Styling */
 #contactModal {
