@@ -291,9 +291,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isUnique(subgridValues, subgridCells)) return false; // Invalid subgrid
     }
   }
-
 return true; // Grid is valid
- 
-// Start the initial game and timer
+} // Close the isValidSudoku function
+
 startTimer();
 renderPuzzle(currentPuzzle);
+}); // Close the DOMContentLoaded event listener
