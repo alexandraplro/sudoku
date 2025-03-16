@@ -7,17 +7,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add click event listeners to keypad buttons
   document.querySelectorAll(".keypad-btn").forEach(button => {
-  button.addEventListener("click", function () {
-    const value = this.dataset.value; // Get the value of the button clicked
-    if (selectedInput && /^[1-9]$/.test(value)) { // If a cell is selected and the value is 1-9
-      selectedInput.value = value; // Set the value in the selected cell
-    } else if (selectedInput && value === "0") { // If "Clear" is clicked
-      selectedInput.value = ""; // Clear the selected cell
-    } else {
-      alert("Please select a cell first!"); // Move this line inside the callback
+    button.addEventListener("click", function () {
+      const value = this.dataset.value; // Get the value of the button clicked
+      if (selectedInput && /^[1-9]$/.test(value)) { // If a cell is selected and the value is 1-9
+        selectedInput.value = value; // Set the value in the selected cell
+      } else if (selectedInput && value === "0") { // If "Clear" is clicked
+        selectedInput.value = ""; // Clear the selected cell
+      } else {
+        alert("Please select a cell first!");
+      }
+    }); // Correctly closes the addEventListener callback
+  });
+
+  // "Contact Us" modal logic
+  const sendButton = document.querySelector("#contactModal .btn-secondary"); // Close button
+  const nameField = document.getElementById("contactName");
+  const emailField = document.getElementById("contactEmail");
+  const messageField = document.getElementById("contactMessage");
+
+  sendButton.addEventListener("click", function () {
+    const name = nameField.value.trim();
+    const email = emailField.value.trim();
+    const message = messageField.value.trim();
+
+    if (!name) nameField.style.borderColor = "red";
+      else nameField.style.borderColor = "";
+
+    if (!email) emailField.style.borderColor = "red";
+      else emailField.style.borderColor = "";
+
+    if (!message) messageField.style.borderColor = "red";
+      else messageField.style.borderColor = "";
+
+    if (!name || !email || !message) {
+      alert("Please fill out all fields before submitting.");
+    return;
+}
     }
-  }); // Correctly closes the addEventListener callback
+
+    alert("Thank you for your message! We'll get back to you soon.");
+  });
 });
+  
   
   // Timer setup
   function startTimer() {
