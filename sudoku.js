@@ -292,11 +292,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  return true; // Grid is valid
-}
-
-
-  // Start the initial game and timer
+return true; // Grid is valid
+ 
+    // Start the initial game and timer
   startTimer();
   renderPuzzle(currentPuzzle);
 });
