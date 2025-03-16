@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         alert("Please select a cell first!");
       }
-    }); // Correctly closes the addEventListener callback
-  });
+}); // Correctly closes the addEventListener callback
+  
 
   // "Contact Us" modal logic
   const sendMessageButton = document.getElementById("sendMessageButton");
