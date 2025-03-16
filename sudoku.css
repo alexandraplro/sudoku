@@ -91,8 +91,15 @@ header h1 {
   background-color: mistyrose; /* Soft footer background */
 }
 
+#contactModal, 
+#sudokuHistoryModal {
+  z-index: 1050; /* Keeps the modal above the backdrop */
+  position: fixed; /* Ensure it stays centered */
+}
+
 /* Contact Us Modal Styles */
-#contactModal .modal-content {
+#contactModal .modal-content, 
+#sudokuHistoryModal .modal-content {
   background-color: lavenderblush; /* Soft pastel for the background */
   border: 2px solid lightcoral;    /* Subtle border to highlight the modal */
   border-radius: 10px;            /* Rounded corners */
@@ -100,6 +107,8 @@ header h1 {
   color: darkslategray;           /* Text color for readability */
   font-family: 'Avenir', sans-serif; /* Consistent font style */
   padding: 20px;                  /* Add internal spacing */
+  z-index: 1051; /* Keeps content above modal container */
+  pointer-events: auto; /* Enable interactions */
 }
 
 /* Modal Header */
@@ -182,6 +191,10 @@ header h1 {
 /* General Modal Styling */
 #contactModal {
   z-index: 1050;                 /* Keep modal above other elements */
+}
+
+.modal-backdrop {
+  z-index: 1040; /* Backdrop sits below the modal */
 }
 
 .custom-close-btn {
