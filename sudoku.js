@@ -270,4 +270,3 @@ function isValidSudoku(puzzle) {
 
 startTimer();
 renderPuzzle(currentPuzzle);
-}); // Close the DOMContentLoaded event listener
