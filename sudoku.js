@@ -1,10 +1,80 @@
-// Declare global variables (if necessary)
+ 
 let timerInterval; // Global scope
-// Initialize the selectedDifficulty variable and generate the initial puzzle
+ 
 let selectedDifficulty = "medium"; // Default difficulty level
+ 
 let initialPuzzle = generateSudoku(selectedDifficulty); // Generate the puzzle based on difficulty
 console.log("Generated puzzle array (Initial):", initialPuzzle);
+ 
 let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Create a deep copy of the initial puzzle
+
+function renderPuzzle(puzzle) {
+            console.log("Rendering Sudoku grid...");
+            grid.innerHTML = ""; // Clear the grid
+            inputs.length = 0; // Reset inputs array for navigation
+
+            // Iterate through rows and columns to create cells
+            puzzle.forEach((row, rowIndex) => {
+                row.forEach((value, colIndex) => {
+                    console.log(`Rendering cell at row ${rowIndex}, col ${colIndex} with value:`, value);
+            
+                    const cell = document.createElement("div");
+                    cell.classList.add("cell");
+                    
+                    // Subgrid coloring and borders logic...
+                    const subgridRow = Math.floor(rowIndex / 3);
+                    const subgridCol = Math.floor(colIndex / 3);
+                    const isSubgridEven = (subgridRow + subgridCol) % 2 === 0;
+                    cell.style.backgroundColor = isSubgridEven ? "var(--subgrid-color-1)" : "var(--subgrid-color-2)";
+
+                    if (value !== 0) {
+                        cell.textContent = value;
+                        cell.classList.add("fixed");
+                    } else {
+                        const input = document.createElement("input");
+                        input.type = "text";
+                        input.maxLength = 1;
+                        input.dataset.row = rowIndex;
+                        input.dataset.col = colIndex;
+
+                    // Add borders for subgrid visualization
+                    if (rowIndex % 3 === 0) cell.classList.add("top-border");
+                    if (colIndex % 3 === 0) cell.classList.add("left-border");
+                    if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
+                    if (colIndex % 3 === 2) cell.classList.add("right-border");
+
+                        // Add the input element to the `inputs` array
+                        inputs.push(input);
+
+                        // Add events for selecting and validating inputs
+                        input.addEventListener("click", function () {
+                            if (selectedInput) selectedInput.classList.remove("selected");
+                            selectedInput = this;
+                            selectedInput.classList.add("selected");
+                        });
+
+                        input.addEventListener("input", function () {
+                            // Allow only numbers 1-9 and block everything else
+                            const inputValue = this.value.trim();
+                            if (/^[1-9]$/.test(inputValue)) {
+                                currentPuzzle[rowIndex][colIndex] = parseInt(inputValue, 10); // Update puzzle
+                                this.value = inputValue; // Ensure the input value remains visible
+                            } else {
+                                this.value = ""; // Clear invalid input
+                                currentPuzzle[rowIndex][colIndex] = 0; // Reset grid value
+                            }
+                                showValidationMessage();
+                        });
+                            clearHighlights();
+                            highlightInvalidCells(getInvalidCells(currentPuzzle));
+                            showValidationMessage();
+                        }
+            
+                        cell.appendChild(input);
+                    });
+                    grid.appendChild(cell);
+             });
+}
 
 // Generate a Sudoku puzzle with difficulty
 function generateSudoku(difficulty) {
@@ -142,6 +212,8 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
         let selectedInput = null; // Track the currently selected cell input
         const inputs = []; // Store all input elements for navigation
 
+        renderPuzzle(currentPuzzle);
+    
         const modal = document.getElementById("contactModal");
         const openButton = document.getElementById("openModalButton"); // The button opening the modal
         const closeButton = document.getElementById("closeModalButton");
@@ -157,95 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
             modal.setAttribute("aria-hidden", "true");
             openButton.focus(); // Return focus to the button that opened the modal
         });
-
-        console.log(grid);
-        renderPuzzle(currentPuzzle);
-
-        function renderPuzzle(puzzle) {
-            console.log("Rendering Sudoku grid...");
-            grid.innerHTML = ""; // Clear the grid
-            inputs.length = 0; // Reset inputs array for navigation
-
-            // Iterate through rows and columns to create cells
-            puzzle.forEach((row, rowIndex) => {
-                row.forEach((value, colIndex) => {
-                    console.log(`Rendering cell at row ${rowIndex}, col ${colIndex} with value:`, value);
-
-                    // Create a cell for each value in the puzzle
-                    const cell = document.createElement("div");
-                    cell.classList.add("cell");
-
-                    // Set alternating subgrid colors
-                    const subgridRow = Math.floor(rowIndex / 3);
-                    const subgridCol = Math.floor(colIndex / 3);
-                    const isSubgridEven = (subgridRow + subgridCol) % 2 === 0;
-                    cell.style.backgroundColor = isSubgridEven ? "var(--subgrid-color-1)" : "var(--subgrid-color-2)";
-
-                    // Add borders for subgrid visualization
-                    if (rowIndex % 3 === 0) cell.classList.add("top-border");
-                    if (colIndex % 3 === 0) cell.classList.add("left-border");
-                    if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
-                    if (colIndex % 3 === 2) cell.classList.add("right-border");
-
-                    // Populate cells with fixed values or input fields
-                    if (value !== 0) {
-                        cell.textContent = value;
-                        cell.classList.add("fixed");
-                    } else {
-                        const input = document.createElement("input");
-                        input.type = "text";
-                        input.maxLength = 1;
-                        input.dataset.row = rowIndex;
-                        input.dataset.col = colIndex;
-
-                        // Add the input element to the `inputs` array
-                        inputs.push(input);
-
-                        // Add events for selecting and validating inputs
-                        input.addEventListener("click", function () {
-                            if (selectedInput) selectedInput.classList.remove("selected");
-                            selectedInput = this;
-                            selectedInput.classList.add("selected");
-                        });
-
-                        input.addEventListener("input", function () {
-                            // Allow only numbers 1-9 and block everything else
-                            const inputValue = this.value.trim();
-                            if (/^[1-9]$/.test(inputValue)) {
-                                currentPuzzle[rowIndex][colIndex] = parseInt(inputValue, 10); // Update puzzle
-                                this.value = inputValue; // Ensure the input value remains visible
-                            } else {
-                                this.value = ""; // Clear invalid input
-                                currentPuzzle[rowIndex][colIndex] = 0; // Reset grid value
-                            }
-                        });
-
-                        input.addEventListener("input", function () {
-                            const inputValue = this.value.trim();
-                            if (/^[1-9]$/.test(inputValue)) {
-                                currentPuzzle[this.dataset.row][this.dataset.col] = parseInt(inputValue, 10); // Update puzzle
-                                this.value = inputValue;
-                            } else {
-                                this.value = ""; // Clear invalid input
-                                currentPuzzle[this.dataset.row][this.dataset.col] = 0;
-                            }
-
-                            // Validate puzzle and highlight invalid cells
-                            clearHighlights(); // Remove any existing highlights
-                            const invalidCells = getInvalidCells(currentPuzzle);
-                            highlightInvalidCells(invalidCells);
-                        });
-
-                        // Add the input field to the cell
-                        cell.appendChild(input);
-                    }
-
-                    // Append the cell to the Sudoku grid
-                    grid.appendChild(cell);
-                });
-                });
-            }    
-
+        
             // Timer setup
             function startTimer() {
                 clearInterval(timerInterval); // Ensure no duplicate timers
@@ -330,6 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
             });
 
             document.getElementById("check-solution").addEventListener("click", function () {
+                showValidationMessage();
                 if (isValidSudoku(currentPuzzle)) {
                     alert("Congratulations! The solution is correct.");
                 } else {
