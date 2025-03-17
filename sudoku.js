@@ -1,92 +1,8 @@
 let timerInterval; // Global scope
 
-document.addEventListener("DOMContentLoaded", function () {  /* global grid, timerElement, timerInterval, inputs, selectedInput */
-    const grid = document.getElementById("sudoku-grid");
-    const timerElement = document.getElementById("timer");
-    let selectedInput = null; // Track the currently selected cell input
-    const inputs = []; // Store all input elements for navigation
-    
-
-    // Add click event listeners to keypad buttons
-    document.querySelectorAll(".keypad-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            const value = this.dataset.value;
-            if (selectedInput && /^[1-9]$/.test(value)) {
-                selectedInput.value = value;
-            } else if (selectedInput && value === "0") {
-                selectedInput.value = "";
-            } else {
-                alert("Please select a cell first!");
-            }
-        });
-    }); // Correctly closes the forEach loop and its callback
-
-    // "Contact Us" modal logic
-    const sendMessageButton = document.getElementById("sendMessageButton");
-    const nameField = document.getElementById("contactName");
-    const emailField = document.getElementById("contactEmail");
-    const messageField = document.getElementById("contactMessage");
-
-    sendMessageButton.addEventListener("click", function () {
-        const name = nameField.value.trim();
-        const email = emailField.value.trim();
-        const message = messageField.value.trim();
-
-        // Validate the form fields
-        if (!name || !email || !message) {
-            alert("Please fill out all fields before submitting.");
-            if (!name) nameField.style.borderColor = "red";
-            if (!email) emailField.style.borderColor = "red";
-            if (!message) messageField.style.borderColor = "red";
-            return;
-        }
-
-        // Clear the red borders if validation passes
-        nameField.style.borderColor = "";
-        emailField.style.borderColor = "";
-        messageField.style.borderColor = "";
-
-        // Example action: Display a thank-you message
-        alert("Thank you for your message! We'll get back to you soon.");
-    });
-
-    // The "Close" button is already handled by Bootstrap's data-bs-dismiss="modal",
-    // so no additional JavaScript is required for it.
-}); // Correctly closes the event listener
-
-
-// Timer setup
-function startTimer() {
-    clearInterval(timerInterval); // Ensure no duplicate timers
-    let hours = 0;
-    let minutes = 0;
-    let seconds = 0;
-
-    timerInterval = setInterval(() => {
-        seconds++;
-        if (seconds === 60) {
-            seconds = 0;
-            minutes++;
-        }
-        if (minutes === 60) {
-            minutes = 0;
-            hours++;
-        }
-
-        const formattedTime =
-            String(hours).padStart(2, "0") + ":" +
-            String(minutes).padStart(2, "0") + ":" +
-            String(seconds).padStart(2, "0");
-        timerElement.textContent = formattedTime;
-    }, 1000); // Update every second
-    console.log("Timer started");
-}
-
-function resetTimer() {
-    clearInterval(timerInterval);
-    timerElement.textContent = "00:00:00"; // Reset timer display
-    console.log("Timer reset");
-}
+let initialPuzzle = generateSudoku(selectedDifficulty);
+console.log("Generated puzzle array (Initial):", initialPuzzle);
+let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
 
 // Generate a Sudoku puzzle with difficulty
 function generateSudoku(difficulty) {
@@ -117,15 +33,116 @@ function generateSudoku(difficulty) {
     return puzzle;
 }
 
-let selectedDifficulty = "medium";
-let initialPuzzle = generateSudoku(selectedDifficulty);
-console.log("Generated puzzle array (Initial):", initialPuzzle);
-let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+function isValidSudoku(puzzle) {
+    // Logic for validating rows, columns, and subgrids
+    function isUnique(array) {
+        const nums = array.filter(num => num !== 0);
+        const uniqueNums = new Set(nums);
+        return nums.length === uniqueNums.size;
+    }
 
-console.log(grid);
-renderPuzzle(currentPuzzle);
+    // Validate rows, columns, and subgrids
+    for (let i = 0; i < 9; i++) {
+        if (!isUnique(puzzle[i])) return false;
+        if (!isUnique(puzzle.map(row => row[i]))) return false;
 
-function renderPuzzle(puzzle) {
+        // Subgrid validation
+        for (let j = 0; j < 9; j += 3) {
+            const subgrid = [];
+            for (let x = 0; x < 3; x++) {
+                for (let y = 0; y < 3; y++) {
+                    subgrid.push(puzzle[i + x][j + y]);
+                }
+            }
+            if (!isUnique(subgrid)) return false;
+        }
+    }
+    return true;
+}
+
+function getInvalidCells(puzzle) {
+    const invalidCells = [];
+
+    // Check rows
+    puzzle.forEach((row, rowIndex) => {
+        if (!isUnique(row)) {
+            row.forEach((value, colIndex) => {
+                if (value !== 0 && !isUnique(row.filter((_, i) => i !== colIndex))) {
+                    invalidCells.push([rowIndex, colIndex]);
+                }
+            });
+        }
+    });
+
+    // Check columns
+    for (let col = 0; col < 9; col++) {
+        const column = puzzle.map(row => row[col]);
+        if (!isUnique(column)) {
+            column.forEach((value, rowIndex) => {
+                if (value !== 0 && !isUnique(column.filter((_, i) => i !== rowIndex))) {
+                    invalidCells.push([rowIndex, col]);
+                }
+            });
+        }
+    }
+
+    // Check subgrids
+    for (let subgridRow = 0; subgridRow < 3; subgridRow++) {
+        for (let subgridCol = 0; subgridCol < 3; subgridCol++) {
+            const subgrid = [];
+            const invalidSubgridCells = [];
+            for (let row = subgridRow * 3; row < subgridRow * 3 + 3; row++) {
+                for (let col = subgridCol * 3; col < subgridCol * 3 + 3; col++) {
+                    subgrid.push(puzzle[row][col]);
+                    invalidSubgridCells.push([row, col]);
+                }
+            }
+            if (!isUnique(subgrid)) {
+                subgrid.forEach((value, index) => {
+                    if (value !== 0 && !isUnique(subgrid.filter((_, i) => i !== index))) {
+                        invalidCells.push(invalidSubgridCells[index]);
+                    }
+                });
+            }
+        }
+    }
+
+    return invalidCells;
+}
+
+function highlightInvalidCells(invalidCells) {
+    invalidCells.forEach(([rowIndex, colIndex]) => {
+        const input = document.querySelector(`input[data-row="${rowIndex}"][data-col="${colIndex}"]`);
+        if (input) {
+            input.classList.add("highlight-error"); // Add error styling
+        }
+    });
+}
+
+function clearHighlights() {
+    document.querySelectorAll(".highlight-error").forEach(cell => {
+        cell.classList.remove("highlight-error");
+    });
+}
+
+function showValidationMessage() {
+    const invalidCells = getInvalidCells(currentPuzzle);
+    if (invalidCells.length > 0) {
+        alert("Some cells are invalid. Please check your inputs.");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {  /* global grid, timerElement, timerInterval, inputs, selectedInput */
+    const grid = document.getElementById("sudoku-grid");
+    const timerElement = document.getElementById("timer");
+    let selectedInput = null; // Track the currently selected cell input
+    let selectedDifficulty = "medium";
+    const inputs = []; // Store all input elements for navigation
+
+    console.log(grid);
+    renderPuzzle(currentPuzzle);
+
+    function renderPuzzle(puzzle) {
     console.log("Rendering Sudoku grid...");
     grid.innerHTML = ""; // Clear the grid
     inputs.length = 0; // Reset inputs array for navigation
@@ -184,6 +201,21 @@ function renderPuzzle(puzzle) {
                     }
                 });
 
+                input.addEventListener("input", function () {
+                    const inputValue = this.value.trim();
+                    if (/^[1-9]$/.test(inputValue)) {
+                        currentPuzzle[this.dataset.row][this.dataset.col] = parseInt(inputValue, 10); // Update puzzle
+                        this.value = inputValue;
+                    } else {
+                        this.value = ""; // Clear invalid input
+                         currentPuzzle[this.dataset.row][this.dataset.col] = 0;
+                    }
+
+                // Validate puzzle and highlight invalid cells
+                clearHighlights(); // Remove any existing highlights
+                const invalidCells = getInvalidCells(currentPuzzle);
+                highlightInvalidCells(invalidCells);
+                });
 
                 // Add the input field to the cell
                 cell.appendChild(input);
@@ -194,6 +226,39 @@ function renderPuzzle(puzzle) {
         });
     });
 
+    // Timer setup
+    function startTimer() {
+    clearInterval(timerInterval); // Ensure no duplicate timers
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+
+    timerInterval = setInterval(() => {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+        }
+        if (minutes === 60) {
+            minutes = 0;
+            hours++;
+        }
+
+        const formattedTime =
+            String(hours).padStart(2, "0") + ":" +
+            String(minutes).padStart(2, "0") + ":" +
+            String(seconds).padStart(2, "0");
+        timerElement.textContent = formattedTime;
+    }, 1000); // Update every second
+    console.log("Timer started");
+    }
+
+    function resetTimer() {
+    clearInterval(timerInterval);
+    timerElement.textContent = "00:00:00"; // Reset timer display
+    console.log("Timer reset");
+    }
+    
     console.log("Sudoku grid rendered successfully!");
     console.log("Inputs for empty cells:", inputs);
 
@@ -207,70 +272,95 @@ function renderPuzzle(puzzle) {
             else if (e.key === "ArrowRight" && (index + 1) % 9 !== 0) inputs[index + 1].focus();
         });
     });
-}
+    document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
+        level.addEventListener("click", function () {
+            selectedDifficulty = this.textContent.trim().toLowerCase(); // Update the difficulty
+            console.log(`Selected difficulty: ${selectedDifficulty}`);
 
-document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
-    level.addEventListener("click", function () {
-        selectedDifficulty = this.textContent.trim().toLowerCase(); // Update the difficulty
-        console.log(`Selected difficulty: ${selectedDifficulty}`);
+            // Ensure the selected difficulty is valid
+            if (!["easy", "medium", "hard"].includes(selectedDifficulty)) {
+                console.error("Invalid difficulty selected!");
+                alert("Please select a valid difficulty.");
+                return;
+             }
 
-        // Regenerate puzzle for the selected difficulty
-        initialPuzzle = generateSudoku(selectedDifficulty); // Generate puzzle
-        currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Deep copy for game state
-        renderPuzzle(currentPuzzle); // Update the grid
+            console.log(`Selected difficulty: ${selectedDifficulty}`);
+           
+            // Regenerate puzzle for the selected difficulty
+            initialPuzzle = generateSudoku(selectedDifficulty); // Generate puzzle
+            currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Deep copy for game state
+            renderPuzzle(currentPuzzle); // Update the grid
 
-        resetTimer(); // Reset the timer display
-        startTimer(); // Restart the timer
+            resetTimer(); // Reset the timer display
+            startTimer(); // Restart the timer
+        });
+    }); // Correctly closes the dropdown-menu listener loop
+
+    document.getElementById("new-game").addEventListener("click", function () {
+        initialPuzzle = generateSudoku(selectedDifficulty);
+        currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+        renderPuzzle(currentPuzzle);
+        resetTimer();
+        startTimer();
     });
-}); // Correctly closes the dropdown-menu listener loop
 
-document.getElementById("new-game").addEventListener("click", function () {
-    initialPuzzle = generateSudoku(selectedDifficulty);
+    document.getElementById("reset").addEventListener("click", function () {
     currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
     renderPuzzle(currentPuzzle);
-    resetTimer();
-    startTimer();
-});
+    });
 
-document.getElementById("reset").addEventListener("click", function () {
-    currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-    renderPuzzle(currentPuzzle);
-});
-
-document.getElementById("check-solution").addEventListener("click", function () {
-    if (isValidSudoku(currentPuzzle)) {
+    document.getElementById("check-solution").addEventListener("click", function () {
+        if (isValidSudoku(currentPuzzle)) {
         alert("Congratulations! The solution is correct.");
-    } else {
+        } else {
         alert("Keep trying!");
-    }
-});
-
-function isValidSudoku(puzzle) {
-    // Logic for validating rows, columns, and subgrids
-    function isUnique(array) {
-        const nums = array.filter(num => num !== 0);
-        const uniqueNums = new Set(nums);
-        return nums.length === uniqueNums.size;
-    }
-
-    // Validate rows, columns, and subgrids
-    for (let i = 0; i < 9; i++) {
-        if (!isUnique(puzzle[i])) return false;
-        if (!isUnique(puzzle.map(row => row[i]))) return false;
-
-        // Subgrid validation
-        for (let j = 0; j < 9; j += 3) {
-            const subgrid = [];
-            for (let x = 0; x < 3; x++) {
-                for (let y = 0; y < 3; y++) {
-                    subgrid.push(puzzle[i + x][j + y]);
-                }
-            }
-            if (!isUnique(subgrid)) return false;
         }
-    }
-    return true;
+    }); 
 }
+    // Add click event listeners to keypad buttons
+    document.querySelectorAll(".keypad-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const value = this.dataset.value;
+            if (selectedInput && /^[1-9]$/.test(value)) {
+                selectedInput.value = value;
+            } else if (selectedInput && value === "0") {
+                selectedInput.value = "";
+            } else {
+                alert("Please select a cell first!");
+            }
+        });
+    }); // Correctly closes the forEach loop and its callback
+
+    // "Contact Us" modal logic
+    const sendMessageButton = document.getElementById("sendMessageButton");
+    const nameField = document.getElementById("contactName");
+    const emailField = document.getElementById("contactEmail");
+    const messageField = document.getElementById("contactMessage");
+
+    sendMessageButton.addEventListener("click", function () {
+        const name = nameField.value.trim();
+        const email = emailField.value.trim();
+        const message = messageField.value.trim();
+
+        // Validate the form fields
+        if (!name || !email || !message) {
+            alert("Please fill out all fields before submitting.");
+            if (!name) nameField.style.borderColor = "red";
+            if (!email) emailField.style.borderColor = "red";
+            if (!message) messageField.style.borderColor = "red";
+            return;
+        }
+
+        // Clear the red borders if validation passes
+        nameField.style.borderColor = "";
+        emailField.style.borderColor = "";
+        messageField.style.borderColor = "";
+
+        // Example action: Display a thank-you message
+        alert("Thank you for your message! We'll get back to you soon.");
+    });
+}); // Correctly closes the event listener
+
 
 // Initial setup and rendering
 startTimer();
