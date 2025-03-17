@@ -1,3 +1,5 @@
+let timerInterval; // Global scope
+
 document.addEventListener("DOMContentLoaded", function () {  /* global grid, timerElement, timerInterval, inputs, selectedInput */
   const grid = document.getElementById("sudoku-grid");
   const timerElement = document.getElementById("timer");
@@ -120,6 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
   console.log("Generated puzzle array (Initial):", initialPuzzle);
   let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
 
+  renderPuzzle(currentPuzzle);
+
   function renderPuzzle(puzzle) {
   console.log("Rendering Sudoku grid...");
   grid.innerHTML = ""; // Clear the grid
@@ -241,32 +245,33 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
 });
 
 function isValidSudoku(puzzle) {
-    function isUnique(array) {
-        const nums = array.filter(num => num !== 0);
-        const uniqueNums = new Set(nums);
-        return nums.length === uniqueNums.size;
-    }
-
-    // Validate Rows and Columns
-    for (let i = 0; i < 9; i++) {
-        if (!isUnique(puzzle[i])) return false; // Invalid row
-        if (!isUnique(puzzle.map(row => row[i]))) return false; // Invalid column
-    }
-
-    // Validate Subgrids
-    for (let i = 0; i < 9; i += 3) {
-        for (let j = 0; j < 9; j += 3) {
-            const subgrid = [];
-            for (let x = 0; x < 3; x++) {
-                for (let y = 0; y < 3; y++) {
-                    subgrid.push(puzzle[i + x][j + y]);
-                }
-            }
-            if (!isUnique(subgrid)) return false; // Invalid subgrid
+        // Logic for validating rows, columns, and subgrids
+        function isUnique(array) {
+            const nums = array.filter(num => num !== 0);
+            const uniqueNums = new Set(nums);
+            return nums.length === uniqueNums.size;
         }
-    }
-    return true; // Grid is valid
-}
 
-startTimer();
-renderPuzzle(currentPuzzle);
+        // Validate rows, columns, and subgrids
+        for (let i = 0; i < 9; i++) {
+            if (!isUnique(puzzle[i])) return false;
+            if (!isUnique(puzzle.map(row => row[i]))) return false;
+
+            // Subgrid validation
+            for (let j = 0; j < 9; j += 3) {
+                const subgrid = [];
+                for (let x = 0; x < 3; x++) {
+                    for (let y = 0; y < 3; y++) {
+                        subgrid.push(puzzle[i + x][j + y]);
+                    }
+                }
+                if (!isUnique(subgrid)) return false; 
+            }
+        }
+        return true; 
+    }
+
+    // Initial setup and rendering
+    startTimer();
+    renderPuzzle(currentPuzzle);
+});
