@@ -35,14 +35,12 @@ function generateSudoku(difficulty) {
     return puzzle;
 }
 
-function isValidSudoku(puzzle) {
-    // Logic for validating rows, columns, and subgrids
-    function isUnique(array) {
+function isUnique(array) {
         const nums = array.filter(num => num !== 0);
         const uniqueNums = new Set(nums);
         return nums.length === uniqueNums.size;
-    }
 
+function isValidSudoku(puzzle) {
     // Validate rows, columns, and subgrids
     for (let i = 0; i < 9; i++) {
         if (!isUnique(puzzle[i])) return false;
