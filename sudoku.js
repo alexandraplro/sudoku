@@ -1,8 +1,10 @@
+// Declare global variables (if necessary)
 let timerInterval; // Global scope
-
-let initialPuzzle = generateSudoku(selectedDifficulty);
+// Initialize the selectedDifficulty variable and generate the initial puzzle
+let selectedDifficulty = "medium"; // Default difficulty level
+let initialPuzzle = generateSudoku(selectedDifficulty); // Generate the puzzle based on difficulty
 console.log("Generated puzzle array (Initial):", initialPuzzle);
-let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Create a deep copy of the initial puzzle
 
 // Generate a Sudoku puzzle with difficulty
 function generateSudoku(difficulty) {
@@ -136,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
     const grid = document.getElementById("sudoku-grid");
     const timerElement = document.getElementById("timer");
     let selectedInput = null; // Track the currently selected cell input
-    let selectedDifficulty = "medium";
     const inputs = []; // Store all input elements for navigation
 
     console.log(grid);
