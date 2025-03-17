@@ -336,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
                     alert("Keep trying!");
                 }
             });
-        }
+        
         // Add click event listeners to keypad buttons
         document.querySelectorAll(".keypad-btn").forEach(button => {
             button.addEventListener("click", function () {
@@ -379,10 +379,9 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
             // Example action: Display a thank-you message
             alert("Thank you for your message! We'll get back to you soon.");
         });
-    }); // Correctly closes the event listener
-
+     // Correctly closes the event listener
+    });
 
     // Initial setup and rendering
     startTimer();
     renderPuzzle(currentPuzzle);
-}
