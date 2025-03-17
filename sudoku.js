@@ -40,83 +40,83 @@ function isUnique(array) {
     const uniqueNums = new Set(nums);
     return nums.length === uniqueNums.size;
 
-    function isValidSudoku(puzzle) {
-        // Validate rows, columns, and subgrids
-        for (let i = 0; i < 9; i++) {
-            if (!isUnique(puzzle[i])) return false;
-            if (!isUnique(puzzle.map(row => row[i]))) return false;
+function isValidSudoku(puzzle) {
+    // Validate rows, columns, and subgrids
+    for (let i = 0; i < 9; i++) {
+        if (!isUnique(puzzle[i])) return false;
+        if (!isUnique(puzzle.map(row => row[i]))) return false;
 
-            // Subgrid validation
-            for (let j = 0; j < 9; j += 3) {
-                const subgrid = [];
-                for (let x = 0; x < 3; x++) {
-                    for (let y = 0; y < 3; y++) {
-                        subgrid.push(puzzle[i + x][j + y]);
-                    }
+        // Subgrid validation
+        for (let j = 0; j < 9; j += 3) {
+            const subgrid = [];
+             for (let x = 0; x < 3; x++) {
+                for (let y = 0; y < 3; y++) {
+                    subgrid.push(puzzle[i + x][j + y]);
                 }
-                if (!isUnique(subgrid)) return false;
+            }
+             if (!isUnique(subgrid)) return false;
+         }
+    }
+    return true;
+}
+
+function getInvalidCells(puzzle) {
+    const invalidCells = [];
+
+     // Check rows
+     puzzle.forEach((row, rowIndex) => {
+        if (!isUnique(row)) {
+             row.forEach((value, colIndex) => {
+                if (value !== 0 && !isUnique(row.filter((_, i) => i !== colIndex))) {
+                    invalidCells.push([rowIndex, colIndex]);
+                }
+             });
+        }
+     });
+
+     // Check columns
+    for (let col = 0; col < 9; col++) {
+        const column = puzzle.map(row => row[col]);
+           if (!isUnique(column)) {
+            column.forEach((value, rowIndex) => {
+                  if (value !== 0 && !isUnique(column.filter((_, i) => i !== rowIndex))) {
+                    invalidCells.push([rowIndex, col]);
+                  }
+            );
             }
         }
-        return true;
-    }
 
-    function getInvalidCells(puzzle) {
-        const invalidCells = [];
-
-        // Check rows
-        puzzle.forEach((row, rowIndex) => {
-            if (!isUnique(row)) {
-                row.forEach((value, colIndex) => {
-                    if (value !== 0 && !isUnique(row.filter((_, i) => i !== colIndex))) {
-                        invalidCells.push([rowIndex, colIndex]);
-                    }
+    // Check subgrids
+    for (let subgridRow = 0; subgridRow < 3; subgridRow++) {
+        for (let subgridCol = 0; subgridCol < 3; subgridCol++) {
+            const subgrid = [];
+            const invalidSubgridCells = [];
+            for (let row = subgridRow * 3; row < subgridRow * 3 + 3; row++) {
+                for (let col = subgridCol * 3; col < subgridCol * 3 + 3; col++) {
+                     subgrid.push(puzzle[row][col]);
+                     invalidSubgridCells.push([row, col]);
+                }
+             }
+            if (!isUnique(subgrid)) {
+                subgrid.forEach((value, index) => {
+                    if (value !== 0 && !isUnique(subgrid.filter((_, i) => i !== index))) {
+                         invalidCells.push(invalidSubgridCells[index]);
+                     }
                 });
             }
-        });
-
-        // Check columns
-        for (let col = 0; col < 9; col++) {
-            const column = puzzle.map(row => row[col]);
-            if (!isUnique(column)) {
-                column.forEach((value, rowIndex) => {
-                    if (value !== 0 && !isUnique(column.filter((_, i) => i !== rowIndex))) {
-                        invalidCells.push([rowIndex, col]);
-                    }
-                });
-            }
         }
-
-        // Check subgrids
-        for (let subgridRow = 0; subgridRow < 3; subgridRow++) {
-            for (let subgridCol = 0; subgridCol < 3; subgridCol++) {
-                const subgrid = [];
-                const invalidSubgridCells = [];
-                for (let row = subgridRow * 3; row < subgridRow * 3 + 3; row++) {
-                    for (let col = subgridCol * 3; col < subgridCol * 3 + 3; col++) {
-                        subgrid.push(puzzle[row][col]);
-                        invalidSubgridCells.push([row, col]);
-                    }
-                }
-                if (!isUnique(subgrid)) {
-                    subgrid.forEach((value, index) => {
-                        if (value !== 0 && !isUnique(subgrid.filter((_, i) => i !== index))) {
-                            invalidCells.push(invalidSubgridCells[index]);
-                        }
-                    });
-                }
-            }
-        }
-
-        return invalidCells;
     }
 
-    function highlightInvalidCells(invalidCells) {
-        invalidCells.forEach(([rowIndex, colIndex]) => {
-            const input = document.querySelector(`input[data-row="${rowIndex}"][data-col="${colIndex}"]`);
+    return invalidCells;
+}
+
+function highlightInvalidCells(invalidCells) {
+     invalidCells.forEach(([rowIndex, colIndex]) => {
+         const input = document.querySelector(`input[data-row="${rowIndex}"][data-col="${colIndex}"]`);
             if (input) {
-                input.classList.add("highlight-error"); // Add error styling
+            input.classList.add("highlight-error"); // Add error styling
             }
-        });
+    });
     }
 
     function clearHighlights() {
@@ -125,14 +125,14 @@ function isUnique(array) {
         });
     }
 
-    function showValidationMessage() {
-        const invalidCells = getInvalidCells(currentPuzzle);
-        if (invalidCells.length > 0) {
-            alert("Some cells are invalid. Please check your inputs.");
-        }
-    }
+function showValidationMessage() {
+      const invalidCells = getInvalidCells(currentPuzzle);
+      if (invalidCells.length > 0) {
+         alert("Some cells are invalid. Please check your inputs.");
+      }
+ }
 
-    document.addEventListener("DOMContentLoaded", function () {  /* global grid, timerElement, timerInterval, inputs, selectedInput */
+document.addEventListener("DOMContentLoaded", function () {  /* global grid, timerElement, timerInterval, inputs, selectedInput */
         const grid = document.getElementById("sudoku-grid");
         const timerElement = document.getElementById("timer");
         let selectedInput = null; // Track the currently selected cell input
