@@ -121,13 +121,13 @@ function highlightInvalidCells(invalidCells) {
             input.classList.add("highlight-error"); // Add error styling
             }
     });
-    }
+}
 
-    function clearHighlights() {
+function clearHighlights() {
         document.querySelectorAll(".highlight-error").forEach(cell => {
             cell.classList.remove("highlight-error");
         });
-    }
+}
 
 function showValidationMessage() {
       const invalidCells = getInvalidCells(currentPuzzle);
@@ -243,7 +243,8 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
                     // Append the cell to the Sudoku grid
                     grid.appendChild(cell);
                 });
-            });
+                });
+            }    
 
             // Timer setup
             function startTimer() {
