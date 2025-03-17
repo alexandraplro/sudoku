@@ -3,9 +3,9 @@ let timerInterval; // Global scope
 document.addEventListener("DOMContentLoaded", function () {  /* global grid, timerElement, timerInterval, inputs, selectedInput */
     const grid = document.getElementById("sudoku-grid");
     const timerElement = document.getElementById("timer");
-    let timerInterval;
     let selectedInput = null; // Track the currently selected cell input
     const inputs = []; // Store all input elements for navigation
+    
 
     // Add click event listeners to keypad buttons
     document.querySelectorAll(".keypad-btn").forEach(button => {
@@ -122,6 +122,7 @@ let initialPuzzle = generateSudoku(selectedDifficulty);
 console.log("Generated puzzle array (Initial):", initialPuzzle);
 let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
 
+console.log(grid);
 renderPuzzle(currentPuzzle);
 
 function renderPuzzle(puzzle) {
