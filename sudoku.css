@@ -210,6 +210,11 @@ header h1 {
   transform: scale(1.1); /* Subtle hover effect */
 }
 
+.highlight-error {
+    background-color: rgba(255, 0, 0, 0.5); /* Red background with some transparency */
+    border: 2px solid red;
+}
+
 .container {
   display: flex; /* Flexbox to align items horizontally */
   justify-content: space-between; /* Moves nav to the right */
