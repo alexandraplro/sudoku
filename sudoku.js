@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {  /* global grid, timerElement, timerInterval, inputs, selectedInput */
   const grid = document.getElementById("sudoku-grid");
   const timerElement = document.getElementById("timer");
   let timerInterval;
@@ -191,18 +191,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   console.log("Sudoku grid rendered successfully!");
   console.log("Inputs for empty cells:", inputs);
-}
 
-    // Add keyboard navigation
-    inputs.forEach((input, index) => {
+  console.log("Inputs array:", inputs);
+
+  inputs.forEach((input, index) => {
     input.addEventListener("keydown", (e) => {
       if (e.key === "ArrowUp" && index >= 9) inputs[index - 9].focus();
       else if (e.key === "ArrowDown" && index < 72) inputs[index + 9].focus();
       else if (e.key === "ArrowLeft" && index % 9 !== 0) inputs[index - 1].focus();
       else if (e.key === "ArrowRight" && (index + 1) % 9 !== 0) inputs[index + 1].focus();
     });
-  }); // Closes the inputs.forEach loop
-
+  });
+}
 
   document.querySelectorAll(".dropdown-menu .dropdown-item").forEach(level => {
     level.addEventListener("click", function () {
