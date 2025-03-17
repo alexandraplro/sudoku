@@ -39,6 +39,7 @@ function isUnique(array) {
     const nums = array.filter(num => num !== 0);
     const uniqueNums = new Set(nums);
     return nums.length === uniqueNums.size;
+}
 
 function isValidSudoku(puzzle) {
     // Validate rows, columns, and subgrids
@@ -75,16 +76,19 @@ function getInvalidCells(puzzle) {
      });
 
      // Check columns
+    // Check columns
     for (let col = 0; col < 9; col++) {
-        const column = puzzle.map(row => row[col]);
-           if (!isUnique(column)) {
-            column.forEach((value, rowIndex) => {
-                  if (value !== 0 && !isUnique(column.filter((_, i) => i !== rowIndex))) {
+        const column = puzzle.map(row => row[col]); // Extract the column
+
+        if (!isUnique(column)) { // Validate the column
+            column.forEach((value, rowIndex) => { 
+                if (value !== 0 && !isUnique(column.filter((_, i) => i !== rowIndex))) {
                     invalidCells.push([rowIndex, col]);
-                  }
-            );
-            }
-        }
+                }
+            }); // Correctly closed here
+        }    
+    }
+
 
     // Check subgrids
     for (let subgridRow = 0; subgridRow < 3; subgridRow++) {
