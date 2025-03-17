@@ -138,6 +138,22 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
     let selectedInput = null; // Track the currently selected cell input
     const inputs = []; // Store all input elements for navigation
 
+    const modal = document.getElementById("contactModal");
+    const openButton = document.getElementById("openModalButton"); // The button opening the modal
+    const closeButton = document.getElementById("closeModalButton");
+
+    openButton.addEventListener("click", () => {
+    modal.removeAttribute("inert");
+    modal.setAttribute("aria-hidden", "false");
+    closeButton.focus(); // Focus the close button when modal opens
+    }   );
+
+    closeButton.addEventListener("click", () => {
+    modal.setAttribute("inert", "");
+    modal.setAttribute("aria-hidden", "true");
+    openButton.focus(); // Return focus to the button that opened the modal
+    });
+
     console.log(grid);
     renderPuzzle(currentPuzzle);
 
