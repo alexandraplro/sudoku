@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("Generated puzzle array (Initial):", initialPuzzle);
 
-        function renderPuzzle(document.getElementById("sudoku-grid"), puzzle) {
+        function renderPuzzle(grid, puzzle) {
             console.log("Rendering Sudoku grid...");
             grid.innerHTML = ""; // Clear the grid
             inputs.length = 0; // Reset inputs array for navigation
