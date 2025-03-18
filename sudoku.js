@@ -114,14 +114,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
         document.addEventListener("keydown", (e) => {
-            if (!selectedInput) return;
+            if (!selectedInput) {
+                console.log("No input selected");
+                return;
+            }
 
-        const index = inputs.indexOf(selectedInput);
-            if (e.key === "ArrowUp" && index >= 9) inputs[index - 9].focus();
-            else if (e.key === "ArrowDown" && index < 72) inputs[index + 9].focus();
-            else if (e.key === "ArrowLeft" && index % 9 !== 0) inputs[index - 1].focus();
-            else if (e.key === "ArrowRight" && (index + 1) % 9 !== 0) inputs[index + 1].focus();
+            const index = inputs.indexOf(selectedInput);
+            console.log("Current index:", index);
+
+            if (index === -1) {
+                console.log("Selected input is not in the inputs array");
+                return;
+            }
+
+            if (e.key === "ArrowUp" && index >= 9) {
+                console.log("Focusing input above");
+                inputs[index - 9].focus();
+            } else if (e.key === "ArrowDown" && index < 72) {
+                console.log("Focusing input below");
+                inputs[index + 9].focus();
+            } else if (e.key === "ArrowLeft" && index % 9 !== 0) {
+                console.log("Focusing input to the left");
+                inputs[index - 1].focus();
+            } else if (e.key === "ArrowRight" && (index + 1) % 9 !== 0) {
+                console.log("Focusing input to the right");
+                inputs[index + 1].focus();
+            } else {
+                console.log("No valid navigation action");
+            }
         });
+
     
         // Generate a Sudoku puzzle with difficulty
         function generateSudoku(difficulty) {
