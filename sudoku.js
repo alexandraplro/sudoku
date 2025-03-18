@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 row.forEach((value, colIndex) => {
                     console.log(`Rendering cell at row ${rowIndex}, col ${colIndex} with value:`, value);
                     const cell = document.createElement("div");
-                    cell.classList.add("cell
+                    cell.classList.add("cell");
 
                     let input;
 
