@@ -1,17 +1,23 @@
 let timerInterval; // Declare globally
 let selectedInput = null;
+let inputs= [];
+
 
 document.addEventListener("DOMContentLoaded", function () {  
     const grid = document.getElementById("sudoku-grid");
-    const timerElement = document.getElementById("timer"); // Declare once and use directly
-    if (!timerElement) {
-        console.error("Element with ID 'timer' is not found in the DOM.");
-    const input = document.createElement("input"); // Properly define input
-    const cell = document.createElement("div"); // Properly define cell
-    let selectedDifficulty = "medium"; // Default difficulty level
-    let initialPuzzle = generateSudoku(selectedDifficulty); // Generate the puzzle based on difficulty
-    let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Create a deep copy of the initial puzzle
+    const timerElement = document.getElementById("timer");
 
+    if (!grid || !timerElement) {
+        console.error("Required DOM elements are missing.");
+        return;
+    }
+
+    let selectedDifficulty = "medium";
+    let initialPuzzle = generateSudoku(selectedDifficulty);
+    let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+
+    const cell = document.createElement("div"); // Properly define cell
+    
         console.log("Generated puzzle array (Initial):", initialPuzzle);
 
         function renderPuzzle(grid, puzzle) {
@@ -376,6 +382,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Thank you for your message! We'll get back to you soon.");
         });
         // Correctly closes the event listener
+        renderPuzzle(grid, currentPuzzle);
         startTimer();
     }
 });
