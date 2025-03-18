@@ -374,6 +374,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // "Contact Us" modal logic
         const sendMessageButton = document.getElementById("sendMessageButton");
+        console.log("sendMessageButton:", 
         const nameField = document.getElementById("contactName");
         const emailField = document.getElementById("contactEmail");
         const messageField = document.getElementById("contactMessage");
