@@ -1,14 +1,13 @@
-let timerInterval; // Declare globally
 let selectedInput = null;
 let inputs= [];
 
-
 document.addEventListener("DOMContentLoaded", function () {  
     const grid = document.getElementById("sudoku-grid");
+    let timerInterval; // Declare here for accessibility in functions
     const timerElement = document.getElementById("timer");
 
-    if (!grid || !timerElement) {
-        console.error("Required DOM elements are missing.");
+    if (!timerElement) {
+        console.error("Element with ID 'timer' not found. Ensure it exists in the DOM.");
         return;
     }
 
@@ -308,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Regenerate puzzle for the selected difficulty
                 initialPuzzle = generateSudoku(selectedDifficulty); // Generate puzzle
                 currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Deep copy for game state
-                renderPuzzle(document.getElementById("sudoku-grid"), currentPuzzle); // Update the grid
+                renderPuzzle(grid, currentPuzzle); // Update the grid
 
                 resetTimer(); // Reset the timer display
                 startTimer(); // Restart the timer
@@ -318,19 +317,19 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("new-game").addEventListener("click", function () {
             initialPuzzle = generateSudoku(selectedDifficulty);
             currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-            renderPuzzle(document.getElementById("sudoku-grid"), currentPuzzle);
+            renderPuzzle(grid, currentPuzzle);
             resetTimer();
             startTimer();
         });
 
         document.getElementById("reset").addEventListener("click", function () {
             currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-            renderPuzzle(document.getElementById("sudoku-grid"), currentPuzzle);
+            renderPuzzle(grid, currentPuzzle);
         });
 
         document.getElementById("check-solution").addEventListener("click", function () {
             showValidationMessage();
-            if (isValidSudoku(grid, currentPuzzle)) {
+            if (isValidSudoku(currentPuzzle)) {
                 alert("Congratulations! The solution is correct.");
             } else {
                 alert("Keep trying!");
@@ -384,5 +383,4 @@ document.addEventListener("DOMContentLoaded", function () {
         // Correctly closes the event listener
         renderPuzzle(grid, currentPuzzle);
         startTimer();
-    }
-});
+    });
