@@ -230,26 +230,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const modal = document.getElementById("contactModal");
-        const openButton = document.getElementById("openModalButton");
         const closeButton = document.getElementById("closeModalButton");
 
         console.log("modal:", modal);
-        console.log("openButton:", openButton);
         console.log("closeButton:", closeButton);
-        if (openButton && closeButton && modal) {
-            openButton.addEventListener("click", () => {
-                modal.removeAttribute("inert");
-                modal.setAttribute("aria-hidden", "false");
-                closeButton.focus(); // Focus the close button when modal opens
-            });
 
+        if (closeButton && modal) {
             closeButton.addEventListener("click", () => {
                 modal.setAttribute("inert", "");
                 modal.setAttribute("aria-hidden", "true");
-                openButton.focus(); // Return focus to the button that opened the modal
             });
         } else {
-            console.error("Modal, openButton, or closeButton is missing in the DOM.");
+            console.error("Close button or modal is missing in the DOM.");
         }
 
         // Timer setup
