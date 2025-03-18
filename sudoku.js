@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
 
         console.log("Generated puzzle array (Initial):", initialPuzzle);
 
-        function renderPuzzle(grid, puzzle) {
+        function renderPuzzle(document.getElementById("sudoku-grid"), puzzle) {
             console.log("Rendering Sudoku grid...");
             grid.innerHTML = ""; // Clear the grid
             inputs.length = 0; // Reset inputs array for navigation
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
                 // Regenerate puzzle for the selected difficulty
                 initialPuzzle = generateSudoku(selectedDifficulty); // Generate puzzle
                 currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Deep copy for game state
-                renderPuzzle(grid, currentPuzzle); // Update the grid
+                renderPuzzle(document.getElementById("sudoku-grid"), currentPuzzle); // Update the grid
 
                 resetTimer(); // Reset the timer display
                 startTimer(); // Restart the timer
@@ -312,14 +312,14 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
         document.getElementById("new-game").addEventListener("click", function () {
             initialPuzzle = generateSudoku(selectedDifficulty);
             currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-            renderPuzzle(grid, currentPuzzle);
+            renderPuzzle(document.getElementById("sudoku-grid"), currentPuzzle);
             resetTimer();
             startTimer();
         });
 
         document.getElementById("reset").addEventListener("click", function () {
             currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-            renderPuzzle(grid, currentPuzzle);
+            renderPuzzle(document.getElementById("sudoku-grid"), currentPuzzle);
         });
 
         document.getElementById("check-solution").addEventListener("click", function () {
