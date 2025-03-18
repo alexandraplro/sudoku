@@ -236,13 +236,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("modal:", modal);
         console.log("openButton:", openButton);
         console.log("closeButton:", closeButton);
-
         if (openButton && closeButton && modal) {
             openButton.addEventListener("click", () => {
                 modal.removeAttribute("inert");
                 modal.setAttribute("aria-hidden", "false");
                 closeButton.focus(); // Focus the close button when modal opens
-        });
+            });
 
             closeButton.addEventListener("click", () => {
                 modal.setAttribute("inert", "");
