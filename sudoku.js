@@ -1,10 +1,14 @@
 let selectedInput = null;
 let inputs= [];
+let timerInterval; // Declare here for accessibility in functions
 
 document.addEventListener("DOMContentLoaded", function () {  
     const grid = document.getElementById("sudoku-grid");
-    let timerInterval; // Declare here for accessibility in functions
     const timerElement = document.getElementById("timer");
+    if (!grid || !timerElement) {
+        console.error("Grid or timerElement is missing in the DOM.");
+    return;
+    }
 
     if (!timerElement) {
         console.error("Element with ID 'timer' not found. Ensure it exists in the DOM.");
@@ -29,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 row.forEach((value, colIndex) => {
                     console.log(`Rendering cell at row ${rowIndex}, col ${colIndex} with value:`, value);
                     const cell = document.createElement("div");
-                    cell.classList.add("cell");
+                    cell.classList.add("cell
+
+                    let input;
 
                     if (value === 0) { // Empty cell
                         const input = document.createElement("input");
@@ -57,9 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (colIndex % 3 === 0) cell.classList.add("left-border");
                     if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
                     if (colIndex % 3 === 2) cell.classList.add("right-border");
-
-                    // Add the input element to the `inputs` array
-                    inputs.push(input);
 
                     // Add events for selecting and validating inputs
                     input.addEventListener("click", function () {
