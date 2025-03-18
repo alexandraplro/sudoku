@@ -232,6 +232,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const openButton = document.getElementById("openModalButton");
         const closeButton = document.getElementById("closeModalButton");
 
+        console.log("modal:", modal);
+        console.log("openButton:", openButton);
+        console.log("closeButton:", closeButton);
+
         if (openButton && closeButton && modal) {
             openButton.addEventListener("click", () => {
                 modal.removeAttribute("inert");
