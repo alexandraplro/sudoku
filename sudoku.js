@@ -253,15 +253,18 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
                 minutes = 0;
                 hours++;
             }
-
             const formattedTime =
                 String(hours).padStart(2, "0") + ":" +
                 String(minutes).padStart(2, "0") + ":" +
                 String(seconds).padStart(2, "0");
+            if (timerElement) {
             timerElement.textContent = formattedTime;
-        }, 1000); // Update every second
-        console.log("Timer started");
-    }
+        } else {
+            console.error("timerElement is null. Ensure an element with ID 'timer' exists in the DOM.");
+        }
+    }, 1000); // Update every second
+    console.log("Timer started");
+}
 
     function resetTimer() {
         clearInterval(timerInterval);
