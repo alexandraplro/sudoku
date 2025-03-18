@@ -25,13 +25,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function renderPuzzle(grid, puzzle) {
             console.log("Rendering Sudoku grid...");
+
+            // Validate the puzzle before proceeding
+            if (!Array.isArray(puzzle)) {
+                console.error("Invalid puzzle data. Expected an array:", puzzle);
+                return;
+            }
+
             grid.innerHTML = ""; // Clear the grid
             inputs.length = 0; // Reset inputs array for navigation
 
             // Iterate through rows and columns to create cells
             puzzle.forEach((row, rowIndex) => {
+                if (!Array.isArray(row)) {
+                    console.error(`Invalid row data at index ${rowIndex}. Expected an array:`, row);
+                    return;
+                }
+
                 row.forEach((value, colIndex) => {
                     console.log(`Rendering cell at row ${rowIndex}, col ${colIndex} with value:`, value);
+
                     const cell = document.createElement("div");
                     cell.classList.add("cell");
 
