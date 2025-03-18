@@ -312,12 +312,12 @@ h1 {
 }
 
 .left-panel h2 {
-  color: var(--panel-title-color); /* Define a variable or replace with a specific color */
+  color: darkred; /* Define a variable or replace with a specific color */
 }
 
 /* Left panel paragraph (p) color */
 .left-panel p {
-  color: var(--panel-paragraph-color); /* Define a variable or replace with a specific color */
+  color: darkslategray; /* Define a variable or replace with a specific color */
 }
 
 footer .container {
