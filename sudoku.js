@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     let input;
 
                     if (value === 0) { // Empty cell
-                        const input = document.createElement("input");
+                        input = document.createElement("input");
                         input.type = "text";
                         input.maxLength = 1;
                         input.dataset.row = rowIndex;
