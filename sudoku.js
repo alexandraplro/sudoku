@@ -10,21 +10,26 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
     }
 
-    if (!timerElement) {
-        console.error("Element with ID 'timer' not found. Ensure it exists in the DOM.");
-        return;
-    }
-
     let selectedDifficulty = "medium";
     let initialPuzzle = generateSudoku(selectedDifficulty);
-    let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-
-    const cell = document.createElement("div"); // Properly define cell
+    console.log("Generated puzzle data:", initialPuzzle);
     
-        console.log("Generated puzzle array (Initial):", initialPuzzle);
+    let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+    
+    const cell = document.createElement("div"); // Properly define cell
 
+        function getSubgridColor(rowIndex, colIndex) {
+            const subgridRow = Math.floor(rowIndex / 3);
+            const subgridCol = Math.floor(colIndex / 3);
+            const isSubgridEven = (subgridRow + subgridCol) % 2 === 0;
+            return isSubgridEven ? "var(--subgrid-color-1)" : "var(--subgrid-color-2)";
+        }
+
+        console.log("Generated puzzle array (Initial):", initialPuzzle);
+            
         function renderPuzzle(grid, puzzle) {
             console.log("Rendering Sudoku grid...");
+            console.log("Puzzle being passed to renderPuzzle:", puzzle);
 
             // Validate the puzzle before proceeding
             if (!Array.isArray(puzzle)) {
@@ -42,7 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
+                console.log(`Row at index ${rowIndex}:`, row);
+
                 row.forEach((value, colIndex) => {
+                    console.log(`Processing Row ${rowIndex}, Column ${colIndex}:`, value);
                     console.log(`Rendering cell at row ${rowIndex}, col ${colIndex} with value:`, value);
 
                     const cell = document.createElement("div");
@@ -60,8 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         inputs.push(input); // Add the input to the inputs array
 
                         cell.appendChild(input);
-
-                        console.log("Input element:", input);
+                        console.log("Input created and ready:", input);
 
                         // Add the event listener here, where `input` is defined
                         input.addEventListener("click", function () {
@@ -70,16 +77,25 @@ document.addEventListener("DOMContentLoaded", function () {
                                 selectedInput.classList.add("selected");
                                 console.log(`Input clicked at row ${rowIndex}, col ${colIndex}`);
                         });
+
+                        input.addEventListener("input", function () {
+                            // Allow only numbers 1-9 and block everything else
+                            const inputValue = this.value.trim();
+                            if (/^[1-9]$/.test(inputValue)) {
+                                currentPuzzle[rowIndex][colIndex] = parseInt(inputValue, 10); // Update puzzle
+                                this.value = inputValue; // Ensure the input value remains visible
+                            } else {
+                                this.value = ""; // Clear invalid input
+                                currentPuzzle[rowIndex][colIndex] = 0; // Reset grid value
+                            }
+                        });
                     } else {
-                                    cell.textContent = value; // Fixed cell value
+                        cell.textContent = value; // Fixed cell value
                         cell.classList.add("fixed");
                     }
                     
                     // Subgrid coloring and borders logic...
-                    const subgridRow = Math.floor(rowIndex / 3);
-                    const subgridCol = Math.floor(colIndex / 3);
-                    const isSubgridEven = (subgridRow + subgridCol) % 2 === 0;
-                    cell.style.backgroundColor = isSubgridEven ? "var(--subgrid-color-1)" : "var(--subgrid-color-2)";
+                    cell.style.backgroundColor = getSubgridColor(rowIndex, colIndex);
 
                     // Add borders for subgrid visualization
                     if (rowIndex % 3 === 0) cell.classList.add("top-border");
@@ -87,30 +103,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
                     if (colIndex % 3 === 2) cell.classList.add("right-border");
 
+                    console.log("Appending cell to grid:", cell);
+                    grid.appendChild(cell); // Append the cell to the grid
+                 });
+            });
+            console.log("Inputs after rendering:", inputs); // Debug inputs array
+            clearHighlights();
+            highlightInvalidCells(getInvalidCells(currentPuzzle));
+            showValidationMessage();
+    }
 
-                    input.addEventListener("input", function () {
-                        // Allow only numbers 1-9 and block everything else
-                        const inputValue = this.value.trim();
-                        if (/^[1-9]$/.test(inputValue)) {
-                            currentPuzzle[rowIndex][colIndex] = parseInt(inputValue, 10); // Update puzzle
-                            this.value = inputValue; // Ensure the input value remains visible
-                        } else {
-                            this.value = ""; // Clear invalid input
-                            currentPuzzle[rowIndex][colIndex] = 0; // Reset grid value
-                        }
-                        showValidationMessage();
-                    });
-                });
+        document.addEventListener("keydown", (e) => {
+            if (!selectedInput) return;
 
-                clearHighlights();
-                highlightInvalidCells(getInvalidCells(currentPuzzle));
-                showValidationMessage();
-        
-                grid.appendChild(cell); // Append the cell to the grid
+        const index = inputs.indexOf(selectedInput);
+            if (e.key === "ArrowUp" && index >= 9) inputs[index - 9].focus();
+            else if (e.key === "ArrowDown" && index < 72) inputs[index + 9].focus();
+            else if (e.key === "ArrowLeft" && index % 9 !== 0) inputs[index - 1].focus();
+            else if (e.key === "ArrowRight" && (index + 1) % 9 !== 0) inputs[index + 1].focus();
         });
-
-};
-
+    
         // Generate a Sudoku puzzle with difficulty
         function generateSudoku(difficulty) {
             const solution = [
