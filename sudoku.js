@@ -47,11 +47,21 @@ document.addEventListener("DOMContentLoaded", function () {
                         inputs.push(input); // Add the input to the inputs array
 
                         cell.appendChild(input);
+
+                        console.log("Input element:", input);
+
+                        // Add the event listener here, where `input` is defined
+                        input.addEventListener("click", function () {
+                                if (selectedInput) selectedInput.classList.remove("selected");
+                                selectedInput = this;
+                                selectedInput.classList.add("selected");
+                                console.log(`Input clicked at row ${rowIndex}, col ${colIndex}`);
+                        });
                     } else {
-                        cell.textContent = value; // Fixed cell value
+                                    cell.textContent = value; // Fixed cell value
                         cell.classList.add("fixed");
                     }
-
+                    
                     // Subgrid coloring and borders logic...
                     const subgridRow = Math.floor(rowIndex / 3);
                     const subgridCol = Math.floor(colIndex / 3);
@@ -64,12 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (rowIndex % 3 === 2) cell.classList.add("bottom-border");
                     if (colIndex % 3 === 2) cell.classList.add("right-border");
 
-                    // Add events for selecting and validating inputs
-                    input.addEventListener("click", function () {
-                        if (selectedInput) selectedInput.classList.remove("selected");
-                        selectedInput = this;
-                        selectedInput.classList.add("selected");
-                    });
 
                     input.addEventListener("input", function () {
                         // Allow only numbers 1-9 and block everything else
