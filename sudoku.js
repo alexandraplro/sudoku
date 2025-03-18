@@ -4,8 +4,6 @@ let selectedInput = null;
 document.addEventListener("DOMContentLoaded", function () {  /* global grid, timerElement, timerInterval, inputs, selectedInput */
     const grid = document.getElementById("sudoku-grid");
     const timerElement = document.getElementById("timer");
-    /* eslint-disable-next-line no-unused-vars */
-    let selectedInput = null; // Track the currently selected cell input
     const input = document.createElement("input"); // Properly define input
     const cell = document.createElement("div"); // Properly define cell
     let selectedDifficulty = "medium"; // Default difficulty level
