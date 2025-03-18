@@ -25,7 +25,6 @@
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#contactModal">CONTACT US</a>
-        <button id="openModalButton" class="btn btn-primary">Open Modal</button>
       </li>
       </ul>
     </nav>
@@ -53,14 +52,14 @@
 </div>
 
 <!-- Contact Us Modal -->
-<div id="contactModal" class="modal fade" tabindex="-1" aria-labelledby="contactModalLabel" inert>
+<div id="contactModal" class="modal fade" tabindex="-1" aria-labelledby="contactModalLabel">
     <!-- Modal content -->
   <div class="modal-dialog">
     <div class="modal-content">
       <!-- Modal Header -->
       <div class="modal-header">
         <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
-        <button type="button" class="btn-close custom-close-btn" data-bs-dismiss="modal" aria-label="Close" id="closeModalButton"></button>
+        <button type="button" class="btn-close custom-close-btn" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true" id="closeModalButton"></button>
       </div>
       <!-- Modal Body -->
       <div class="modal-body">
