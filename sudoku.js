@@ -1,4 +1,5 @@
 let timerInterval; // Declare globally
+let selectedInput = null;
 
 document.addEventListener("DOMContentLoaded", function () {  /* global grid, timerElement, timerInterval, inputs, selectedInput */
     const grid = document.getElementById("sudoku-grid");
@@ -10,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
     let selectedDifficulty = "medium"; // Default difficulty level
     let initialPuzzle = generateSudoku(selectedDifficulty); // Generate the puzzle based on difficulty
     let currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Create a deep copy of the initial puzzle
+
+    timerElement = document.getElementById("timer");
 
     console.log("Generated puzzle array (Initial):", initialPuzzle);
 
@@ -298,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
             // Regenerate puzzle for the selected difficulty
             initialPuzzle = generateSudoku(selectedDifficulty); // Generate puzzle
             currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle)); // Deep copy for game state
-            renderPuzzle(currentPuzzle); // Update the grid
+            renderPuzzle(grid, currentPuzzle); // Update the grid
 
             resetTimer(); // Reset the timer display
             startTimer(); // Restart the timer
@@ -307,20 +310,20 @@ document.addEventListener("DOMContentLoaded", function () {  /* global grid, tim
 
     document.getElementById("new-game").addEventListener("click", function () {
         initialPuzzle = generateSudoku(selectedDifficulty);
-        currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-        renderPuzzle(currentPuzzle);
+        grid, currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+        renderPuzzle(grid, currentPuzzle);
         resetTimer();
         startTimer();
     });
 
     document.getElementById("reset").addEventListener("click", function () {
-        currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
-        renderPuzzle(currentPuzzle);
+        grid, currentPuzzle = JSON.parse(JSON.stringify(initialPuzzle));
+        renderPuzzle(grid, currentPuzzle);
     });
 
     document.getElementById("check-solution").addEventListener("click", function () {
         showValidationMessage();
-        if (isValidSudoku(currentPuzzle)) {
+        if (isValidSudoku(grid, currentPuzzle)) {
             alert("Congratulations! The solution is correct.");
         } else {
             alert("Keep trying!");
