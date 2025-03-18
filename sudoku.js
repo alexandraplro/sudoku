@@ -51,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         cell.textContent = value; // Fixed cell value
                         cell.classList.add("fixed");
                     }
-
+                    showValidationMessage();
+                    }
                     // Subgrid coloring and borders logic...
                     const subgridRow = Math.floor(rowIndex / 3);
                     const subgridCol = Math.floor(colIndex / 3);
@@ -83,15 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                         showValidationMessage();
                     });
-                    clearHighlights();
-                    highlightInvalidCells(getInvalidCells(currentPuzzle));
-                    showValidationMessage();
-                });
+                }
 
-                cell.appendChild(input);
-            });
-            grid.appendChild(cell);
-        };
+                clearHighlights();
+                highlightInvalidCells(getInvalidCells(currentPuzzle));
+                showValidationMessage();
+        
+                grid.appendChild(cell); // Append the cell to the grid
+        });
+    });
 
         // Generate a Sudoku puzzle with difficulty
         function generateSudoku(difficulty) {
