@@ -128,14 +128,6 @@ header h1 {
 }
 
 /* Close Button */
-#contactModal .btn-close {
-  background: darkslategray; /* Close button background */
-  color: snow;               /* White text for contrast */
-  font-size: 1.2rem;         /* Adjust size for visibility */
-  border: none;              /* Remove border */
-  cursor: pointer;
-  padding: 5px;
-}
 
 #contactModal .btn-close.custom-close-btn {
   background: darkslategray;
@@ -147,12 +139,17 @@ header h1 {
   position: absolute; /* Ensure it's positioned correctly */
   top: 10px;
   right: 15px;
+  transition: background-color 0.3s ease; /*TESTING */
 }
 
-#contactModal .btn-close:hover {
+#contactModal .btn-close.custom-close-btn:hover {
   color: slategray;          /* Slightly different hover effect */
   transform: scale(1.1);     /* Subtle zoom on hover */
+  transform: scale(1.05); /* Testing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Testing */
 }
+
+
 
 /* Input Fields */
 #contactModal .form-control {
@@ -199,6 +196,34 @@ header h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
 }
 
+#sudokuHistoryModal .btn-primary {
+  background-color: coral; 
+  color: white;
+    color: white;                  /* Text color for contrast */
+  font-weight: bold;             /* Emphasize the button text */
+  padding: 10px 20px;            /* Add spacing around the button */
+  border-radius: 5px;            /* Smooth, rounded edges */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+#sudokuHistoryModal .btn-primary:hover {
+  transform: scale(1.05); /* Subtle zoom */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+#sudokuHistoryModal .btn-secondary {
+  background-color: slategray; 
+  color: white;
+  font-weight: bold;             /* Emphasize the button text */
+  padding: 10px 20px;            /* Add spacing around the button */
+  border-radius: 5px;            /* Smooth, rounded edges */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+#sudokuHistoryModal .btn-secondary:hover {
+  transform: scale(1.05); /* Subtle zoom */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
 
 /* General Modal Styling */
 #contactModal {
