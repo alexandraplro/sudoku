@@ -100,8 +100,8 @@ header h1 {
 /* Contact Us Modal Styles */
 #contactModal .modal-content, 
 #sudokuHistoryModal .modal-content {
-  background-color: lavenderblush; /* Soft pastel for the background */
-  border: 2px solid lightcoral;    /* Subtle border to highlight the modal */
+  background-color: snow; /* Soft pastel for the background */
+  border: 2px solid ghostwhite;    /* Subtle border to highlight the modal */
   border-radius: 10px;            /* Rounded corners */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
   color: darkslategray;           /* Text color for readability */
@@ -112,7 +112,7 @@ header h1 {
 }
 
 /* Modal Header */
-#contactModal .modal-header {
+#sudokuHistoryModal #contactModal .modal-header {
   background-color: seashell; /* Light color for header background */
   color: darkred;             /* Distinctive text color */
   font-size: 1.5rem;          /* Slightly larger font for the header */
@@ -120,41 +120,18 @@ header h1 {
 }
 
 /* Modal Footer */
-#contactModal .modal-footer {
-  background-color: mistyrose; /* Matches theme colors */
-  border-top: 2px solid lightcoral; /* Divider between body and footer */
+#sudokuHistoryModal #contactModal .modal-footer {
+  background-color: whitesmoke; /* Matches theme colors */
+  border-top: 2px lavenderblush; /* Divider between body and footer */
   text-align: right;           /* Align buttons to the right */
   padding: 10px;               /* Add spacing */
 }
 
-/* Close Button */
-
-#contactModal .btn-close.custom-close-btn {
-  background: darkslategray;
-  color: snow;
-  font-size: 1.2rem;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  position: absolute; /* Ensure it's positioned correctly */
-  top: 10px;
-  right: 15px;
-  transition: background-color 0.3s ease; /*TESTING */
-}
-
-#contactModal .btn-close.custom-close-btn:hover {
-  color: slategray;          /* Slightly different hover effect */
-  transform: scale(1.1);     /* Subtle zoom on hover */
-  transform: scale(1.05); /* Testing */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Testing */
-}
-
-
 
 /* Input Fields */
 #contactModal .form-control {
-  background-color: antiquewhite; /* Neutral input background */
-  border: 1px solid lightcoral;   /* Subtle border */
+  background-color: ; /* Neutral input background */
+  border: 1px solid papayawhip;   /* Subtle border */
   border-radius: 5px;             /* Smooth rounded edges */
   padding: 10px;                  /* Add spacing within inputs */
   font-size: 1rem;                /* Readable font size */
@@ -182,7 +159,7 @@ header h1 {
 
 /* Buttons */
 #contactModal .btn-primary {
-  background-color: coral;       /* Button background */
+  background-color: peachpuff;       /* Button background */
   border: none;                  /* Clean appearance */
   color: white;                  /* Text color for contrast */
   font-weight: bold;             /* Emphasize the button text */
@@ -196,10 +173,24 @@ header h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
 }
 
+#contactModal .btn-secondary {
+  background-color: slategray;       /* Button background */
+  border: none;                  /* Clean appearance */
+  color: white;                  /* Text color for contrast */
+  font-weight: bold;             /* Emphasize the button text */
+  padding: 10px 20px;            /* Add spacing around the button */
+  border-radius: 5px;            /* Smooth, rounded edges */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+#contactModal .btn-secondary:hover {
+  transform: scale(1.05); /* Subtle zoom */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
 #sudokuHistoryModal .btn-primary {
-  background-color: coral; 
+  background-color: peachpuff; 
   color: white;
-    color: white;                  /* Text color for contrast */
   font-weight: bold;             /* Emphasize the button text */
   padding: 10px 20px;            /* Add spacing around the button */
   border-radius: 5px;            /* Smooth, rounded edges */
@@ -232,19 +223,6 @@ header h1 {
 
 .modal-backdrop {
   z-index: 1040; /* Backdrop sits below the modal */
-}
-
-.custom-close-btn {
-  background: darkslategray; /* Remove background */
-  border: none; /* Remove border */
-  font-size: 20px; /* Adjust size */
-  color: snow; /* Terra-cotta color for your theme */
-  cursor: pointer;
-}
-
-.custom-close-btn:hover {
-  color: slategray; /* Slightly darker on hover */
-  transform: scale(1.1); /* Subtle hover effect */
 }
 
 .highlight-error {
